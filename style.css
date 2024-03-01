@@ -41,7 +41,6 @@ body {
     list-style-type: none;
     font-size: 22px;
     margin: 30px;
-    /* font-weight: bolder; */
 }
 
 .li-navbar a:hover {
@@ -64,6 +63,7 @@ a {
     margin-left: -100px;
     color: #FFF8D8;
     font-size: 22px;
+    transition: .1s ease-in-out;
 }
 
 .header-logo:hover{
@@ -83,9 +83,18 @@ a {
     flex-direction: row;
 }
 
+.container-home:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent 90%, black 100%);
+  }
+
 .home-left{
     flex: 6;
-    border: 2px solid white;
 }
 
 .home-right{
@@ -95,13 +104,60 @@ a {
     height: 85vh;
     flex: 4;
     font-family: "Slackside One", sans-serif;
-    font-size: 36px;
-    margin-left: 25px;
-    border: 2px solid red;
+    margin-left: 200px;
+    color: #FFF8D8;
 }
 
-.home-right h3 {
+.home-text{
     display: flex;
-    align-items: center;
     justify-content: center;
+    flex-direction: column;
+    height: 60%;
+    gap: 20px;
+    cursor: default;
+}
+
+.home-text h4{
+    font-weight: lighter;
+}
+
+.paw{
+    text-align: center;
+    font-size: 85px;
+    z-index: 10;
+    cursor: default;
+}
+
+.paw-hover{
+    transition: .3s ease-out;
+    color: #FFF8D8;
+    margin-right: 100px;
+}
+
+.paw-hover:hover{
+    cursor: pointer;
+    font-size: 100px;
+    transition: .5s ease-in-out;
+    color: #ffffff;
+}
+
+.paw-text{
+    font-size: 36px;
+    font-family: 'Slackside One', sans-serif;
+}
+
+.container-content{
+    height: 100vh;
+    background-color: black;
+    position: relative;
+}
+
+.container-content:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent 90%, black 100%);
 }
