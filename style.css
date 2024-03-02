@@ -52,7 +52,7 @@ body {
 
 a {
     text-decoration: none;
-    color: black;
+    color: #ffffff;
     padding-bottom: 2px;
 }
 
@@ -61,7 +61,7 @@ a {
     align-items: center;
     justify-content: center;
     margin-left: -100px;
-    color: #FFF8D8;
+    color: #FFFfff;
     font-size: 22px;
     transition: .1s ease-in-out;
 }
@@ -70,6 +70,7 @@ a {
     cursor: default;
     margin-bottom: 3px;
     transition: .2s ease-in-out;
+    color: #FFD9B0;
 }
 
 .logo{
@@ -146,8 +147,16 @@ a {
     font-family: 'Slackside One', sans-serif;
 }
 
+.container-treatment{
+    height: 120vh;
+    position: relative;
+    background-image: url('/KuliahBackEnd/Tugas/assets/cat-treatment.jpeg');
+    background-position: center;
+    background-size: cover;
+}
+
 .container-content{
-    height: 100vh;
+    height: 155vh;
     background-color: black;
     position: relative;
 }
@@ -159,7 +168,73 @@ a {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(to bottom, transparent 90%, black 100%);
+    background: linear-gradient(to bottom, transparent 40%, #565a5d 100%);
+}
+
+.judul-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    font-family: 'Slackside One', sans-serif;
+    font-size: 36px;
+}
+
+.kontainer-readmore{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-top: 100px;
+}
+
+.kotak-readmore{
+    width: 315px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.3);
+    overflow: hidden; 
+    transition: transform 0.8s ease;
+    z-index: 100;   
+}
+
+.kotak-readmore:hover{
+    transform: translateY(-7.5px);
+}
+
+.kotak-readmore img{
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
+}
+
+.konten-readmore{
+    padding-top: 20px;
+    margin: 0 10px;
+}
+
+.konten-readmore h2{
+    padding-bottom: 20px;
+}
+
+.konten-readmore p{
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.konten-readmore button{
+    display: inline-block;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    padding: 8px 16px;
+    font-weight: bolder;
+}
+
+button:hover{
+    cursor: pointer;
 }
 
 .kontainer-readmore{
