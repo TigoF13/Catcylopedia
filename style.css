@@ -38,7 +38,7 @@ body{
     align-items: center;
     width: 75%;
     height: 10vh;
-    padding-right: 100px;
+    /* padding-left: 50px; */
 }
 
 .li-navbar {
