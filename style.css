@@ -258,3 +258,144 @@ a {
 button:hover{
     cursor: pointer;
 }
+
+.container-treatment{
+    background-image: url('assets/cat-treatment.jpeg');
+    background-position: center;
+    background-size: contain;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 125vh;
+    align-items: center;
+    margin-bottom: 200px;
+}
+
+.groom-text{
+    align-items: center;
+    width: 90vh;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 200px;
+    font-family: "Slackside One", sans-serif;
+    margin-left: 500px;
+    color: #FFF8D8;
+    margin-top: 15vh;
+}
+
+.container-groom{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center; 
+    z-index: 1000;
+    margin-top: 15vh;
+}
+
+.bubble-list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20vh;
+    gap: 60px;
+    /* z-index: 10000; */
+}
+.bubble-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3vh;
+    height: 150px;
+    /* z-index: 10000; */
+}
+
+.bubble-info{
+    /* display: inline-flex; */
+    background-color: #FFD9B0;
+    color: black;
+    font-family: "Slackside One", sans-serif;
+    font-size: 18px;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition:transform 0.6s;
+    z-index: 10000;
+    border: 2px solid black;
+}
+
+.bubble-info:hover {
+    background-color: #FFFfff;
+    color: rgb(216, 146, 65);
+    transform: translateX(-2vw);
+    cursor: default;
+}
+.bubble-info:hover + .bubble-more {
+    opacity: 100%;
+}
+
+.bubble-more{ 
+    color: #FFF8D8;
+    font-family:'Poppins';
+    width: 55vh;
+    opacity: 0%;
+    transition: opacity 0.6s;
+    border-style: solid;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.bubble-logo{
+    font-size: 44px;
+}
+
+.container-footer{
+    height: 100vh;
+}
+
+.judul-funfact{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Slackside One', sans-serif;
+    color: #FFF8D8;
+    font-size: 54px;
+    height: 20vh;
+}
+
+.funfact{
+    display: flex;
+    flex-direction: row;
+    height: 60vh;
+    color: #FFF8D8;
+}
+
+.funfact-left{
+    flex: 1;
+}
+
+.funfact-right{
+    flex: 1;
+}
+
+.funfact-left h2, .funfact-right h2{
+    padding: 50px 30px 0px 100px;
+    font-weight: lighter;
+}
+
+.quote{
+    height: 20vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Slackside One', sans-serif;
+    font-size: 26px;
+    color: #FFF8D8;
+}
