@@ -17,19 +17,11 @@
 
 <body>
     <div class="container">
-        <div class="container-sidebar">
-            <div class="sosmed">
-                <a href="https://www.tiktok.com/@catmiata"><i class="fab fa-tiktok"></i></a>
-                <a href="https://www.facebook.com/hashtagIAmCat"><i class="fab fa-facebook"></i></a>
-                <a href="https://www.instagram.com/cats_of_instagram/"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.youtube.com/@kittycat_10"><i class="fab fa-youtube"></i></a>
-                <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-            </div>
-            <div class="donate">
-                <button class="btn">Donate</button>
-                <button class="btn">Login</button>
-            </div>
-        </div>
+        <!-- NAVBAR START -->
+        
+        <%- include('layouts/adopt/adopthead') %>
+
+        <!-- NAVBAR END -->
         <div class="container-navbar">
             <div class="logo">
                 <a href="/">
@@ -52,7 +44,14 @@
                 <h1>Adopt a cat</h1>
             </div>
         </div>
+            <!-- FOOTER START -->
+
+            <%- include('layouts/adopt/adoptfooter') %>
+
+            <!-- FOOTER END -->
+
     </div>
+
 </body>
 
 </html>

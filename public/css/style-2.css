@@ -8,6 +8,19 @@ body {
     font-family: 'Poppins';
 }
 
+.center,.footer-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content-footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 30px;
+}
+
 .container{
     /* border: 2px solid blue; */
 }
@@ -26,6 +39,28 @@ body {
 .container-navbar{
     height: 55vh;
     /* border: 2px solid red; */
+}
+
+.pilihan{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    padding: 50px 0px;
+    
+}
+
+.pilihan a{
+    font-size: 20px;
+    padding: 5px 20px;
+    color: white;
+}
+
+.pilihan a:hover{
+    cursor: pointer;
+    border-radius: 100px;
+    color: red;
+    transition: .3s ease-in-out;
 }
 
 .sosmed{
@@ -129,4 +164,30 @@ a{
     background-color: #c928b2;
     color: #fff;
     font-size: 20px;
+}
+
+footer{
+    font-family: 'Poppins';
+    width: 100%;
+    height: 50vh;
+    background-color: #333;
+    color: #fff;
+    font-size: 18px;
+    margin-top: 50px;
+}
+
+.terms{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.terms a{
+    color: white;
+}
+
+.terms a:hover{
+    color: grey;
+    transition: .4s ease-in-out;
 }

@@ -16,6 +16,9 @@ app.get("/", (req, res) => {
 app.get("/adopt", (req, res) => {
     res.render("adopt.ejs", {title : "Catcyclopedia"})
 })
+app.get("/register", (req, res) => {
+    res.render("register.ejs", {title : "Catcyclopedia"})
+})
 
 app.listen(port, () => {
     console.log(`Webserver app listening on port ${port}`);
