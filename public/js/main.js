@@ -13,27 +13,27 @@ window.addEventListener("scroll", function () {
   prevScrollPos = currentScrollPos;
 });
 
-const contact = document.getElementById("contactDropdown");
-const contactContent = document.getElementById("contactDropdownContent");
+// const contact = document.getElementById("contactDropdown");
+// const contactContent = document.getElementById("contactDropdownContent");
 
-let isDropdownVisible = false; // Status awal dropdown
-contact.addEventListener("click", () => {
-  if (!isDropdownVisible) {
-    contactContent.style.display = "block"; // Tampilkan dropdown
-    isDropdownVisible = true;
-  } else {
-    contactContent.style.display = "none"; // Sembunyikan dropdown
-    isDropdownVisible = false;
-  }
-});
+// let isDropdownVisible = false; // Status awal dropdown
+// contact.addEventListener("click", () => {
+//   if (!isDropdownVisible) {
+//     contactContent.style.display = "block"; // Tampilkan dropdown
+//     isDropdownVisible = true;
+//   } else {
+//     contactContent.style.display = "none"; // Sembunyikan dropdown
+//     isDropdownVisible = false;
+//   }
+// });
 
-document.addEventListener("click", (event) => {
-  if (isDropdownVisible && event.target !== contact && event.target !== contactContent) {
-    contactContent.style.display = "none";
-    isDropdownVisible = false;
-  }
-});
+// document.addEventListener("click", (event) => {
+//   if (isDropdownVisible && event.target !== contact && event.target !== contactContent) {
+//     contactContent.style.display = "none";
+//     isDropdownVisible = false;
+//   }
+// });
 
-contactDropdownContent.addEventListener("click", (event) => {
-  event.stopPropagation();
-});
+// contactDropdownContent.addEventListener("click", (event) => {
+//   event.stopPropagation();
+// });
