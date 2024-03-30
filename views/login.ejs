@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css\style-2.css">
+    <link href="animation.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Madimi+One&family=Slackside+One&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- NAVBAR START -->
+        
+        <%- include('layouts/adopt/adopthead') %>
+
+        <!-- NAVBAR END -->
+        <div class="container-navbar">
+            <div class="logo">
+                <a href="/">
+                    <h1>Catcylopedi<i class="fa-solid fa-cat"></i></h1>
+                </a>
+            </div>
+        </div>
+            <main>
+                <h1>Login</h1>
+                <form action="/login" method="POST" class="logform">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required class="form-item">
+        
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required class="form-item">
+                    <a href="/register">Don't have an account?</a>
+                    <button type="submit">Login</button>
+                </form>
+            </main>
+        
+                <!-- FOOTER START -->
+        
+                <%- include('layouts/adopt/adoptfooter') %>
+        
+                <!-- FOOTER END -->
+    </div>
+</body>
+</html>

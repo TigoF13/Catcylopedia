@@ -7,6 +7,11 @@ body {
     scroll-behavior: smooth;
     font-family: 'Poppins';
 }
+h1 {
+    margin-bottom: 10px; /* Adjust the margin-bottom value as needed */
+    text-align: center;
+}
+
 
 .center,.footer-content{
     display: flex;
@@ -37,7 +42,7 @@ body {
 }
 
 .container-navbar{
-    height: 55vh;
+    height: 17.5vh;
     /* border: 2px solid red; */
 }
 
@@ -169,11 +174,11 @@ a{
 footer{
     font-family: 'Poppins';
     width: 100%;
-    height: 50vh;
+    height: 40vh;
     background-color: #333;
     color: #fff;
     font-size: 18px;
-    margin-top: 50px;
+    margin-top: 25vh;
 }
 
 .terms{
@@ -190,4 +195,17 @@ footer{
 .terms a:hover{
     color: grey;
     transition: .4s ease-in-out;
+}
+
+.regform,.logform{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    /* height: 100vh; */
+}
+
+.form-item {
+    margin-bottom: 20px;
 }
