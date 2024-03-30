@@ -1,0 +1,132 @@
+*,
+html,
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: 'Poppins';
+}
+
+.container{
+    /* border: 2px solid blue; */
+}
+
+.container-sidebar{
+    height: 15vh;
+    display: flex;
+    flex-direction: row;
+    /* border: 2px solid black; */
+}
+
+.container-sidebar a{
+    padding: 0px 5px;
+}
+
+.container-navbar{
+    height: 55vh;
+    /* border: 2px solid red; */
+}
+
+.sosmed{
+    font-size: 36px;
+    margin: 30px 0px 0px 40px;
+    flex: 6;
+}
+
+.sosmed a{
+    color: black;
+}
+
+.sosmed a i:hover{
+    color: #79016c;
+    cursor: pointer;
+    transition: .1s ease-in-out;
+}
+
+.donate{
+    margin: 10px 40px 0px 0px;
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}  
+
+.btn{
+    background-color: #fae6fa;
+    color: #79016c;
+    margin: 25px 5px;
+    padding: 0px 30px;
+    border-radius: 7px;
+    border: none;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.btn:hover{
+    background-color: #79016c;
+    color: white;
+    cursor: pointer;
+    transition: .1s ease-in-out;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -50px 0px 30px 0px;
+}
+
+.logo a{
+    color: #7b2076;
+    font-size: 28px;
+}
+
+.navbar{
+    /* border: 2px solid red; */
+}
+
+.menu{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    /* border: 2px solid green; */
+}
+
+.ul-navbar{
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    font-size: 20px;
+    font-weight: bolder;
+    /* border: 2px solid red; */
+    padding: 20px 20px;
+}
+
+.li-navbar a{
+    border-top: 10px;
+    padding: 20px 20px;
+    transition: .1s ease-in-out;
+}
+
+.li-navbar:hover a{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: #7b2076;
+    color: white;
+}
+
+a{
+    text-decoration: none;
+    color: #7b2076;
+}
+
+.judul{
+    height: 15vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #c928b2;
+    color: #fff;
+    font-size: 20px;
+}

@@ -13,6 +13,10 @@ app.get("/", (req, res) => {
     res.render("index.ejs", {title : "Catcyclopedia"})
 })
 
+app.get("/adopt", (req, res) => {
+    res.render("adopt.ejs", {title : "Catcyclopedia"})
+})
+
 app.listen(port, () => {
     console.log(`Webserver app listening on port ${port}`);
 })
