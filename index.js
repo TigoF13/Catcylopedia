@@ -82,7 +82,7 @@ app.get('/myacc', async function(req, res) {
 });
 
 app.get("/register", (req, res) => {
-    res.render("register.ejs", {title : "Register"})
+    res.render("register.ejs", {title : "Register", loggedin: req.session.loggedin})
 })
 
 app.post("/register", async (req, res) => {
@@ -94,14 +94,14 @@ app.post("/register", async (req, res) => {
         });
 
         await newUser.save();
-        res.render("login.ejs", {title : "Login"});
+        res.render("login.ejs", {title : "Login", loggedin: req.session.loggedin,message: "Account created successfully, please login"});
     } catch (err) {
         console.log(err);
     }
 });
 
 app.get("/login", (req, res) => {
-    res.render("login.ejs", {title : "Login", loggedin: req.session.loggedin,message: req.flash('error') })
+    res.render("login.ejs", {title : "Login", loggedin: req.session.loggedin, message: req.flash('error') })
 })
 
 app.post('/login', passport.authenticate('local', { failureRedirect: '/login',failureFlash: 'Wrong username/password, please try again'}), function(req, res) {
@@ -115,6 +115,7 @@ app.get('/logout', function(req, res) {
             console.log(err);
         } else {
             res.redirect('/adopt');
+            req.session.loggedin = false;
         }
     });
 });
