@@ -209,3 +209,20 @@ footer{
 .form-item {
     margin-bottom: 20px;
 }
+
+.container-content{
+    height: 100vh;
+    margin: 26vh 150px 0px 150px;
+    padding-top: 10vh;
+    /* border: 2px solid red; */
+}
+
+.content-title{
+    color: #79016c;
+    font-weight: bolder;
+    align-items: center;
+}
+
+p{
+    font-size: 16px;
+}
