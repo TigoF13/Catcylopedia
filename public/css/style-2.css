@@ -23,7 +23,6 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 30px;
 }
 
 .container{
@@ -65,7 +64,8 @@ h1 {
     cursor: pointer;
     border-radius: 100px;
     color: red;
-    transition: .3s ease-in-out;
+    font-weight: bolder;
+    transition: .2s ease-in-out;
 }
 
 .sosmed{
@@ -174,11 +174,11 @@ a{
 footer{
     font-family: 'Poppins';
     width: 100%;
-    height: 40vh;
-    background-color: #333;
+    height: 46vh;
+    background-color: #7b2076;
     color: #fff;
     font-size: 18px;
-    margin-top: 25vh;
+    padding-top: 20px;
 }
 
 .terms{
@@ -211,7 +211,7 @@ footer{
 }
 
 .container-content{
-    height: 100vh;
+    height: 300vh;
     margin: 26vh 150px 0px 150px;
     padding-top: 10vh;
     /* border: 2px solid red; */
