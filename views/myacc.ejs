@@ -15,24 +15,83 @@
 
         <div class="account-container">
             <div class="content-account">
-                <ul style="list-style-type: none;">
-                    <li class="account-item">Username : <%= user.username %></li>
-                    <li class="account-item">Email : <%= user.email %></li>
-                    <li class="account-item">Password : ********</li>
-                </ul>
+                <div class="account-data">
+                    <ul style="list-style-type: none;" class="data-list">
+                        <li class="account-item">Username : <%= user.username %> <button class="change-button" onclick="openUserForm()" >
+                            <i class="fa-solid fa-pen"></i></button>
+                        </li> 
+                        <li class="account-item">Email : <%= user.email %></li>
+                        <li class="account-item">Password : ******** <button class="change-button" onclick="openPassForm()">
+                            <i class="fa-solid fa-pen"></i></button>
+                            
+                        </li>
+                    </ul>
+                    <div class="form-popup" id="userForm">
+                        <form action="/action_page.php" class="form-container">
+                        <label for="username"><b class="text-form">Change Username : </b></label>
+                        <input type="password" placeholder="Enter new username" name="username"><br>
+                        <button class="func-button" >Confirm</button>
+                        <button type="button" class="func-button" onclick="closeUserForm()">Close</button>
+                        </form>
+                    </div>
+                    <div class="form-popup" id="passForm">
+                        <form action="/action_page.php" class="form-container">
+                        <label for="username"><b class="text-form">Change Password : </b></label>
+                        <input type="text" placeholder="Enter new password" name="password"><br>
+                        <button class="func-button" >Confirm</button>
+                        <button type="button" class="func-button" onclick="closePassForm()">Close</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="change-list">
+                    <button id ="delete-button" class="delete-button" onclick="deleteUser()">Delete Account</button>
+                </div>
             </div>
         </div>
-
-        <!-- CONTENT END -->
-
-        <!-- FOOTER START -->
-
-        <!-- <%- include('layouts/adopt/adoptfooter') %> -->
-
-        <!-- FOOTER END -->
 
     </div>
 
 </body>
+
+    <script>
+        document.getElementById('delete-button').addEventListener('click', deleteUser);
+
+        function deleteUser() {
+            fetch('/deleteUser', {
+                method: 'DELETE',
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.ok) { // Changed from response.ok to data.ok
+                    // User was deleted successfully
+                    // Redirect to a different page or update the UI
+                    window.location.href = "/login"; // Redirect to login page
+                } else {
+                    // An error occurred
+                    console.error('Error:', data.error);
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+        function openUserForm() {
+            document.getElementById("userForm").style.display = "block";
+            document.getElementById("passForm").style.display = "none";
+        }
+
+        function closeUserForm() {
+            document.getElementById("userForm").style.display = "none";
+        }
+
+        function openPassForm() {
+            document.getElementById("passForm").style.display = "block";
+            document.getElementById("userForm").style.display = "none";
+        }
+
+        function closePassForm() {
+            document.getElementById("passForm").style.display = "none";
+        }
+    </script>
 
 </html>

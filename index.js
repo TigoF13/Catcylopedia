@@ -81,6 +81,26 @@ app.get('/myacc', async function(req, res) {
     }
 });
 
+app.post('/change-username', async (req, res) => {
+    const { newUsername } = req.body;
+    const { userId } = req.user;
+
+    try {
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).send('User not found');
+        }
+
+        user.username = newUsername;
+        await user.save();
+
+        res.send('Username updated successfully');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Server error');
+    }
+});
+
 app.get("/register", (req, res) => {
     res.render("register.ejs", {title : "Register", loggedin: req.session.loggedin})
 })
@@ -106,7 +126,9 @@ app.get("/login", (req, res) => {
 
 app.post('/login', passport.authenticate('local', { failureRedirect: '/login',failureFlash: 'Wrong username/password, please try again'}), function(req, res) {
     req.session.loggedin = true;
+    req.session.userId = req.user._id;
     res.redirect('/adopt');
+    console.log(req.session.userId);
 });
 
 app.get('/logout', function(req, res) {
@@ -118,6 +140,26 @@ app.get('/logout', function(req, res) {
             req.session.loggedin = false;
         }
     });
+});
+
+app.delete('/deleteUser', async (req, res) => {
+    try {
+        const user = await User.findByIdAndDelete(req.session.userId);
+
+        if (!user) {
+            res.status(404).send("User not found");
+        } else {
+            req.session.destroy(function(err) {
+                if (err) {
+                    res.status(500).send(err);
+                } else {
+                    res.status(200).send("User deleted successfully");
+                }
+            });
+        }
+    } catch (err) {
+        res.status(500).send(err);
+    }
 });
 
 app.listen(port, () => {
