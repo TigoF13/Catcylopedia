@@ -35,11 +35,27 @@ app.get("/", (req, res) => {
 })
 
 app.get("/adopt", (req, res) => {
-    res.render("adopt.ejs", {title : "Catcyclopedia"})
+    res.render("adopt.ejs", {title : "Adopt a cat | Find a cat to adopt"})
+})
+
+app.get("/about", (req, res) => {
+    res.render("about.ejs", {title : "About Cat Protection | Who are Cats Protection"})
+})
+
+app.get("/what-we-do", (req, res) => {
+    res.render("whatwedo.ejs", {title : "What we do | Helping Cats and Kitten"})
+})
+
+app.get("/help-and-advice", (req, res) => {
+    res.render("help.ejs", {title : "Help and Advice | Expert Cat Care Guide"})
+})
+
+app.get("/find-us", (req, res) => {
+    res.render("find.ejs", {title : "Find Us"})
 })
 
 app.get("/register", (req, res) => {
-    res.render("register.ejs", {title : "Catcyclopedia"})
+    res.render("register.ejs", {title : "Register"})
 })
 
 app.post("/register", async (req, res) => {
@@ -51,14 +67,14 @@ app.post("/register", async (req, res) => {
         });
 
         await newUser.save();
-        res.render("login.ejs", {title : "Catcyclopedia"});
+        res.render("login.ejs", {title : "Login"});
     } catch (err) {
         console.log(err);
     }
 });
 
 app.get("/login", (req, res) => {
-    res.render("login.ejs", {title : "Catcyclopedia"})
+    res.render("login.ejs", {title : "Login"})
 })
 
 app.post('/login', passport.authenticate('local', { failureRedirect: '/login' }), function(req, res) {
