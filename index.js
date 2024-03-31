@@ -8,7 +8,7 @@ const StoreMongo = require("connect-mongo");
 const passport = require("passport");
 
 require("./database/passport.js");
-const port = 3000;
+const port = 3001;
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
