@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('layouts/adopt/head') %>
+
+<body>
+    <div class="container">
+        <!-- NAVBAR START -->
+
+        <%- include('layouts/adopt/adopthead', { title: 'My Account' }) %>
+
+        <!-- NAVBAR END -->
+
+        <!-- CONTENT START -->
+
+        <div class="account-container">
+            <div class="content-account">
+                <ul style="list-style-type: none;">
+                    <li class="account-item">Username : <%= user.username %></li>
+                    <li class="account-item">Email : <%= user.email %></li>
+                    <li class="account-item">Password : ********</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- CONTENT END -->
+
+        <!-- FOOTER START -->
+
+        <!-- <%- include('layouts/adopt/adoptfooter') %> -->
+
+        <!-- FOOTER END -->
+
+    </div>
+
+</body>
+
+</html>

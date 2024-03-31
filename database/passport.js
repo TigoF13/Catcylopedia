@@ -9,14 +9,14 @@ passport.use(new LocalStrategy(
         User.findOne({ username: username })
             .then(user => {
                 if (!user) { 
-                    return done(null, false, { message: "Incorrect username" });
+                    return done(null, false, { message: "Wrong username/password, please try again" });
                 }
 
                 bcrypt.compare(password, user.password, function(err, result) {
                     if (err) { return done(err); }
                     
                     if (!result) { 
-                        return done(null, false, { message: "Incorrect password" }); 
+                        return done(null, false, { message: "Wrong username/password, please try again" }); 
                     }
 
                     return done(null, user);
