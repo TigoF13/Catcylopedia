@@ -44,7 +44,7 @@
                     </div>
                 </div>
                 <div class="change-list">
-                    <button id ="delete-button" class="delete-button" onclick="deleteUser()">Delete Account</button>
+                    <button id ="delete-button" class="delete-button" type="button">Delete Account</button>
                 </div>
             </div>
         </div>
@@ -54,27 +54,21 @@
 </body>
 
     <script>
-        document.getElementById('delete-button').addEventListener('click', deleteUser);
-
-        function deleteUser() {
+        document.getElementById('delete-button').addEventListener('click', function() {
             fetch('/deleteUser', {
                 method: 'DELETE',
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.ok) { // Changed from response.ok to data.ok
-                    // User was deleted successfully
-                    // Redirect to a different page or update the UI
-                    window.location.href = "/login"; // Redirect to login page
+            .then(data => { // Log the data
+                if (data.success) {
+                    window.location.href = "/adopt";
                 } else {
-                    // An error occurred
-                    console.error('Error:', data.error);
+                    alert(data.message);
                 }
             })
             .catch((error) => {
                 console.error('Error:', error);
             });
-        }
+        });
 
         function openUserForm() {
             document.getElementById("userForm").style.display = "block";
