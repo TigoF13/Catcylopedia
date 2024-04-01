@@ -7,7 +7,7 @@ const flash = require("connect-flash");
 const StoreMongo = require("connect-mongo");
 const passport = require("passport");
 
-require("./database/passport.js");
+require("./config/passport.js");
 const port = 3001;
 
 app.set("view engine", "ejs");
@@ -82,11 +82,14 @@ app.get('/myacc', async function(req, res) {
 });
 
 app.post('/change-username', async (req, res) => {
-    const { newUsername } = req.body;
-    const { userId } = req.user;
+    const { username: newUsername } = req.body;
+    const { _id } = req.user;
+
+    console.log(req.user); // Log the request user
+    console.log(_id);
 
     try {
-        const user = await User.findById(userId);
+        const user = await UserData.findOne({ _id: _id });
         if (!user) {
             return res.status(404).send('User not found');
         }
@@ -94,7 +97,28 @@ app.post('/change-username', async (req, res) => {
         user.username = newUsername;
         await user.save();
 
-        res.send('Username updated successfully');
+        res.redirect('/myacc');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Server error');
+    }
+});
+
+app.post('/change-password', async (req, res) => {
+    const { password: newPassword } = req.body;
+    const { _id } = req.user;
+
+
+    try {
+        const user = await UserData.findOne({ _id: _id });
+        if (!user) {
+            return res.status(404).send('User not found');
+        }
+
+        user.password = hashSync(newPassword,15)
+        await user.save();
+
+        res.redirect('/myacc');
     } catch (error) {
         console.error(error);
         res.status(500).send('Server error');

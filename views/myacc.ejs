@@ -27,17 +27,17 @@
                         </li>
                     </ul>
                     <div class="form-popup" id="userForm">
-                        <form action="" class="form-container">
+                        <form action="/change-username" method="POST" class="form-container">
                         <label for="username"><b class="text-form">Change Username : </b></label>
-                        <input type="password" placeholder="Enter new username" name="username"><br>
-                        <button class="func-button" >Confirm</button>
+                        <input type="text" placeholder="Enter new username" name="username"><br>
+                        <button class="func-button" type="submit">Confirm</button>
                         <button type="button" class="func-button" onclick="closeUserForm()">Close</button>
                         </form>
                     </div>
                     <div class="form-popup" id="passForm">
-                        <form action="" class="form-container">
-                        <label for="username"><b class="text-form">Change Password : </b></label>
-                        <input type="text" placeholder="Enter new password" name="password"><br>
+                        <form action="/change-password" method="POST" class="form-container">
+                        <label for="password"><b class="text-form">Change Password : </b></label>
+                        <input type="password" placeholder="Enter new password" name="password"><br>
                         <button class="func-button" >Confirm</button>
                         <button type="button" class="func-button" onclick="closePassForm()">Close</button>
                         </form>
@@ -75,6 +75,7 @@
                 console.error('Error:', error);
             });
         }
+
         function openUserForm() {
             document.getElementById("userForm").style.display = "block";
             document.getElementById("passForm").style.display = "none";
