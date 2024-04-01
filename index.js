@@ -168,21 +168,24 @@ app.get('/logout', function(req, res) {
 
 app.delete('/deleteUser', async (req, res) => {
     try {
-        const user = await User.findByIdAndDelete(req.session.userId);
+        console.log(req.session._id); // Log the user ID
+        const user = await UserData.findByIdAndDelete(req.session.userId);
+        console.log(user);
 
         if (!user) {
-            res.status(404).send("User not found");
+            res.status(404).json({ success: false, message: "User not found" });
         } else {
             req.session.destroy(function(err) {
                 if (err) {
-                    res.status(500).send(err);
+                    res.status(500).json({ success: false, message: err.message });
                 } else {
-                    res.status(200).send("User deleted successfully");
+                    res.redirect('/adopt');
+                    // res.status(200).json({ success: true, message: "User deleted successfully" });
                 }
             });
         }
     } catch (err) {
-        res.status(500).send(err);
+        res.status(500).json({ success: false, message: err.message });
     }
 });
 
