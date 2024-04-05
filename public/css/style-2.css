@@ -25,9 +25,6 @@ h1 {
     justify-content: center;
 }
 
-.container{
-    /* border: 2px solid blue; */
-}
 
 .container-sidebar{
     height: 15vh;
@@ -121,10 +118,6 @@ h1 {
     font-size: 28px;
 }
 
-.navbar{
-    /* border: 2px solid red; */
-}
-
 .menu{
     display: flex;
     flex-direction: column;
@@ -206,15 +199,14 @@ footer{
     /* height: 100vh; */
 }
 
-.form-item {
-    margin-bottom: 20px;
+.m-top{
+    margin-top: 5vh;
 }
 
 .container-content{
     height: 300vh;
     margin: 26vh 150px 0px 150px;
     padding-top: 10vh;
-    /* border: 2px solid red; */
 }
 
 .content-title{
@@ -225,42 +217,6 @@ footer{
 
 p{
     font-size: 16px;
-}
-.account-container{
-    margin-top: 25vh;
-    padding-top: 10vh;
-    /* border: 2px solid red; */
-    display: flex;
-    justify-content: center;
-}
-.content-account{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: self-start;
-    width: 50%;
-    padding: 20px ;
-    background-color: gray;
-    box-shadow: 0px 0px 10px yellow;
-}
-
-.account-data{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: self-start;
-    width:100%;
-    padding: 20px ;
-}
-
-.account-item{
-    margin-bottom: 10px;
-    font-size: 20px;
-    position: relative;
-}
-
-.data-list{
-    position: relative;
 }
 
 .container-card{
@@ -306,41 +262,129 @@ p{
     margin-bottom: 20px;
 }
 
+/* MY ACCOUNT CSS */
+
+.account-container{
+    height: 100vh;
+    margin: 20vh 150px 0px 150px;
+    padding-top: 10vh;
+}
+
+.content-account{
+    display: flex;
+    flex-direction: column;
+}
+
+.account-data{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.account-item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bolder;
+    margin: 10px 0px;
+}
+
+.acc-isi{
+    width: 300px;
+    border: 2px solid #7b2076;
+    background-color: #fae6fa;
+    border-radius: 4px;
+    padding: 7px 7px;
+    margin-left: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.acc-isi-luar{
+    display: flex;
+    flex-direction: row;
+}
+
+.none{
+    display: none;
+}
+
+.new{
+    padding: 9px 7px;
+}
+
+.text-form{
+    font-size: 20px;
+}
+
 .change-list{
     display: flex;
     flex-direction: row;
     align-self: center;
     gap: 10px;
 }
+
 .change-button{
-    background-color: #fae6fa;
-    color: #79016c;
-    margin-left: 5px;
-    padding: 0px 10px;
-    border-radius: 7px;
     border: none;
-    font-size: 16px;
+    background-color: white;
+    margin: 5px 0px 0px 0px;
+    width: 30px;
+    height: 30px;
+}
+
+.border{
+    border: 2px solid #7b2076;
+    background-color: #fae6fa;
+    border-radius: 20px;
     font-weight: bolder;
+    padding: 20px 0px;
+    font-size: 14px;
+}
+
+.border:hover{
+    background-color: #c928b2;
+    color: #fae6fa; 
+    border: 2px solid black;
+}
+
+.border-2{
+    border: 2px solid black;
+    background-color: crimson;
+    color: #fae6fa;
+    border-radius: 20px;
+    font-weight: bolder;
+    padding: 20px 0px;
+    font-size: 16px;
+}
+
+.border-2:hover{
+    background-color: #fae6fa;
+    color: crimson; 
+    border: 2px solid black;
+    transition: .9s ease-in-out;
+}
+
+.center{
+    margin: 0px 10px 0px 10px;
+    width: 150px;
+}
+
+.icon{
+    font-size: 20px;
+}
+
+.bottom{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 20px;
 }
 
 .change-button:hover{
-    background-color: #79016c;
-    color: white;
     cursor: pointer;
     transition: .1s ease-in-out;
-}
-
-.form-popup {
-    display: none;
-    position: relative;
-    top: 0;
-    right: 15vh ;
-    width: 50vh;
-    z-index: 9;
-}
-
-.text-form{
-    font-size: 15px;
 }
 
 .func-button{
@@ -361,6 +405,7 @@ p{
     cursor: pointer;
     transition: .1s ease-in-out;
 }
+
 .delete-button{
     background-color: #fae6fa;
     color: #cc1414;
