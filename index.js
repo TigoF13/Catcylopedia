@@ -34,7 +34,7 @@ app.use(passport.session());
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-    res.render("index.ejs", {title : "Catcyclopedia"})
+    res.render("adopt.ejs", {title : "Adopt a cat | Find a cat to adopt", loggedin: req.session.loggedin})
 })
 
 app.get("/adopt", (req, res) => {
