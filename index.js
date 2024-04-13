@@ -85,9 +85,6 @@ app.post('/change-username', async (req, res) => {
     const { username: newUsername } = req.body;
     const { _id } = req.user;
 
-    console.log(req.user); // Log the request user
-    console.log(_id);
-
     try {
         const user = await UserData.findOne({ _id: _id });
         if (!user) {
@@ -152,7 +149,6 @@ app.post('/login', passport.authenticate('local', { failureRedirect: '/login',fa
     req.session.loggedin = true;
     req.session.userId = req.user._id;
     res.redirect('/adopt');
-    console.log(req.session.userId);
 });
 
 app.get('/logout', function(req, res) {
@@ -168,9 +164,7 @@ app.get('/logout', function(req, res) {
 
 app.delete('/deleteUser', async (req, res) => {
     try {
-        console.log(req.session._id); // Log the user ID
         const user = await UserData.findByIdAndDelete(req.session.userId);
-        console.log(user);
 
         if (!user) {
             res.status(404).json({ success: false, message: "User not found" });

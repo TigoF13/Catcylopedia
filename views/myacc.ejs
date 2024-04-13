@@ -58,9 +58,10 @@
             fetch('/deleteUser', {
                 method: 'DELETE',
             })
+            .then(response => response.json())
             .then(data => { // Log the data
                 if (data.success) {
-                    window.location.href = "/adopt";
+                    window.location.replace("/adopt");
                 } else {
                     alert(data.message);
                 }
