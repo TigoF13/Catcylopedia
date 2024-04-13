@@ -18,7 +18,7 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     store: StoreMongo.create({
-        mongoUrl: "mongodb://localhost:27017/userdata",
+        mongoUrl: "mongodb+srv://Jason:12345@catcyclopedia.bjdmtgw.mongodb.net/",
         collectionName: "sessions"
     }),
     cookie:{
@@ -67,6 +67,7 @@ app.get('/myacc', async function(req, res) {
                     loggedin: req.session.loggedin,
                     user: user,
                     username: user.username,
+                    phone: user.phone,
                     email: user.email,
                     password: user.password
                 });
@@ -92,6 +93,46 @@ app.post('/change-username', async (req, res) => {
         }
 
         user.username = newUsername;
+        await user.save();
+
+        res.redirect('/myacc');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Server error');
+    }
+});
+
+app.post('/change-phone', async (req, res) => {
+    const { phone: newPhone } = req.body;
+    const { _id } = req.user;
+
+    try {
+        const user = await UserData.findOne({ _id: _id });
+        if (!user) {
+            return res.status(404).send('User not found');
+        }
+
+        user.phone = newPhone;
+        await user.save();
+
+        res.redirect('/myacc');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Server error');
+    }
+});
+
+app.post('/change-email', async (req, res) => {
+    const { email: newEmail } = req.body;
+    const { _id } = req.user;
+
+    try {
+        const user = await UserData.findOne({ _id: _id });
+        if (!user) {
+            return res.status(404).send('User not found');
+        }
+
+        user.email = newEmail;
         await user.save();
 
         res.redirect('/myacc');
@@ -130,6 +171,7 @@ app.post("/register", async (req, res) => {
     try {
         const newUser = new UserData({
             username: req.body.username,
+            phone: req.body.phone,
             email: req.body.email,
             password: hashSync(req.body.password,15)
         });
@@ -157,7 +199,7 @@ app.get('/logout', function(req, res) {
             console.log(err);
         } else {
             res.redirect('/adopt');
-            req.session.loggedin = false;
+            // req.session.loggedin = false;
         }
     });
 });
@@ -167,19 +209,22 @@ app.delete('/deleteUser', async (req, res) => {
         const user = await UserData.findByIdAndDelete(req.session.userId);
 
         if (!user) {
-            res.status(404).json({ success: false, message: "User not found" });
+            return res.status(404).json({ success: false, message: "User not found" });
         } else {
-            req.session.destroy(function(err) {
-                if (err) {
-                    res.status(500).json({ success: false, message: err.message });
-                } else {
-                    res.redirect('/adopt');
-                    // res.status(200).json({ success: true, message: "User deleted successfully" });
-                }
+            await new Promise((resolve, reject) => {
+                req.session.destroy(function(err) {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve();
+                    }
+                });
             });
+
+            return res.redirect('/adopt');
         }
     } catch (err) {
-        res.status(500).json({ success: false, message: err.message });
+        return res.status(500).json({ error: 'An error occurred' });
     }
 });
 

@@ -1,10 +1,14 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/userdata')
+mongoose.connect('mongodb+srv://Jason:12345@catcyclopedia.bjdmtgw.mongodb.net/')
 
 const userSchema = new mongoose.Schema({
     username: {
         type: String,
+        required: true
+    },
+    phone:{
+        type: Number,
         required: true
     },
     email: {
