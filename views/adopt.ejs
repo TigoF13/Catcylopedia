@@ -35,6 +35,21 @@
                 </div>
             </div>
             <div class="container-card">
+                <% cats.forEach(cat => { %>
+                    <div class="kotak-card">
+                        <img src="assets/<%= cat.image %>" alt="<%= cat.name %>">
+                        <div class="konten-card">
+                            <h2><%= cat.name %></h2>
+                            <p>Age: <%= cat.age %></p>
+                            <p>Gender: <%= cat.gender %></p>
+                            <p>Color: <%= cat.color %></p>
+                            <p>Intake date: <%= cat.intakeDate %></p>
+                            <br>
+                        </div>
+                    </div>
+                <% }); %>
+                </div>
+            <!-- <div class="container-card">
                 <div class="kotak-card">
                     <img src="assets/anggora.jpg" alt="anggora">
                     <div class="konten-card">
@@ -123,7 +138,7 @@
                         <br>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
 
         <!-- CONTENT END -->

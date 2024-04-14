@@ -34,11 +34,32 @@ app.use(passport.session());
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-    res.render("adopt.ejs", {title : "Adopt a cat | Find a cat to adopt", loggedin: req.session.loggedin})
+    let cats = [
+        { name: 'Anggora', age: '1 Year 6 Months 26 Days', gender: 'Male', color: 'White', intakeDate: '2/29/2024', image: 'anggora.jpg' },
+        { name: 'Himalaya', age: '1 Year 1 Months 1 Days', gender: 'Female', color: 'Brown/White', intakeDate: '1/19/2024', image: 'himalaya.jpg' },
+        { name: 'Maine Coon', age: '6 Months 26 Days', gender: 'Female', color: 'Brown', intakeDate: '1/5/2024', image: 'maine coon.png' },
+        { name: 'Munchkin', age: '1 Year 26 Days', gender: 'Male', color: 'Gray', intakeDate: '12/29/2023', image: 'munchkin.jpg' },
+        { name: 'Persia', age: '1 Year 2 Months 16 Days', gender: 'Male', color: 'Gray/White', intakeDate: '1/9/2024', image: 'persia.jpg' },
+        { name: 'Ragdoll', age: '11 Months 8 Days', gender: 'Female', color: 'White/Brown', intakeDate: '1/18/2024', image: 'ragdoll.jpg' },
+        { name: 'Siamm', age: '1 Year 11 Months 8 Days', gender: 'Female', color: 'White/Black', intakeDate: '3/19/2024', image: 'siamm.jpg' },
+        { name: 'Siberian', age: '10 Months 26 Days', gender: 'Male', color: 'White', intakeDate: '4/19/2024', image: 'siberian.jpg' }
+    ];
+    res.render("adopt.ejs", {title : "Adopt a cat | Find a cat to adopt", loggedin: req.session.loggedin, cats: cats})
 })
 
 app.get("/adopt", (req, res) => {
-    res.render("adopt.ejs", {title : "Adopt a cat | Find a cat to adopt", loggedin: req.session.loggedin})
+    let cats = [
+        { name: 'Anggora', age: '1 Year 6 Months 26 Days', gender: 'Male', color: 'White', intakeDate: '2/29/2024', image: 'anggora.jpg' },
+        { name: 'Himalaya', age: '1 Year 1 Months 1 Days', gender: 'Female', color: 'Brown/White', intakeDate: '1/19/2024', image: 'himalaya.jpg' },
+        { name: 'Maine Coon', age: '6 Months 26 Days', gender: 'Female', color: 'Brown', intakeDate: '1/5/2024', image: 'maine coon.png' },
+        { name: 'Munchkin', age: '1 Year 26 Days', gender: 'Male', color: 'Gray', intakeDate: '12/29/2023', image: 'munchkin.jpg' },
+        { name: 'Persia', age: '1 Year 2 Months 16 Days', gender: 'Male', color: 'Gray/White', intakeDate: '1/9/2024', image: 'persia.jpg' },
+        { name: 'Ragdoll', age: '11 Months 8 Days', gender: 'Female', color: 'White/Brown', intakeDate: '1/18/2024', image: 'ragdoll.jpg' },
+        { name: 'Siamm', age: '1 Year 11 Months 8 Days', gender: 'Female', color: 'White/Black', intakeDate: '3/19/2024', image: 'siamm.jpg' },
+        { name: 'Siberian', age: '10 Months 26 Days', gender: 'Male', color: 'White', intakeDate: '4/19/2024', image: 'siberian.jpg' }
+    ];
+
+    res.render("adopt.ejs", {title : "Adopt a cat | Find a cat to adopt", loggedin: req.session.loggedin, cats: cats})
 })
 
 app.get("/about", (req, res) => {
