@@ -206,7 +206,7 @@ footer {
 }
 
 .container-content {
-    height: 300vh;
+    height: 350vh;
     margin: 26vh 150px 0px 150px;
     padding-top: 10vh;
 }
@@ -462,18 +462,20 @@ p {
     margin: -20px 0px 0px 5px;
     padding: 10px 2.5px;
     border-radius: 6px;
-    width: 250px;
+    width: 150px;
     display: none;
     position: absolute;
     z-index: 999999;
 }
 
-.dropdown-content a {
+.dropdown-content label {
+    font-weight: bold;
+}
+
+.dropdown-checkbox {
+    /* border: 2px solid blue; */
     display: flex;
-    flex-wrap: wrap;
-    text-decoration: none;
-    margin: 10px 20px 10px 15px;
-    font-size: 18px;
+    padding: 0px 0px 5px 10px;
     font-weight: bold;
 }
 
@@ -482,4 +484,62 @@ p {
     border-radius: 6px;
     background-color: #fff;
     transition: .15s ease-in-out;
+}
+
+.container-strip{
+    /* border: 2px solid red; */
+    height: 80vh;
+    background-color: #fae6fa;
+    margin: 0px -150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.strip{
+    /* border: 2px solid blue; */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+.strip-card{
+    color: #fff;
+    width: 375px;
+    background-color: #7b2076;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    transition: transform 0.8s ease;
+    z-index: 100;
+}
+
+.strip-card:hover {
+    transform: translateY(-7.5px);
+}
+
+.strip-card img {
+    width: 375px;
+    height: 250px;
+    object-fit: cover;
+}
+
+.strip-content {
+    padding-top: 20px;
+    margin: 0 10px;
+}
+
+.strip-content h2 {
+    text-align: center;
+    padding-bottom: 20px;
+    font-weight: bolder;
+}
+
+.strip-content p {
+    font-size: 14px;
+    text-align: center;
+    color: #fff;
+    margin: 0px 10px;
 }
