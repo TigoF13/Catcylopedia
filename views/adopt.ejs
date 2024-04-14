@@ -24,6 +24,7 @@
             </div>
             <div class="content-title">
                 <h1>Find a cat and Adopt your cat</h1>
+                <br>
             </div>
             <hr>
             <div class="container-feature">
@@ -32,29 +33,60 @@
                     <div class="dropdown">
                         <a><button class="btn sort dropbtn" id="contactDropdown">Gender 🠧</button></a>
                         <div class="dropdown-content" id="contactDropdownContent">
-                            <a href="">Male</a>
-                            <a href="">Female</a>
+                            <input type="checkbox" id="maleCheckbox">
+                            <label for="maleCheckbox">Male</label>
+                            <input type="checkbox" id="femaleCheckbox">
+                            <label for="femaleCheckbox">Female</label>
                         </div>
                     </div>
                     <div class="dropdown">
                         <a><button class="btn sort dropbtn" id="contactDropdown-2">Breeds 🠧</button></a>
                         <div class="dropdown-content" id="contactDropdownContent-2">
-                            <a href="">Anggora</a>
-                            <a href="">Himalaya</a>
-                            <a href="">Kampung</a>
-                            <a href="">Maine Coon</a>
-                            <a href="">Munchkin</a>
-                            <a href="">Persia</a>
-                            <a href="">Ragdoll</a>
-                            <a href="">Siam</a>
-                            <a href="">Siberian</a>
+                            <div class="dropdown-checkbox">
+                                <input type="checkbox" id="anggoraCheckbox">
+                                <label for="anggoraCheckbox">&nbsp; Anggora</label>
+                            </div>
+                            <div class="dropdown-checkbox">
+                                <input type="checkbox" id="himalayaCheckbox">
+                                <label for="himalayaCheckbox">&nbsp; Himalaya</label>
+                            </div>
+                            <div class="dropdown-checkbox">
+                                <input type="checkbox" id="himalayaCheckbox">
+                            <label for="kampungCheckbox">&nbsp; Kampung</label>
+                            </div>
+                            <div class="dropdown-checkbox">
+                                <input type="checkbox" id="himalayaCheckbox">
+                                <label for="mainecoonCheckbox">&nbsp; Maine Coon</label>
+                            </div>
+                            <div class="dropdown-checkbox">
+                                <input type="checkbox" id="himalayaCheckbox">
+                                <label for="munchkin">&nbsp; Munchkin</label>
+                            </div>
+                            <div class="dropdown-checkbox">
+                                <input type="checkbox" id="himalayaCheckbox">
+                                <label for="persiaCheckbox">&nbsp; Persia</label>
+                            </div>
+                            <div class="dropdown-checkbox">
+                                <input type="checkbox" id="himalayaCheckbox">
+                                <label for="ragdoll">&nbsp; Ragdoll</label>
+                            </div>
+                            <div class="dropdown-checkbox">
+                                <input type="checkbox" id="himalayaCheckbox">
+                                <label for="siamCheckbox">&nbsp; Siam</label>
+                            </div>
                         </div>
                     </div>
                     <div class="dropdown">
                         <a><button class="btn sort dropbtn" id="contactDropdown-3">Age 🠧</button></a>
                         <div class="dropdown-content" id="contactDropdownContent-3">
-                            <a href="">Child</a>
-                            <a href="">Adult</a>
+                            <div class="dropdown-checkbox">
+                                <input type="checkbox" id="childCheckbox">
+                                <label for="childCheckbox">&nbsp; Child</label>
+                            </div>
+                            <div class="dropdown-checkbox">
+                                <input type="checkbox" id="adultCheckbox">
+                                <label for="adultCheckbox">&nbsp; Adult</label>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -62,12 +94,19 @@
                     <div class="dropdown">
                         <a><button class="btn sort dropbtn" id="contactDropdown-4">Sort &nbsp;<i class="fa-solid fa-arrow-down-short-wide"></i></button></a>
                         <div class="dropdown-content" id="contactDropdownContent-4">
-                            <a href="">Age</a>
-                            <a href="">Gender</a>
+                            <div class="dropdown-checkbox">
+                                <input type="checkbox" id="ageSortCheckbox">
+                                <label for="ageSortCheckbox">Age</label>
+                            </div>
+                            <div class="dropdown-checkbox">
+                                <input type="checkbox" id="genderSortCheckbox">
+                                <label for="genderSortCheckbox">Gender</label>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            
             <div class="container-card">
                 <div class="kotak-card">
                     <img src="assets/anggora.jpg" alt="anggora">

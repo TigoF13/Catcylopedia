@@ -462,18 +462,20 @@ p {
     margin: -20px 0px 0px 5px;
     padding: 10px 2.5px;
     border-radius: 6px;
-    width: 250px;
+    width: 150px;
     display: none;
     position: absolute;
     z-index: 999999;
 }
 
-.dropdown-content a {
+.dropdown-content label {
+    font-weight: bold;
+}
+
+.dropdown-checkbox {
+    /* border: 2px solid blue; */
     display: flex;
-    flex-wrap: wrap;
-    text-decoration: none;
-    margin: 10px 20px 10px 15px;
-    font-size: 18px;
+    padding: 0px 0px 5px 10px;
     font-weight: bold;
 }
 
