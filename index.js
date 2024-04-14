@@ -44,6 +44,21 @@ app.get("/", (req, res) => {
         { name: 'Siamm', age: '1 Year 11 Months 8 Days', gender: 'Female', color: 'White/Black', intakeDate: '3/19/2024', image: 'siamm.jpg' },
         { name: 'Siberian', age: '10 Months 26 Days', gender: 'Male', color: 'White', intakeDate: '4/19/2024', image: 'siberian.jpg' }
     ];
+
+    // if (req.query.sort === 'age') {
+    //     // Convert age to days for sorting
+    //     cats.forEach(cat => {
+    //         let parts = cat.age.split(' ');
+    //         let years = parts.includes('years') ? Number(parts[parts.indexOf('years') - 1]) : 0;
+    //         let months = parts.includes('months') ? Number(parts[parts.indexOf('months') - 1]) : 0;
+    //         let days = parts.includes('days') ? Number(parts[parts.indexOf('days') - 1]) : 0;
+    //         cat.ageInDays = years * 365 + months * 30 + days;
+    //     });
+
+    //     // Sort cats by age in ascending order
+    //     cats.sort((a, b) => a.ageInDays - b.ageInDays);
+    // }
+
     res.render("adopt.ejs", {title : "Adopt a cat | Find a cat to adopt", loggedin: req.session.loggedin, cats: cats})
 })
 
@@ -58,6 +73,25 @@ app.get("/adopt", (req, res) => {
         { name: 'Siamm', age: '1 Year 11 Months 8 Days', gender: 'Female', color: 'White/Black', intakeDate: '3/19/2024', image: 'siamm.jpg' },
         { name: 'Siberian', age: '10 Months 26 Days', gender: 'Male', color: 'White', intakeDate: '4/19/2024', image: 'siberian.jpg' }
     ];
+
+    if (req.query.sort === 'age') {
+        // Convert age to days for sorting
+        cats.forEach(cat => {
+            let parts = cat.age.split(' ');
+            let years = parts.includes('Year') ? Number(parts[parts.indexOf('Year') - 1]) : 0;
+            let months = parts.includes('Months') ? Number(parts[parts.indexOf('Months') - 1]) : 0;
+            let days = parts.includes('Days') ? Number(parts[parts.indexOf('Days') - 1]) : 0;
+            cat.ageInDays = years * 365 + months * 30 + days;
+        });
+
+        // Sort cats by age in ascending order
+        cats.sort((a, b) => a.ageInDays - b.ageInDays);
+    }
+
+    if (req.query.sort === 'gender') {
+        // Sort cats by gender in ascending order
+        cats.sort((a, b) => a.gender.localeCompare(b.gender));
+    }
 
     res.render("adopt.ejs", {title : "Adopt a cat | Find a cat to adopt", loggedin: req.session.loggedin, cats: cats})
 })

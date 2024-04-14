@@ -62,8 +62,8 @@
                     <div class="dropdown">
                         <a><button class="btn sort dropbtn" id="contactDropdown-4">Sort &nbsp;<i class="fa-solid fa-arrow-down-short-wide"></i></button></a>
                         <div class="dropdown-content" id="contactDropdownContent-4">
-                            <a href="">Age</a>
-                            <a href="">Gender</a>
+                            <a href="" id="AgeSort">Age</a>
+                            <a href="" id="GenderSort">Gender</a>
                         </div>
                     </div>
                 </div>
@@ -83,96 +83,6 @@
                     </div>
                 <% }); %>
                 </div>
-            <!-- <div class="container-card">
-                <div class="kotak-card">
-                    <img src="assets/anggora.jpg" alt="anggora">
-                    <div class="konten-card">
-                        <h2>Anggora</h2>
-                        <p>Age          : 1 Year 6 Months 26 Days</p>
-                        <p>Gender       : Male</p>
-                        <p>Color        : White</p>
-                        <p>Intake date  : 2/29/2024</p>
-                        <br>
-                    </div>
-                </div>
-                <div class="kotak-card">
-                    <img src="assets/himalaya.jpg" alt="himalaya">
-                    <div class="konten-card">
-                        <h2>Himalaya</h2>
-                        <p>Age          : 1 Year 1 Months 1 Days</p>
-                        <p>Gender       : Female</p>
-                        <p>Color        : Brown/White</p>
-                        <p>Intake date  : 1/19/2024</p>
-                        <br>
-                    </div>
-                </div>
-                <div class="kotak-card">
-                    <img src="assets/maine coon.png" alt="Maine_coon">
-                    <div class="konten-card">
-                        <h2>Maine Coon</h2>
-                        <p>Age          : 6 Months 26 Days</p>
-                        <p>Gender       : Female</p>
-                        <p>Color        : Brown</p>
-                        <p>Intake date  : 1/5/2024</p>
-                        <br>
-                    </div>
-                </div>
-                <div class="kotak-card">
-                    <img src="assets/munchkin.jpg" alt="Munchkin">
-                    <div class="konten-card">
-                        <h2>Munchkin</h2>
-                        <p>Age          : 1 Year 26 Days</p>
-                        <p>Gender       : Male</p>
-                        <p>Color        : Gray</p>
-                        <p>Intake date  : 12/29/2023</p>
-                        <br>
-                    </div>
-                </div>
-                <div class="kotak-card">
-                    <img src="assets\persia.jpg" alt="persia">
-                    <div class="konten-card">
-                        <h2>Persia</h2>
-                        <p>Age          : 1 Year 2 Months 16 Days</p>
-                        <p>Gender       : Male</p>
-                        <p>Color        : Gray/White</p>
-                        <p>Intake date  : 1/9/2024</p>
-                        <br>
-                    </div>
-                </div>
-                <div class="kotak-card">
-                    <img src="assets/ragdoll.jpg" alt="ragdoll">
-                    <div class="konten-card">
-                        <h2>Ragdoll</h2>
-                        <p>Age          : 11 Months 8 Days</p>
-                        <p>Gender       : Female</p>
-                        <p>Color        : White/Brown</p>
-                        <p>Intake date  : 1/18/2024</p>
-                        <br>
-                    </div>
-                </div>
-                <div class="kotak-card">
-                    <img src="assets\siamm.jpg" alt="siamm">
-                    <div class="konten-card">
-                        <h2>Siamm</h2>
-                        <p>Age          : 1 Year 11 Months 8 Days</p>
-                        <p>Gender       : Female</p>
-                        <p>Color        : White/Black</p>
-                        <p>Intake date  : 3/19/2024</p>
-                        <br>
-                    </div>
-                </div>
-                <div class="kotak-card">
-                    <img src="assets\siberian.jpg" alt="siberian">
-                    <div class="konten-card">
-                        <h2>Siberian</h2>
-                        <p>Age          : 10 Months 26 Days</p>
-                        <p>Gender       : Male</p>
-                        <p>Color        : White</p>
-                        <p>Intake date  : 4/19/2024</p>
-                        <br>
-                    </div>
-                </div>
-            </div> -->
         </div>
 
         <!-- CONTENT END -->
@@ -185,6 +95,29 @@
 
     </div>
     <script src="js\main.js"></script>
+    <script>
+        window.onload = function() {
+            var ageSort = document.getElementById('AgeSort');
+            var genderSort = document.getElementById('GenderSort');
+            if (ageSort) {
+                ageSort.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    window.location.href = '/adopt?sort=age';
+                });
+            }
+            if (genderSort) {
+                genderSort.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    window.location.href = '/adopt?sort=gender';
+                });
+            }
+        };
+        // document.getElementById('AgeSort').addEventListener('click', function(event) {
+        //     console.log('clicked')
+        //     event.preventDefault();
+        //     window.location.href = '/adopt?sort=age';
+        // });
+    </script>
 </body>
 
 </html>
