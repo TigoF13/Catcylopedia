@@ -1,39 +1,19 @@
-let prevScrollPos = window.pageYOffset;
+function toggleDropdown(contact, contactContent) {
+  contact.addEventListener("click", () => {
+    contactContent.style.display = isDropdownVisible ? "none" : "block";
+    isDropdownVisible = !isDropdownVisible;
+  });
+}
 
-window.addEventListener("scroll", function () {
-  const navbar = document.querySelector(".container-navbar");
-  const currentScrollPos = window.pageYOffset;
+const contacts = [
+  { contact: document.getElementById("contactDropdown"), content: document.getElementById("contactDropdownContent") },
+  { contact: document.getElementById("contactDropdown-2"), content: document.getElementById("contactDropdownContent-2") },
+  { contact: document.getElementById("contactDropdown-3"), content: document.getElementById("contactDropdownContent-3") },
+  { contact: document.getElementById("contactDropdown-4"), content: document.getElementById("contactDropdownContent-4") }
+];
 
-  if (prevScrollPos > currentScrollPos) {
-    navbar.style.top = "0";
-  } else {
-    navbar.style.top = "-12.5vh";
-  }
+let isDropdownVisible = false;
 
-  prevScrollPos = currentScrollPos;
+contacts.forEach(({ contact, content }) => {
+  toggleDropdown(contact, content);
 });
-
-// const contact = document.getElementById("contactDropdown");
-// const contactContent = document.getElementById("contactDropdownContent");
-
-// let isDropdownVisible = false; // Status awal dropdown
-// contact.addEventListener("click", () => {
-//   if (!isDropdownVisible) {
-//     contactContent.style.display = "block"; // Tampilkan dropdown
-//     isDropdownVisible = true;
-//   } else {
-//     contactContent.style.display = "none"; // Sembunyikan dropdown
-//     isDropdownVisible = false;
-//   }
-// });
-
-// document.addEventListener("click", (event) => {
-//   if (isDropdownVisible && event.target !== contact && event.target !== contactContent) {
-//     contactContent.style.display = "none";
-//     isDropdownVisible = false;
-//   }
-// });
-
-// contactDropdownContent.addEventListener("click", (event) => {
-//   event.stopPropagation();
-// });
