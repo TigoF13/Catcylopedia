@@ -33,67 +33,78 @@ app.use(passport.session());
 
 app.use(express.static("public"));
 
+let cats = [
+    { name: 'Anggora', age: '1 Year 6 Months 26 Days', gender: 'Male', color: 'White', intakeDate: '2/29/2024', image: 'anggora.jpg' },
+    { name: 'Himalaya', age: '1 Year 1 Months 1 Days', gender: 'Female', color: 'Brown/White', intakeDate: '1/19/2024', image: 'himalaya.jpg' },
+    { name: 'Maine Coon', age: '6 Months 26 Days', gender: 'Female', color: 'Brown', intakeDate: '1/5/2024', image: 'maine coon.png' },
+    { name: 'Munchkin', age: '1 Year 26 Days', gender: 'Male', color: 'Gray', intakeDate: '12/29/2023', image: 'munchkin.jpg' },
+    { name: 'Persia', age: '1 Year 2 Months 16 Days', gender: 'Male', color: 'Gray/White', intakeDate: '1/9/2024', image: 'persia.jpg' },
+    { name: 'Ragdoll', age: '11 Months 8 Days', gender: 'Female', color: 'White/Brown', intakeDate: '1/18/2024', image: 'ragdoll.jpg' },
+    { name: 'Siamm', age: '1 Year 11 Months 8 Days', gender: 'Female', color: 'White/Black', intakeDate: '3/19/2024', image: 'siamm.jpg' },
+    { name: 'Siberian', age: '10 Months 26 Days', gender: 'Male', color: 'White', intakeDate: '4/19/2024', image: 'siberian.jpg' }
+];
+
 app.get("/", (req, res) => {
-    let cats = [
-        { name: 'Anggora', age: '1 Year 6 Months 26 Days', gender: 'Male', color: 'White', intakeDate: '2/29/2024', image: 'anggora.jpg' },
-        { name: 'Himalaya', age: '1 Year 1 Months 1 Days', gender: 'Female', color: 'Brown/White', intakeDate: '1/19/2024', image: 'himalaya.jpg' },
-        { name: 'Maine Coon', age: '6 Months 26 Days', gender: 'Female', color: 'Brown', intakeDate: '1/5/2024', image: 'maine coon.png' },
-        { name: 'Munchkin', age: '1 Year 26 Days', gender: 'Male', color: 'Gray', intakeDate: '12/29/2023', image: 'munchkin.jpg' },
-        { name: 'Persia', age: '1 Year 2 Months 16 Days', gender: 'Male', color: 'Gray/White', intakeDate: '1/9/2024', image: 'persia.jpg' },
-        { name: 'Ragdoll', age: '11 Months 8 Days', gender: 'Female', color: 'White/Brown', intakeDate: '1/18/2024', image: 'ragdoll.jpg' },
-        { name: 'Siamm', age: '1 Year 11 Months 8 Days', gender: 'Female', color: 'White/Black', intakeDate: '3/19/2024', image: 'siamm.jpg' },
-        { name: 'Siberian', age: '10 Months 26 Days', gender: 'Male', color: 'White', intakeDate: '4/19/2024', image: 'siberian.jpg' }
-    ];
-
-    // if (req.query.sort === 'age') {
-    //     // Convert age to days for sorting
-    //     cats.forEach(cat => {
-    //         let parts = cat.age.split(' ');
-    //         let years = parts.includes('years') ? Number(parts[parts.indexOf('years') - 1]) : 0;
-    //         let months = parts.includes('months') ? Number(parts[parts.indexOf('months') - 1]) : 0;
-    //         let days = parts.includes('days') ? Number(parts[parts.indexOf('days') - 1]) : 0;
-    //         cat.ageInDays = years * 365 + months * 30 + days;
-    //     });
-
-    //     // Sort cats by age in ascending order
-    //     cats.sort((a, b) => a.ageInDays - b.ageInDays);
-    // }
-
     res.render("adopt.ejs", {title : "Adopt a cat | Find a cat to adopt", loggedin: req.session.loggedin, cats: cats})
 })
 
 app.get("/adopt", (req, res) => {
-    let cats = [
-        { name: 'Anggora', age: '1 Year 6 Months 26 Days', gender: 'Male', color: 'White', intakeDate: '2/29/2024', image: 'anggora.jpg' },
-        { name: 'Himalaya', age: '1 Year 1 Months 1 Days', gender: 'Female', color: 'Brown/White', intakeDate: '1/19/2024', image: 'himalaya.jpg' },
-        { name: 'Maine Coon', age: '6 Months 26 Days', gender: 'Female', color: 'Brown', intakeDate: '1/5/2024', image: 'maine coon.png' },
-        { name: 'Munchkin', age: '1 Year 26 Days', gender: 'Male', color: 'Gray', intakeDate: '12/29/2023', image: 'munchkin.jpg' },
-        { name: 'Persia', age: '1 Year 2 Months 16 Days', gender: 'Male', color: 'Gray/White', intakeDate: '1/9/2024', image: 'persia.jpg' },
-        { name: 'Ragdoll', age: '11 Months 8 Days', gender: 'Female', color: 'White/Brown', intakeDate: '1/18/2024', image: 'ragdoll.jpg' },
-        { name: 'Siamm', age: '1 Year 11 Months 8 Days', gender: 'Female', color: 'White/Black', intakeDate: '3/19/2024', image: 'siamm.jpg' },
-        { name: 'Siberian', age: '10 Months 26 Days', gender: 'Male', color: 'White', intakeDate: '4/19/2024', image: 'siberian.jpg' }
-    ];
+    let updatedCats = cats;
 
     if (req.query.sort === 'age') {
         // Convert age to days for sorting
-        cats.forEach(cat => {
+        updatedCats.forEach(cat => {
             let parts = cat.age.split(' ');
             let years = parts.includes('Year') ? Number(parts[parts.indexOf('Year') - 1]) : 0;
             let months = parts.includes('Months') ? Number(parts[parts.indexOf('Months') - 1]) : 0;
             let days = parts.includes('Days') ? Number(parts[parts.indexOf('Days') - 1]) : 0;
             cat.ageInDays = years * 365 + months * 30 + days;
         });
-
+    
         // Sort cats by age in ascending order
-        cats.sort((a, b) => a.ageInDays - b.ageInDays);
+        updatedCats.sort((a, b) => a.ageInDays - b.ageInDays);
     }
-
+    
     if (req.query.sort === 'gender') {
         // Sort cats by gender in ascending order
-        cats.sort((a, b) => a.gender.localeCompare(b.gender));
+        updatedCats.sort((a, b) => a.gender.localeCompare(b.gender));
+    }
+    
+    if (req.query.gender && req.query.gender.toLowerCase() === 'male') {
+        // Filter cats by male gender
+        updatedCats = updatedCats.filter(cat => cat.gender.toLowerCase() === 'male');
+    }
+    
+    if (req.query.gender && req.query.gender.toLowerCase() === 'female') {
+        // Filter cats by female gender
+        updatedCats = updatedCats.filter(cat => cat.gender.toLowerCase() === 'female');
     }
 
-    res.render("adopt.ejs", {title : "Adopt a cat | Find a cat to adopt", loggedin: req.session.loggedin, cats: cats})
+    if (req.query.breed) {
+        // Filter cats by breed
+        updatedCats = updatedCats.filter(cat => cat.name.toLowerCase() === req.query.breed.toLowerCase());
+    }
+
+    if (req.query.ageGroup) {
+        updatedCats = updatedCats.filter(cat => {
+            let parts = cat.age.split(' ');
+            let years = parts.includes('Year') ? Number(parts[parts.indexOf('Year') - 1]) : 0;
+            let months = parts.includes('Months') ? Number(parts[parts.indexOf('Months') - 1]) : 0;
+            let days = parts.includes('Days') ? Number(parts[parts.indexOf('Days') - 1]) : 0;
+
+            let totalDays = years * 365 + months * 30 + days;
+
+            if (req.query.ageGroup === 'adult') {
+                // 8 months in days
+                return totalDays >= 8 * 30;
+            } else if (req.query.ageGroup === 'child') {
+                // 7 months 29 days in days
+                return totalDays <= 7 * 30 + 29;
+            }
+        });
+    }
+
+    res.render("adopt.ejs", {title : "Adopt a cat | Find a cat to adopt", loggedin: req.session.loggedin, cats: updatedCats})
 })
 
 app.get("/about", (req, res) => {
