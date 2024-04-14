@@ -1,7 +1,7 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
-const User = require('./userdata.js');
+const User = require('../database/userdata.js');
 const bcrypt = require('bcrypt');
 
 passport.use(new LocalStrategy(
@@ -39,3 +39,5 @@ passport.deserializeUser(function(id, done) {
             done(err);
         });
 });
+
+module.exports = passport;

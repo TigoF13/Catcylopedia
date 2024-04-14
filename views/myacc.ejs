@@ -3,36 +3,241 @@
 
 <%- include('layouts/adopt/head') %>
 
-<body>
-    <div class="container">
-        <!-- NAVBAR START -->
+    <body>
+        <div class="container">
+            <!-- NAVBAR START -->
 
-        <%- include('layouts/adopt/adopthead', { title: 'My Account' }) %>
+            <%- include('layouts/adopt/adopthead', { title: 'My Account' }) %>
 
-        <!-- NAVBAR END -->
+                <!-- NAVBAR END -->
 
-        <!-- CONTENT START -->
+                <!-- CONTENT START -->
 
-        <div class="account-container">
-            <div class="content-account">
-                <ul style="list-style-type: none;">
-                    <li class="account-item">Username : <%= user.username %></li>
-                    <li class="account-item">Email : <%= user.email %></li>
-                    <li class="account-item">Password : ********</li>
-                </ul>
-            </div>
+                <div class="account-container">
+                    <div class="content-account">
+                        <div class="account-data">
+
+                            <div class="data-list">
+
+                                <!-- USERNAME START -->
+
+                                <li class="account-item">Username</li>
+                                <div class="acc-isi-luar">
+                                    <div class="acc-isi" id="username">
+                                        <%= user.username %>
+                                    </div>
+                                    <div class="form-popup" id="userForm" style="display: none;">
+                                        <form action="/change-username" method="POST">
+                                            <input type="text" placeholder="Enter new username" name="username" class="acc-isi new">
+                                            <br>
+                                            <div class="bottom">
+                                                <button type="submit" class="change-button center border"
+                                                    id="btn-submit">Save Changes &nbsp;<i
+                                                        class="fa-solid fa-check icon"></i></button>
+                                                <button type="button" class="change-button center border"
+                                                    id="btn-close" onclick="closeUserForm()">Close &nbsp;<i
+                                                        class="fa-solid fa-times icon"></i></button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="btn-change">
+                                        <button class="change-button" id="btn-change" onclick="openUserForm()">
+                                            <i class="fa-solid fa-pen"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- USERNAME END -->
+
+                                <!-- PHONE START-->
+
+                                <li class="account-item">Phone Number</li>
+                                <div class="acc-isi-luar">
+                                    <div class="acc-isi" id="phone">
+                                        0<%= user.phone %>
+                                    </div>
+                                    <div class="form-popup" id="phoneForm" onsubmit="return validatePhone();" style="display: none;">
+                                        <form action="/change-phone" method="POST">
+                                            <input type="number" id="phoneInput" placeholder="Enter new phone number" name="phone" class="acc-isi new" >
+                                            <br>
+                                            <div class="bottom">
+                                                <button type="submit" class="change-button center border"
+                                                id="btn-submit">Save Changes &nbsp;<i
+                                                class="fa-solid fa-check icon"></i></button>
+                                                <button type="button" class="change-button center border"
+                                                id="btn-close" onclick="closePhoneForm()">Close &nbsp;<i
+                                                class="fa-solid fa-times icon"></i></button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="btn-change">
+                                        <button class="change-button" id="btn-change-email" onclick="openPhoneForm()">
+                                            <i class="fa-solid fa-pen"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- PHONE END -->
+
+                                <!-- EMAIL START -->
+
+                                <li class="account-item">Email</li>
+                                <div class="acc-isi-luar">                
+                                    <div class="acc-isi" id="email">
+                                        <%= user.email %>
+                                    </div>
+                                    <div class="form-popup" id="emailForm" style="display: none;">
+                                        <form action="/change-email" method="POST">
+                                        <input type="email" placeholder="Enter new email" name="email" class="acc-isi new">
+                                        <br>
+                                        <div class="bottom">
+                                            <button type="submit" class="change-button center border"
+                                                id="btn-submit">Save Changes &nbsp;<i
+                                                    class="fa-solid fa-check icon"></i></button>
+                                            <button type="button" class="change-button center border"
+                                                id="btn-close" onclick="closeEmailForm()">Close &nbsp;<i
+                                                    class="fa-solid fa-times icon"></i></button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="btn-change">
+                                    <button class="change-button" id="btn-change-email" onclick="openEmailForm()">
+                                        <i class="fa-solid fa-pen"></i>
+                                    </button>
+                                </div>
+                            </div>
+                                <!-- EMAIL END -->
+
+                                <!-- PASSWORD START -->
+
+                                <li class="account-item">Password</li>
+                                <div class="acc-isi-luar">
+                                    <div class="acc-isi" id="password">********</div>
+                                    <div class="form-popup none" id="passForm">
+                                        <form action="/change-password" method="POST">
+                                            <input type="password" placeholder="Enter new password" name="password" class="acc-isi new">
+                                            <br>
+                                            <input type="password" placeholder="Confirm new password"
+                                                name="confirm_password" class="acc-isi new"><br>
+                                            <div class="bottom">
+                                                <button type="submit" class="change-button center border">Change
+                                                    Password</button>
+                                                <button type="button" class="change-button center border" id="btn-close"
+                                                    onclick="closePassForm()">Close &nbsp;<i
+                                                        class="fa-solid fa-times icon"></i></button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="btn-change">
+                                        <button class="change-button" id="btn-change-pass" onclick="openPassForm()">
+                                            <i class="fa-solid fa-pen"></i>
+                                        </button>
+                                        <button class="change-button none" type="submit" id="submitPass" onclick=""><i
+                                                class="fa-solid fa-check"></i></button>
+                                    </div>
+                                </div>
+
+                                <!-- PASSWORD END -->
+
+                                <!-- DELETE BUTTON -->
+
+                                <div class="bottom m-top">
+                                    <button class="change-button center border-2" id="delete-button">Delete
+                                        Account&nbsp;</button>
+                                </div>
+
+                                <!-- DELETE BUTTON -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CONTENT END -->
+
         </div>
 
-        <!-- CONTENT END -->
+    </body>
 
-        <!-- FOOTER START -->
+    <script>
+        document.getElementById('delete-button').addEventListener('click', function () {
+            fetch('/deleteUser', {
+                method: 'DELETE',
+            })
+            .then(response => {
+                if (response.redirected) {
+                    alert('Your account has been successfully deleted');
+                    window.location.href = response.url;
+                } else {
+                    return response.json();
+                }
+            })
+            .then(data => {
+                // Handle the response data
+            })
+            .catch(error => {
+                console.error('There has been a problem with your fetch operation:', error);
+            });
+        });
 
-        <!-- <%- include('layouts/adopt/adoptfooter') %> -->
+        function validatePhone() {
+        var phoneInput = document.getElementById('phoneInput');
+        var phone = phoneInput.value;
+        var phoneLength = phone.toString().length;
+        if (phoneLength < 10 || phoneLength > 13) {
+            alert('Phone number must be 10 to 13 digits long');
+            return false;
+        }
+        return true;
+    }
+    
+        function openUserForm() {
+            document.getElementById("userForm").style.display = "block";
+            document.getElementById("username").style.display = "none";
+            document.getElementById("btn-change").style.display = "none";
+        }
 
-        <!-- FOOTER END -->
+        function openPassForm() {
+            document.getElementById("passForm").style.display = "flex";
+            document.getElementById("password").style.display = "none";
+            document.getElementById("btn-change-pass").style.display = "none";
+        }
 
-    </div>
+        function openEmailForm() {
+            document.getElementById("emailForm").style.display = "flex";
+            document.getElementById("email").style.display = "none";
+            document.getElementById("btn-change-email").style.display = "none";
+        }
 
-</body>
+        function openPhoneForm() {
+            document.getElementById("phoneForm").style.display = "flex";
+            document.getElementById("phone").style.display = "none";
+            document.getElementById("btn-change-phone").style.display = "none";
+        }
+
+        function closeUserForm() {
+            document.getElementById("userForm").style.display = "none";
+            document.getElementById("username").style.display = "block";
+            document.getElementById("btn-change").style.display = "block";
+        }
+
+        function closePassForm() {
+            document.getElementById("passForm").style.display = "none";
+            document.getElementById("password").style.display = "block";
+            document.getElementById("btn-change-pass").style.display = "block";
+        }
+
+        function closeEmailForm() {
+            document.getElementById("emailForm").style.display = "none";
+            document.getElementById("email").style.display = "block";
+            document.getElementById("btn-change-email").style.display = "block";
+        }
+        function closePhoneForm() {
+            document.getElementById("phoneForm").style.display = "none";
+            document.getElementById("phone").style.display = "block";
+            document.getElementById("btn-change-phone").style.display = "block";
+        }
+
+    </script>
 
 </html>

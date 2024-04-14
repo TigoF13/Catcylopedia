@@ -7,91 +7,90 @@ body {
     scroll-behavior: smooth;
     font-family: 'Poppins';
 }
+
 h1 {
-    margin-bottom: 10px; /* Adjust the margin-bottom value as needed */
+    margin-bottom: 10px;
+    /* Adjust the margin-bottom value as needed */
     text-align: center;
 }
 
 
-.center,.footer-content{
+.center, .footer-content {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.content-footer{
+.content-footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 30px;
 }
 
-.container{
-    /* border: 2px solid blue; */
-}
 
-.container-sidebar{
+.container-sidebar {
     height: 15vh;
     display: flex;
     flex-direction: row;
     /* border: 2px solid black; */
 }
 
-.container-sidebar a{
+.container-sidebar a {
     padding: 0px 5px;
 }
 
-.container-navbar{
+.container-navbar {
     height: 17.5vh;
     /* border: 2px solid red; */
 }
 
-.pilihan{
+.pilihan {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 25px;
     padding: 50px 0px;
-    
+
 }
 
-.pilihan a{
+.pilihan a {
     font-size: 20px;
     padding: 5px 20px;
     color: white;
 }
 
-.pilihan a:hover{
+.pilihan a:hover {
     cursor: pointer;
     border-radius: 100px;
     color: red;
-    transition: .3s ease-in-out;
+    font-weight: bolder;
+    transition: .2s ease-in-out;
 }
 
-.sosmed{
+.sosmed {
     font-size: 36px;
     margin: 30px 0px 0px 40px;
     flex: 6;
 }
 
-.sosmed a{
+.sosmed a {
     color: black;
 }
 
-.sosmed a i:hover{
+.sosmed a i:hover {
     color: #79016c;
     cursor: pointer;
     transition: .1s ease-in-out;
 }
 
-.donate{
+.donate {
     margin: 10px 40px 0px 0px;
     display: flex;
     flex-direction: row;
     flex: 1;
-}  
+}
 
-.btn{
+.btn {
     background-color: #fae6fa;
     color: #79016c;
     margin: 25px 5px;
@@ -102,28 +101,29 @@ h1 {
     font-weight: bolder;
 }
 
-.btn:hover{
+.btn:hover {
     background-color: #79016c;
     color: white;
     cursor: pointer;
     transition: .1s ease-in-out;
 }
 
-.logo{
+.logo {
     display: flex;
     align-items: center;
     justify-content: center;
     margin: -50px 0px 30px 0px;
 }
 
-.logo a{
+.logo a {
     color: #7b2076;
     font-size: 28px;
 }
 
+.menu {
 /* .navbar{
     border: 2px solid red; 
-}*/
+}*/}
 
 .menu{
     display: flex;
@@ -133,7 +133,7 @@ h1 {
     /* border: 2px solid green; */
 }
 
-.ul-navbar{
+.ul-navbar {
     display: flex;
     flex-direction: row;
     list-style-type: none;
@@ -143,25 +143,25 @@ h1 {
     padding: 20px 20px;
 }
 
-.li-navbar a{
+.li-navbar a {
     border-top: 10px;
     padding: 20px 20px;
     transition: .1s ease-in-out;
 }
 
-.li-navbar:hover a{
+.li-navbar:hover a {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     background-color: #7b2076;
     color: white;
 }
 
-a{
+a {
     text-decoration: none;
     color: #7b2076;
 }
 
-.judul{
+.judul {
     height: 15vh;
     display: flex;
     align-items: center;
@@ -171,33 +171,33 @@ a{
     font-size: 20px;
 }
 
-footer{
+footer {
     font-family: 'Poppins';
     width: 100%;
-    height: 40vh;
-    background-color: #333;
+    height: 46vh;
+    background-color: #7b2076;
     color: #fff;
     font-size: 18px;
-    margin-top: 25vh;
+    padding-top: 20px;
 }
 
-.terms{
+.terms {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 50px;
 }
 
-.terms a{
+.terms a {
     color: white;
 }
 
-.terms a:hover{
+.terms a:hover {
     color: grey;
     transition: .4s ease-in-out;
 }
 
-.regform,.logform{
+.regform, .logform {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -206,51 +206,27 @@ footer{
     /* height: 100vh; */
 }
 
-.form-item {
-    margin-bottom: 20px;
+.m-top {
+    margin-top: 5vh;
 }
 
-.container-content{
-    height: 100vh;
+.container-content {
+    height: 350vh;
     margin: 26vh 150px 0px 150px;
     padding-top: 10vh;
-    /* border: 2px solid red; */
 }
 
-.content-title{
+.content-title {
     color: #79016c;
     font-weight: bolder;
     align-items: center;
 }
 
-p{
+p {
     font-size: 16px;
 }
-.account-container{
-    margin-top: 25vh;
-    padding-top: 10vh;
-    /* border: 2px solid red; */
-    display: flex;
-    justify-content: center;
-}
-.content-account{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: self-start;
-    width: 50%;
-    padding: 20px ;
-    background-color: gray;
-    box-shadow: 0px 0px 10px yellow;
 
-}
-
-.account-item{
-    margin-bottom: 10px;
-    font-size: 20px;
-}
-
-.container-card{
+.container-card {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -258,43 +234,317 @@ p{
     margin-top: 50px;
 }
 
-.kotak-card{
+.kotak-card {
     width: 315px;
     background-color: white;
     border-radius: 8px;
-    box-shadow: 0px 2px 4px rgba(0,0,0,0.3);
-    overflow: hidden; 
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
     transition: transform 0.8s ease;
-    z-index: 100;   
+    z-index: 100;
 }
 
-.kotak-card:hover{
+.kotak-card:hover {
     transform: translateY(-7.5px);
 }
 
-.kotak-card img{
+.kotak-card img {
     width: 100%;
     height: 50%;
     object-fit: cover;
 }
 
-.konten-card{
+.konten-card {
     padding-top: 20px;
     margin: 0 10px;
 }
 
-.konten-card h2{
+.konten-card h2 {
     padding-bottom: 20px;
 }
 
-.konten-card p{
+.konten-card p {
     font-size: 14px;
     color: #666;
     margin-bottom: 20px;
 }
 
-.card{
-    height: 75vh;
-    width: 100%;
+/* MY ACCOUNT CSS */
+
+.account-container {
+    height: 100vh;
+    margin: 20vh 150px 0px 150px;
+    padding-top: 10vh;
+}
+
+.content-account {
+    display: flex;
+    flex-direction: column;
+}
+
+.account-data {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.account-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bolder;
+    margin: 10px 0px;
+}
+
+.acc-isi {
+    width: 300px;
+    border: 2px solid #7b2076;
+    background-color: #fae6fa;
+    border-radius: 4px;
+    padding: 7px 7px;
+    margin-left: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.acc-isi-luar {
+    display: flex;
+    flex-direction: row;
+}
+
+.none {
+    display: none;
+}
+
+.new {
+    padding: 9px 7px;
+}
+
+.text-form {
+    font-size: 20px;
+}
+
+.change-list {
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    gap: 10px;
+}
+
+.change-button {
+    border: none;
+    background-color: white;
+    margin: 5px 0px 0px 0px;
+    width: 30px;
+    height: 30px;
+}
+
+.border {
+    border: 2px solid #7b2076;
+    background-color: #fae6fa;
+    border-radius: 20px;
+    font-weight: bolder;
+    padding: 20px 0px;
+    font-size: 14px;
+}
+
+.border:hover {
     background-color: #c928b2;
+    color: #fae6fa;
+    border: 2px solid black;
+}
+
+.border-2 {
+    border: 2px solid black;
+    background-color: crimson;
+    color: #fae6fa;
+    border-radius: 20px;
+    font-weight: bolder;
+    padding: 20px 0px;
+    font-size: 16px;
+}
+
+.border-2:hover {
+    background-color: #fae6fa;
+    color: crimson;
+    border: 2px solid black;
+    transition: .9s ease-in-out;
+}
+
+.center {
+    margin: 0px 10px 0px 10px;
+    width: 150px;
+}
+
+.icon {
+    font-size: 20px;
+}
+
+.bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 20px;
+}
+
+.change-button:hover {
+    cursor: pointer;
+    transition: .1s ease-in-out;
+}
+
+.func-button {
+    background-color: #fae6fa;
+    color: #79016c;
+    margin-top: 15px;
+    margin-left: 10px;
+    padding: 5px 20px;
+    border-radius: 7px;
+    border: none;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.func-button:hover {
+    background-color: #79016c;
+    color: white;
+    cursor: pointer;
+    transition: .1s ease-in-out;
+}
+
+.delete-button {
+    background-color: #fae6fa;
+    color: #cc1414;
+    margin-left: 5px;
+    padding: 0px 10px;
+    border-radius: 7px;
+    border: none;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.delete-button:hover {
+    background-color: #cc1414;
+    color: white;
+    cursor: pointer;
+    transition: .1s ease-in-out;
+}
+
+.container-feature {
+    /* border: 2px solid black; */
+    display: flex;
+    flex-direction: row;
+    padding: 0px 100px 0px 110px;
+}
+
+.container-filter {
+    /* border: 2px solid red; */
+    flex: 7;
+    display: flex;
+    align-items: center;
+}
+
+.container-sort {
+    /* border: 2px solid blue; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1.5;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropbtn {
+    text-decoration: none;
+}
+
+.dropdown-content {
+    /* border: 2px solid red; */
+    background-color: #fae6fa;
+    margin: -20px 0px 0px 5px;
+    padding: 10px 2.5px;
+    border-radius: 6px;
+    width: 150px;
+    display: none;
+    position: absolute;
+    z-index: 999999;
+}
+
+.dropdown-content label {
+    font-weight: bold;
+}
+
+.dropdown-checkbox {
+    /* border: 2px solid blue; */
+    display: flex;
+    padding: 0px 0px 5px 10px;
+    font-weight: bold;
+}
+
+.dropdown-content a:hover{
+    cursor: pointer;
+    border-radius: 6px;
+    background-color: #fff;
+    transition: .15s ease-in-out;
+}
+
+.container-strip{
+    /* border: 2px solid red; */
+    height: 80vh;
+    background-color: #fae6fa;
+    margin: 0px -150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.strip{
+    /* border: 2px solid blue; */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+.strip-card{
+    color: #fff;
+    width: 375px;
+    background-color: #7b2076;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    transition: transform 0.8s ease;
+    z-index: 100;
+}
+
+.strip-card:hover {
+    transform: translateY(-7.5px);
+}
+
+.strip-card img {
+    width: 375px;
+    height: 250px;
+    object-fit: cover;
+}
+
+.strip-content {
+    padding-top: 20px;
+    margin: 0 10px;
+}
+
+.strip-content h2 {
+    text-align: center;
+    padding-bottom: 20px;
+    font-weight: bolder;
+}
+
+.strip-content p {
+    font-size: 14px;
+    text-align: center;
+    color: #fff;
+    margin: 0px 10px;
 }

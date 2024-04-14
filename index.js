@@ -7,7 +7,7 @@ const flash = require("connect-flash");
 const StoreMongo = require("connect-mongo");
 const passport = require("passport");
 
-require("./database/passport.js");
+require("./config/passport.js");
 const port = 3001;
 
 app.set("view engine", "ejs");
@@ -18,7 +18,7 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     store: StoreMongo.create({
-        mongoUrl: "mongodb://localhost:27017/userdata",
+        mongoUrl: "mongodb+srv://Jason:12345@catcyclopedia.bjdmtgw.mongodb.net/",
         collectionName: "sessions"
     }),
     cookie:{
@@ -33,12 +33,78 @@ app.use(passport.session());
 
 app.use(express.static("public"));
 
+let cats = [
+    { name: 'Anggora', age: '1 Year 6 Months 26 Days', gender: 'Male', color: 'White', intakeDate: '2/29/2024', image: 'anggora.jpg' },
+    { name: 'Himalaya', age: '1 Year 1 Months 1 Days', gender: 'Female', color: 'Brown/White', intakeDate: '1/19/2024', image: 'himalaya.jpg' },
+    { name: 'Maine Coon', age: '6 Months 26 Days', gender: 'Female', color: 'Brown', intakeDate: '1/5/2024', image: 'maine coon.png' },
+    { name: 'Munchkin', age: '1 Year 26 Days', gender: 'Male', color: 'Gray', intakeDate: '12/29/2023', image: 'munchkin.jpg' },
+    { name: 'Persia', age: '1 Year 2 Months 16 Days', gender: 'Male', color: 'Gray/White', intakeDate: '1/9/2024', image: 'persia.jpg' },
+    { name: 'Ragdoll', age: '11 Months 8 Days', gender: 'Female', color: 'White/Brown', intakeDate: '1/18/2024', image: 'ragdoll.jpg' },
+    { name: 'Siamm', age: '1 Year 11 Months 8 Days', gender: 'Female', color: 'White/Black', intakeDate: '3/19/2024', image: 'siamm.jpg' },
+    { name: 'Siberian', age: '10 Months 26 Days', gender: 'Male', color: 'White', intakeDate: '4/19/2024', image: 'siberian.jpg' }
+];
+
 app.get("/", (req, res) => {
-    res.render("index.ejs", {title : "Catcyclopedia"})
+    res.render("adopt.ejs", {title : "Adopt a cat | Find a cat to adopt", loggedin: req.session.loggedin, cats: cats})
 })
 
 app.get("/adopt", (req, res) => {
-    res.render("adopt.ejs", {title : "Adopt a cat | Find a cat to adopt", loggedin: req.session.loggedin})
+    let updatedCats = cats;
+
+    if (req.query.sort === 'age') {
+        // Convert age to days for sorting
+        updatedCats.forEach(cat => {
+            let parts = cat.age.split(' ');
+            let years = parts.includes('Year') ? Number(parts[parts.indexOf('Year') - 1]) : 0;
+            let months = parts.includes('Months') ? Number(parts[parts.indexOf('Months') - 1]) : 0;
+            let days = parts.includes('Days') ? Number(parts[parts.indexOf('Days') - 1]) : 0;
+            cat.ageInDays = years * 365 + months * 30 + days;
+        });
+    
+        // Sort cats by age in ascending order
+        updatedCats.sort((a, b) => a.ageInDays - b.ageInDays);
+    }
+    
+    if (req.query.sort === 'gender') {
+        // Sort cats by gender in ascending order
+        updatedCats.sort((a, b) => a.gender.localeCompare(b.gender));
+    }
+    
+    if (req.query.gender && req.query.gender.toLowerCase() === 'male') {
+        // Filter cats by male gender
+        updatedCats = updatedCats.filter(cat => cat.gender.toLowerCase() === 'male');
+    }
+    
+    if (req.query.gender && req.query.gender.toLowerCase() === 'female') {
+        // Filter cats by female gender
+        updatedCats = updatedCats.filter(cat => cat.gender.toLowerCase() === 'female');
+    }
+
+    if (req.query.breed) {
+        // Filter cats by breed
+        updatedCats = updatedCats.filter(cat => cat.name.toLowerCase() === req.query.breed.toLowerCase());
+    }
+
+    if (req.query.ageGroup) {
+        updatedCats = updatedCats.filter(cat => {
+            let parts = cat.age.split(' ');
+            let years = parts.includes('Year') ? Number(parts[parts.indexOf('Year') - 1]) : 0;
+            let months = parts.includes('Months') ? Number(parts[parts.indexOf('Months') - 1]) : 0;
+            let days = parts.includes('Days') ? Number(parts[parts.indexOf('Days') - 1]) : 0;
+
+            let totalDays = years * 365 + months * 30 + days;
+
+            if (req.query.ageGroup === 'adult') {
+                // 8 months in days
+                return totalDays >= 8 * 30;
+            } else if (req.query.ageGroup === 'child') {
+                // 7 months 29 days in days
+                return totalDays <= 7 * 30 + 29;
+            }
+        });
+    }
+
+    res.render("adopt.ejs", {title : "Adopt a cat | Find a cat to adopt", loggedin: req.session.loggedin, cats: updatedCats})
 })
 
 app.get("/about", (req, res) => {
@@ -67,6 +133,7 @@ app.get('/myacc', async function(req, res) {
                     loggedin: req.session.loggedin,
                     user: user,
                     username: user.username,
+                    phone: user.phone,
                     email: user.email,
                     password: user.password
                 });
@@ -81,6 +148,87 @@ app.get('/myacc', async function(req, res) {
     }
 });
 
+app.post('/change-username', async (req, res) => {
+    const { username: newUsername } = req.body;
+    const { _id } = req.user;
+
+    try {
+        const user = await UserData.findOne({ _id: _id });
+        if (!user) {
+            return res.status(404).send('User not found');
+        }
+
+        user.username = newUsername;
+        await user.save();
+
+        res.redirect('/myacc');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Server error');
+    }
+});
+
+app.post('/change-phone', async (req, res) => {
+    const { phone: newPhone } = req.body;
+    const { _id } = req.user;
+
+    try {
+        const user = await UserData.findOne({ _id: _id });
+        if (!user) {
+            return res.status(404).send('User not found');
+        }
+
+        user.phone = newPhone;
+        await user.save();
+
+        res.redirect('/myacc');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Server error');
+    }
+});
+
+app.post('/change-email', async (req, res) => {
+    const { email: newEmail } = req.body;
+    const { _id } = req.user;
+
+    try {
+        const user = await UserData.findOne({ _id: _id });
+        if (!user) {
+            return res.status(404).send('User not found');
+        }
+
+        user.email = newEmail;
+        await user.save();
+
+        res.redirect('/myacc');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Server error');
+    }
+});
+
+app.post('/change-password', async (req, res) => {
+    const { password: newPassword } = req.body;
+    const { _id } = req.user;
+
+
+    try {
+        const user = await UserData.findOne({ _id: _id });
+        if (!user) {
+            return res.status(404).send('User not found');
+        }
+
+        user.password = hashSync(newPassword,15)
+        await user.save();
+
+        res.redirect('/myacc');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Server error');
+    }
+});
+
 app.get("/register", (req, res) => {
     res.render("register.ejs", {title : "Register", loggedin: req.session.loggedin})
 })
@@ -89,6 +237,7 @@ app.post("/register", async (req, res) => {
     try {
         const newUser = new UserData({
             username: req.body.username,
+            phone: req.body.phone,
             email: req.body.email,
             password: hashSync(req.body.password,15)
         });
@@ -106,6 +255,7 @@ app.get("/login", (req, res) => {
 
 app.post('/login', passport.authenticate('local', { failureRedirect: '/login',failureFlash: 'Wrong username/password, please try again'}), function(req, res) {
     req.session.loggedin = true;
+    req.session.userId = req.user._id;
     res.redirect('/adopt');
 });
 
@@ -115,9 +265,33 @@ app.get('/logout', function(req, res) {
             console.log(err);
         } else {
             res.redirect('/adopt');
-            req.session.loggedin = false;
+            // req.session.loggedin = false;
         }
     });
+});
+
+app.delete('/deleteUser', async (req, res) => {
+    try {
+        const user = await UserData.findByIdAndDelete(req.session.userId);
+
+        if (!user) {
+            return res.status(404).json({ success: false, message: "User not found" });
+        } else {
+            await new Promise((resolve, reject) => {
+                req.session.destroy(function(err) {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve();
+                    }
+                });
+            });
+
+            return res.redirect('/adopt');
+        }
+    } catch (err) {
+        return res.status(500).json({ error: 'An error occurred' });
+    }
 });
 
 app.listen(port, () => {

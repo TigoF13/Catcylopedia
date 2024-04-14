@@ -21,109 +21,198 @@
             <div class="content-desc">
                 <p>At Cats Protection we believe in matching the right cat to the right home. That's why we look at everything from your potential pet's personality to where you live – creating the perfect match for both cat and owner.</p><br>
                 <p>While there can be a lot to think about when adopting a cat, Cats Protection aims to take away some of your worries, providing plenty of advice along the way.</p><br>
+                <p>You can help by adopting or fostering at least one street cat. We need a safe home and a family with commitment who are trusted and responsible to care for the cats, especially, those with special needs, kittens, sick cats, and senior cats.</p><br>
             </div>
+            <div class="content-title">
+                <h1>Find a cat and Adopt your cat</h1>
+                <br>
+            </div>
+            <hr>
+            <div class="container-feature">
+                <div class="container-filter">
+                    <h2>Filter : &nbsp;</h2>
+                    <div class="dropdown">
+                        <a><button class="btn sort dropbtn" id="contactDropdown">Gender 🠧</button></a>
+                        <div class="dropdown-content" id="contactDropdownContent">
+                            <input type="checkbox" id="maleCheckbox">
+                            <label for="maleCheckbox">Male</label>
+                            <input type="checkbox" id="femaleCheckbox">
+                            <label for="femaleCheckbox">Female</label>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <a><button class="btn sort dropbtn" id="contactDropdown-2">Breeds 🠧</button></a>
+                        <div class="dropdown-content" id="contactDropdownContent-2">
+                            <div class="dropdown-checkbox">
+                                <input type="checkbox" id="anggoraCheckbox" value="anggora">
+                                <label for="anggoraCheckbox">&nbsp; Anggora</label>
+                            </div>
+                            <div class="dropdown-checkbox">
+                                <input type="checkbox" id="himalayaCheckbox" value="himalaya">
+                                <label for="himalayaCheckbox">&nbsp; Himalaya</label>
+                            </div>
+                            <div class="dropdown-checkbox">
+                                <input type="checkbox" id="kampungCheckbox" value="kampung">
+                                <label for="kampungCheckbox">&nbsp; Kampung</label>
+                            </div>
+                            <div class="dropdown-checkbox">
+                                <input type="checkbox" id="mainecoonCheckbox" value="maine Coon">
+                                <label for="mainecoonCheckbox">&nbsp; Maine Coon</label>
+                            </div>
+                            <div class="dropdown-checkbox">
+                                <input type="checkbox" id="munchkinCheckbox" value="munchkin">
+                                <label for="munchkin">&nbsp; Munchkin</label>
+                            </div>
+                            <div class="dropdown-checkbox">
+                                <input type="checkbox" id="persiaCheckbox" value="persia">
+                                <label for="persiaCheckbox">&nbsp; Persia</label>
+                            </div>
+                            <div class="dropdown-checkbox">
+                                <input type="checkbox" id="ragdollCheckbox" value="ragdoll">
+                                <label for="ragdoll">&nbsp; Ragdoll</label>
+                            </div>
+                            <div class="dropdown-checkbox">
+                                <input type="checkbox" id="siammCheckbox" value="siamm">
+                                <label for="siammCheckbox">&nbsp; Siamm</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <a><button class="btn sort dropbtn" id="contactDropdown-3">Age 🠧</button></a>
+                        <div class="dropdown-content" id="contactDropdownContent-3">
+                            <div class="dropdown-checkbox">
+                                <input type="checkbox" id="childCheckbox" value="child">
+                                <label for="childCheckbox">&nbsp; Child</label>
+                            </div>
+                            <div class="dropdown-checkbox">
+                                <input type="checkbox" id="adultCheckbox" value="adult">
+                                <label for="adultCheckbox">&nbsp; Adult</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-sort">
+                    <div class="dropdown">
+                        <a><button class="btn sort dropbtn" id="contactDropdown-4">Sort &nbsp;<i class="fa-solid fa-arrow-down-short-wide"></i></button></a>
+                        <div class="dropdown-content" id="contactDropdownContent-4">
+                            <div class="dropdown-checkbox">
+                                <input type="radio" id="ageSortCheckbox" name="sortOption">
+                                <label for="ageSortCheckbox">&nbsp; Age</label>
+                            </div>
+                            <div class="dropdown-checkbox">
+                                <input type="radio" id="genderSortCheckbox" name="sortOption">
+                                <label for="genderSortCheckbox">&nbsp; Gender</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <div class="container-card">
-                <div class="kotak-card">
-                    <img src="assets/anggora.jpg" alt="anggora">
-                    <div class="konten-card">
-                        <h2>Anggora</h2>
-                        <p>Age          : 1 Year 6 Months 26 Days</p>
-                        <p>Gender       : Male</p>
-                        <p>Color        : White</p>
-                        <p>Intake date  : 2/29/2024</p>
-                        <br>
+                <% cats.forEach(cat => { %>
+                    <div class="kotak-card">
+                        <img src="assets/<%= cat.image %>" alt="<%= cat.name %>">
+                        <div class="konten-card">
+                            <h2><%= cat.name %></h2>
+                            <p>Age: <%= cat.age %></p>
+                            <p>Gender: <%= cat.gender %></p>
+                            <p>Color: <%= cat.color %></p>
+                            <p>Intake date: <%= cat.intakeDate %></p>
+                            <br>
+                        </div>
                     </div>
+                <% }); %>
                 </div>
-                <div class="kotak-card">
-                    <img src="assets/himalaya.jpg" alt="himalaya">
-                    <div class="konten-card">
-                        <h2>Himalaya</h2>
-                        <p>Age          : 1 Year 1 Months 1 Days</p>
-                        <p>Gender       : Female</p>
-                        <p>Color        : Brown/White</p>
-                        <p>Intake date  : 1/19/2024</p>
-                        <br>
-                    </div>
-                </div>
-                <div class="kotak-card">
-                    <img src="assets/maine coon.png" alt="Maine_coon">
-                    <div class="konten-card">
-                        <h2>Maine Coon</h2>
-                        <p>Age          : 6 Months 26 Days</p>
-                        <p>Gender       : Female</p>
-                        <p>Color        : Brown</p>
-                        <p>Intake date  : 1/5/2024</p>
-                        <br>
-                    </div>
-                </div>
-                <div class="kotak-card">
-                    <img src="assets/munchkin.jpg" alt="Munchkin">
-                    <div class="konten-card">
-                        <h2>Munchkin</h2>
-                        <p>Age          : 1 Year 26 Days</p>
-                        <p>Gender       : Male</p>
-                        <p>Color        : Gray</p>
-                        <p>Intake date  : 12/29/2023</p>
-                        <br>
-                    </div>
-                </div>
-                <div class="kotak-card">
-                    <img src="assets\persia.jpg" alt="persia">
-                    <div class="konten-card">
-                        <h2>Persia</h2>
-                        <p>Age          : 1 Year 2 Months 16 Days</p>
-                        <p>Gender       : Male</p>
-                        <p>Color        : Gray/White</p>
-                        <p>Intake date  : 1/9/2024</p>
-                        <br>
-                    </div>
-                </div>
-                <div class="kotak-card">
-                    <img src="assets/ragdoll.jpg" alt="ragdoll">
-                    <div class="konten-card">
-                        <h2>Ragdoll</h2>
-                        <p>Age          : 11 Months 8 Days</p>
-                        <p>Gender       : Female</p>
-                        <p>Color        : White/Brown</p>
-                        <p>Intake date  : 1/18/2024</p>
-                        <br>
-                    </div>
-                </div>
-                <div class="kotak-card">
-                    <img src="assets\siamm.jpg" alt="siamm">
-                    <div class="konten-card">
-                        <h2>Siamm</h2>
-                        <p>Age          : 1 Year 11 Months 8 Days</p>
-                        <p>Gender       : Female</p>
-                        <p>Color        : White/Black</p>
-                        <p>Intake date  : 3/19/2024</p>
-                        <br>
-                    </div>
-                </div>
-                <div class="kotak-card">
-                    <img src="assets\siberian.jpg" alt="siberian">
-                    <div class="konten-card">
-                        <h2>Siberian</h2>
-                        <p>Age          : 10 Months 26 Days</p>
-                        <p>Gender       : Male</p>
-                        <p>Color        : White</p>
-                        <p>Intake date  : 4/19/2024</p>
-                        <br>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <!-- CONTENT END -->
 
         <!-- FOOTER START -->
 
-        <!-- <%- include('layouts/adopt/adoptfooter') %> -->
+        <%- include('layouts/adopt/adoptfooter') %>
 
         <!-- FOOTER END -->
 
     </div>
+    <script src="js\main.js"></script>
+    <script>
+        window.onload = function() {
+            var ageSort = document.getElementById('ageSortCheckbox');
+            var genderSort = document.getElementById('genderSortCheckbox');
+            var maleFilter = document.getElementById('maleCheckbox');
+            var femaleFilter = document.getElementById('femaleCheckbox');
+            var anggoraCheckbox = document.getElementById('anggoraCheckbox');
+            var himalayaCheckbox = document.getElementById('himalayaCheckbox');
+            var kampungCheckbox = document.getElementById('kampungCheckbox');
+            var mainecoonCheckbox = document.getElementById('mainecoonCheckbox');
+            var munchkinCheckbox = document.getElementById('munchkinCheckbox');
+            var persiaCheckbox = document.getElementById('persiaCheckbox');
+            var ragdollCheckbox = document.getElementById('ragdollCheckbox');
+            var siammCheckbox = document.getElementById('siammCheckbox');
+            var childCheckbox = document.getElementById('childCheckbox');
+            var adultCheckbox = document.getElementById('adultCheckbox');
 
+            // Array of all breed checkboxes
+            var breedCheckboxes = [anggoraCheckbox, himalayaCheckbox, kampungCheckbox, mainecoonCheckbox, munchkinCheckbox, persiaCheckbox, ragdollCheckbox, siammCheckbox];
+            var ageCheckboxes = [childCheckbox, adultCheckbox];
+
+            // Add event listener to each breed checkbox
+            breedCheckboxes.forEach(function(checkbox) {
+                if (checkbox) {
+                    checkbox.addEventListener('change', function(event) {
+                        if (event.target.checked) {
+                            window.location.href = '/adopt?breed=' + event.target.value;
+                        }
+                    });
+                }
+            });
+
+            if (ageSort) {
+                ageSort.addEventListener('change', function(event) {
+                    if (event.target.checked) {
+                        window.location.assign('/adopt?sort=age');
+                    }
+                });
+            }
+
+            if (genderSort) {
+                genderSort.addEventListener('change', function(event) {
+                    if (event.target.checked) {
+                        window.location.href = '/adopt?sort=gender';
+                    }
+                });
+            }
+
+            if (maleFilter) {
+                maleCheckbox.addEventListener('change', function(event) {
+                    if (event.target.checked) {
+                        window.location.href = '/adopt?gender=male';
+                    }
+                });
+            }
+
+            if (femaleFilter) {
+                femaleCheckbox.addEventListener('change', function(event) {
+                    if (event.target.checked) {
+                        window.location.href = '/adopt?gender=female';
+                    }
+                });
+            }
+
+            ageCheckboxes.forEach(function(checkbox) {
+            if (checkbox) {
+                checkbox.addEventListener('change', function(event) {
+                    if (event.target.checked) {
+                        window.location.href = '/adopt?ageGroup=' + event.target.value;
+                    }
+                });
+            }
+        });
+
+
+        };
+
+    </script>
 </body>
 
 </html>
