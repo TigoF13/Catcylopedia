@@ -121,9 +121,9 @@ h1 {
     font-size: 28px;
 }
 
-.navbar{
-    /* border: 2px solid red; */
-}
+/* .navbar{
+    border: 2px solid red; 
+}*/
 
 .menu{
     display: flex;
@@ -291,4 +291,10 @@ p{
     font-size: 14px;
     color: #666;
     margin-bottom: 20px;
+}
+
+.card{
+    height: 75vh;
+    width: 100%;
+    background-color: #c928b2;
 }
