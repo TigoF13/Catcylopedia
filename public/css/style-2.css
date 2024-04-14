@@ -543,3 +543,26 @@ p {
     color: #fff;
     margin: 0px 10px;
 }
+
+.container-about{
+    display: flex;
+    flex-direction: row;
+}
+
+.container-left{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    color: #7b2076;
+}
+
+.container-left p{
+    font-size: 16px;
+}
+
+.container-right{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    flex: 1;
+}
