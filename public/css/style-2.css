@@ -206,7 +206,7 @@ footer {
 }
 
 .container-content {
-    height: 300vh;
+    height: 350vh;
     margin: 26vh 150px 0px 150px;
     padding-top: 10vh;
 }
@@ -484,4 +484,59 @@ p {
     border-radius: 6px;
     background-color: #fff;
     transition: .15s ease-in-out;
+}
+
+.container-strip{
+    height: 80vh;
+    background-color: #fae6fa;
+    margin: 0px -150px;
+    border: 2px solid red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.strip{
+    border: 2px solid blue;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+.strip-card{
+    width: 315px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    transition: transform 0.8s ease;
+    z-index: 100;
+}
+
+.strip-card:hover {
+    transform: translateY(-7.5px);
+}
+
+.strip-card img {
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
+}
+
+.strip-content {
+    padding-top: 20px;
+    margin: 0 10px;
+}
+
+.strip-content h2 {
+    padding-bottom: 20px;
+}
+
+.strip-content p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
 }
