@@ -6,9 +6,10 @@ const session = require("express-session");
 const flash = require("connect-flash");
 const StoreMongo = require("connect-mongo");
 const passport = require("passport");
+const dotenv = require("dotenv").config();
 
 require("./config/passport.js");
-const port = 3001;
+const port = process.env.Port;
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
@@ -18,7 +19,7 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     store: StoreMongo.create({
-        mongoUrl: "mongodb+srv://Jason:12345@catcyclopedia.bjdmtgw.mongodb.net/",
+        mongoUrl: process.env.DatabaseURL,
         collectionName: "sessions"
     }),
     cookie:{
@@ -34,6 +35,22 @@ app.use(passport.session());
 app.use(express.static("public"));
 
 let cats = [
+    { name: 'Anggora', age: '1 Year 6 Months 26 Days', gender: 'Male', color: 'White', intakeDate: '2/29/2024', image: 'anggora.jpg' },
+    { name: 'Himalaya', age: '1 Year 1 Months 1 Days', gender: 'Female', color: 'Brown/White', intakeDate: '1/19/2024', image: 'himalaya.jpg' },
+    { name: 'Maine Coon', age: '6 Months 26 Days', gender: 'Female', color: 'Brown', intakeDate: '1/5/2024', image: 'maine coon.png' },
+    { name: 'Munchkin', age: '1 Year 26 Days', gender: 'Male', color: 'Gray', intakeDate: '12/29/2023', image: 'munchkin.jpg' },
+    { name: 'Persia', age: '1 Year 2 Months 16 Days', gender: 'Male', color: 'Gray/White', intakeDate: '1/9/2024', image: 'persia.jpg' },
+    { name: 'Ragdoll', age: '11 Months 8 Days', gender: 'Female', color: 'White/Brown', intakeDate: '1/18/2024', image: 'ragdoll.jpg' },
+    { name: 'Siamm', age: '1 Year 11 Months 8 Days', gender: 'Female', color: 'White/Black', intakeDate: '3/19/2024', image: 'siamm.jpg' },
+    { name: 'Siberian', age: '10 Months 26 Days', gender: 'Male', color: 'White', intakeDate: '4/19/2024', image: 'siberian.jpg' },
+    { name: 'Anggora', age: '1 Year 6 Months 26 Days', gender: 'Male', color: 'White', intakeDate: '2/29/2024', image: 'anggora.jpg' },
+    { name: 'Himalaya', age: '1 Year 1 Months 1 Days', gender: 'Female', color: 'Brown/White', intakeDate: '1/19/2024', image: 'himalaya.jpg' },
+    { name: 'Maine Coon', age: '6 Months 26 Days', gender: 'Female', color: 'Brown', intakeDate: '1/5/2024', image: 'maine coon.png' },
+    { name: 'Munchkin', age: '1 Year 26 Days', gender: 'Male', color: 'Gray', intakeDate: '12/29/2023', image: 'munchkin.jpg' },
+    { name: 'Persia', age: '1 Year 2 Months 16 Days', gender: 'Male', color: 'Gray/White', intakeDate: '1/9/2024', image: 'persia.jpg' },
+    { name: 'Ragdoll', age: '11 Months 8 Days', gender: 'Female', color: 'White/Brown', intakeDate: '1/18/2024', image: 'ragdoll.jpg' },
+    { name: 'Siamm', age: '1 Year 11 Months 8 Days', gender: 'Female', color: 'White/Black', intakeDate: '3/19/2024', image: 'siamm.jpg' },
+    { name: 'Siberian', age: '10 Months 26 Days', gender: 'Male', color: 'White', intakeDate: '4/19/2024', image: 'siberian.jpg' },
     { name: 'Anggora', age: '1 Year 6 Months 26 Days', gender: 'Male', color: 'White', intakeDate: '2/29/2024', image: 'anggora.jpg' },
     { name: 'Himalaya', age: '1 Year 1 Months 1 Days', gender: 'Female', color: 'Brown/White', intakeDate: '1/19/2024', image: 'himalaya.jpg' },
     { name: 'Maine Coon', age: '6 Months 26 Days', gender: 'Female', color: 'Brown', intakeDate: '1/5/2024', image: 'maine coon.png' },
@@ -122,6 +139,30 @@ app.get("/help-and-advice", (req, res) => {
 app.get("/find-us", (req, res) => {
     res.render("find.ejs", {title : "Find Us",loggedin: req.session.loggedin})
 })
+
+app.get('/form', async function(req, res) {
+    if (req.user) {
+        try {
+            const user = await UserData.findOne({ username: req.user.username });
+            if (user) {
+                res.render('form.ejs', {
+                    title : "Form",
+                    user: user,
+                    loggedin: req.session.loggedin,
+                    phone: user.phone,
+                    email: user.email,
+                    catName: req.query.catName
+                });
+            } else {
+                res.send('No user found with that username');
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    } else {
+        res.send('You are not logged in');
+    }
+});
 
 app.get('/myacc', async function(req, res) {
     if (req.user) {
@@ -265,7 +306,6 @@ app.get('/logout', function(req, res) {
             console.log(err);
         } else {
             res.redirect('/adopt');
-            // req.session.loggedin = false;
         }
     });
 });

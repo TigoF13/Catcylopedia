@@ -100,7 +100,7 @@
                                 <label for="ageSortCheckbox">&nbsp; Age</label>
                             </div>
                             <div class="dropdown-checkbox">
-                                <input type="radio" id="genderSortCheckbox" name="sortOption">
+                                <input type="radio" id="genderSortCheckbox" name="sortOption">"
                                 <label for="genderSortCheckbox">&nbsp; Gender</label>
                             </div>
                         </div>
@@ -108,7 +108,7 @@
                 </div>
             </div>
             
-            <div class="container-card">
+            <div class="container-card scrollable-container">
                 <% cats.forEach(cat => { %>
                     <div class="kotak-card">
                         <img src="assets/<%= cat.image %>" alt="<%= cat.name %>">
@@ -118,6 +118,9 @@
                             <p>Gender: <%= cat.gender %></p>
                             <p>Color: <%= cat.color %></p>
                             <p>Intake date: <%= cat.intakeDate %></p>
+                            <a href="/form?catName=<%= cat.name %>">
+                                <button class="adoptbtn"'>Adopt</button>
+                            </a>
                             <br>
                         </div>
                     </div>
