@@ -101,12 +101,25 @@ h1 {
     font-weight: bolder;
 }
 
-.btn:hover {
+.btn2 {
+    background-color: #fae6fa;
+    color: #79016c;
+    margin: 25px 5px;
+    padding: 5px 30px;
+    width: 150px;
+    border-radius: 7px;
+    border: none;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.btn:hover,.btn2:hover {
     background-color: #79016c;
     color: white;
     cursor: pointer;
     transition: .1s ease-in-out;
 }
+
 .adoptbtn {
     background-color: #fae6fa;
     color: #79016c;
@@ -273,6 +286,7 @@ p {
     gap: 25px;
     margin-top: 50px;
     height: 150vh;
+    border: 2px solid red;
 }
 
 .kotak-card {
