@@ -272,7 +272,7 @@ p {
     flex-wrap: wrap;
     gap: 25px;
     margin-top: 50px;
-    height: 200vh;
+    height: 150vh;
 }
 
 .kotak-card {
@@ -614,7 +614,7 @@ p {
 
 .scrollable-container {
     overflow-y: auto;
-    height: 200vh ;
+    height: 250vh ;
     border-radius: 10px; /* Adjust this value according to your needs */
 }
 
