@@ -80,40 +80,47 @@ app.use('/public',express.static('public'));
 //     { breed: 'Siberian', name: 'Max', age: '10 Months 26 Days', gender: 'Male', color: 'White', intakeDate: '4/19/2024', image: 'siberian.jpg', adopted: false  },
 // ];
 
-app.get("/", (req, res) => {
-    res.render("adopt.ejs", {title : "Adopt a cat | Find a cat to adopt", loggedin: req.session.loggedin, admin: req.session.admin, cats: Cats})
+app.get("/", async (req, res) => {
+    let query = Cats.find();
+    const cats = await query.exec();
+    res.render("adopt.ejs", {title : "Adopt a cat | Find a cat to adopt", loggedin: req.session.loggedin, admin: req.session.admin, cats: cats})
 })
 
 app.get("/adopt", async (req, res) => {
-    let query = Cats.find();
+    try {
+        let query = Cats.find();
 
-    if (req.query.sort === 'age') {
-        query = query.sort({ ageInDays: 1 }); // assuming ageInDays is a field in your schema
-    }
-
-    if (req.query.sort === 'gender') {
-        query = query.sort({ gender: 1 });
-    }
-
-    if (req.query.gender) {
-        query = query.where('gender').equals(req.query.gender.toLowerCase());
-    }
-
-    if (req.query.breed) {
-        query = query.where('breed').equals(req.query.breed.toLowerCase());
-    }
-
-    if (req.query.ageGroup) {
-        if (req.query.ageGroup === 'adult') {
-            query = query.where('ageInDays').gte(8 * 30); // assuming ageInDays is a field in your schema
-        } else if (req.query.ageGroup === 'child') {
-            query = query.where('ageInDays').lte(7 * 30 + 29);
+        if (req.query.sort === 'age') {
+            query = query.sort({ ageInDays: 1 });
         }
+
+        if (req.query.sort === 'gender') {
+            query = query.sort({ gender: 1 });
+        }
+
+        if (req.query.gender) {
+            query = query.where('gender').equals(req.query.gender.toLowerCase());
+        }
+
+        if (req.query.breed) {
+            query = query.where('breed').equals(req.query.breed.toLowerCase());
+        }
+
+        if (req.query.ageGroup) {
+            if (req.query.ageGroup === 'adult') {
+                query = query.where('ageInDays').gte(8 * 30);
+            } else if (req.query.ageGroup === 'child') {
+                query = query.where('ageInDays').lte(7 * 30 + 29);
+            }
+        }
+
+        const updatedCats = await query.exec();
+
+        res.render("adopt.ejs", {title : "Adopt a cat | Find a cat to adopt", loggedin: req.session.loggedin, admin: req.session.admin, cats: updatedCats});
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Server error');
     }
-
-    const updatedCats = await query.exec();
-
-    res.render("adopt.ejs", {title : "Adopt a cat | Find a cat to adopt", loggedin: req.session.loggedin, admin: req.session.admin, cats: updatedCats})
 });
 
 app.get("/about", (req, res) => {
