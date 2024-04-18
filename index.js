@@ -123,8 +123,16 @@ app.get("/adopt", async (req, res) => {
     }
 });
 
+app.get("/", (req, res) => {
+    res.render("adopt.ejs", {title : "Donate | Help Cats and kitten in care", loggedin: req.session.loggedin, cats: cats})
+})
+
 app.get("/about", (req, res) => {
     res.render("about.ejs", {title : "About Cat Protection | Who are Cats Protection",loggedin: req.session.loggedin, admin: req.session.admin})
+})
+
+app.get("/donate", (req, res) => {
+    res.render("donate.ejs", {title : "Donate | Help Cats and Kittens in Care",loggedin: req.session.loggedin, admin: req.session.admin})
 })
 
 app.get("/what-we-do", (req, res) => {

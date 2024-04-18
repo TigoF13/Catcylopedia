@@ -505,7 +505,6 @@ p {
 }
 
 .container-strip{
-    /* border: 2px solid red; */
     height: 80vh;
     background-color: #fae6fa;
     margin: 0px -150px;
@@ -515,7 +514,6 @@ p {
 }
 
 .strip{
-    /* border: 2px solid blue; */
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -589,4 +587,59 @@ p {
     overflow-y: auto;
     height: 250vh ;
     border-radius: 10px; /* Adjust this value according to your needs */
+}
+
+.strip-card-donate{
+    color: #fff;
+    width: 300px;
+    background-color: #7b2076;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    transition: transform 0.8s ease;
+    z-index: 100;
+    padding: 0px 5px;
+}
+
+.strip-card-donate:hover {
+    transform: translateY(-7.5px);
+}
+
+.strip-content-donate {
+    padding-top: 20px;
+    margin: 0px 10px;
+}
+
+.strip-content-donate h2 {
+    text-align: center;
+    padding-bottom: 20px;
+    font-weight: bolder;
+}
+
+.strip-content-donate p {
+    font-size: 18px;
+    text-align: center;
+    color: #fff;
+    margin: 0px 25px;
+}
+
+.btn-donate{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #c928b2;
+    color: #fae6fa;
+    border: #c928b2;
+    border-radius: 10px;
+    margin: 0px 0px 10px 0px;
+    padding: 5px 10px;
+    font-size: 22px;
+    font-weight: bolder;
+    width: 100%;
+}
+
+.btn-donate:hover{
+    cursor: pointer;
+    background-color: #fae6fa;
+    color: #c928b2;
+    transition: .05s ease-in-out;
 }
