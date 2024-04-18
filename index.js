@@ -116,6 +116,10 @@ app.get("/adopt", (req, res) => {
     res.render("adopt.ejs", {title : "Adopt a cat | Find a cat to adopt", loggedin: req.session.loggedin, cats: updatedCats})
 })
 
+app.get("/", (req, res) => {
+    res.render("donate.ejs", {title : "Donate | Help Cats and kitten in care", loggedin: req.session.loggedin, cats: cats})
+})
+
 app.get("/about", (req, res) => {
     res.render("about.ejs", {title : "About Cat Protection | Who are Cats Protection",loggedin: req.session.loggedin})
 })
