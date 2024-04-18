@@ -124,7 +124,7 @@ app.get("/adopt", async (req, res) => {
 });
 
 app.get("/", (req, res) => {
-    res.render("donate.ejs", {title : "Donate | Help Cats and kitten in care", loggedin: req.session.loggedin, cats: cats})
+    res.render("adopt.ejs", {title : "Donate | Help Cats and kitten in care", loggedin: req.session.loggedin, cats: cats})
 })
 
 app.get("/about", (req, res) => {
