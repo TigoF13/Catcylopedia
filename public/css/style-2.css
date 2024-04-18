@@ -286,7 +286,7 @@ p {
     gap: 25px;
     margin-top: 50px;
     height: 150vh;
-    border: 2px solid red;
+    /* border: 2px solid red; */
 }
 
 .kotak-card {
