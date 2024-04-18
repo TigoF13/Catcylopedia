@@ -107,28 +107,34 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="container-card scrollable-container">
-                <% cats.forEach(cat => { %>
-                    <div class="kotak-card">
-                        <img src="assets/<%= cat.image %>" alt="<%= cat.name %>">
-                        <div class="konten-card">
-                            <h2><%= cat.name %></h2>
-                            <p>Breed: <%= cat.breed %></p>
-                            <p>Age: <%= cat.age %></p>
-                            <p>Gender: <%= cat.gender %></p>
-                            <p>Color: <%= cat.color %></p>
-                            <p>Intake date: <%= cat.intakeDate %></p>
-                            <a href="/form?catName=<%= cat.name %>">
-                                <button class="adoptbtn"'>Adopt</button>
-                            </a>
-                            <br>
+            <div class="scrollable-container">
+                <div class="container-card ">
+                    <% cats.forEach(cat => { %>
+                        <div class="kotak-card">
+                            <img src="<%= cat.image.data %>" alt="<%= cat.name %>">
+                            <div class="konten-card">
+                                <h2><%= cat.name %></h2>
+                                <p>Breed: <%= cat.breed %></p>
+                                <p>Age: <%= cat.age %></p>
+                                <p>Gender: <%= cat.gender %></p>
+                                <p>Color: <%= cat.color %></p>
+                                <p>Intake date: <%= cat.intakeDate %></p>
+                                <% if (cat.adopted) { %>
+                                    <button class="adoptbtn" disabled>Adopted!</button>
+                                    <% } else { %>
+                                        <a href="/form?catName=<%= cat.name %>">
+                                        <button class="adoptbtn">Adopt</button>
+                                    </a>
+                                <% } %>
+                                <br>
+                            </div>
                         </div>
+                    <% }); %>
                     </div>
-                <% }); %>
                 </div>
+            </div>
         </div>
-
+            
         <!-- CONTENT END -->
 
         <!-- FOOTER START -->
@@ -140,6 +146,14 @@
     </div>
     <script src="js\main.js"></script>
     <script src="js\sorting.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                var alert = document.getElementById('success-alert');
+                if (alert) alert.style.display = 'none';
+            }, 2000); // 2 seconds
+});
+    </script>
 </body>
 
 </html>

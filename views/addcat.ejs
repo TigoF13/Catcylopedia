@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('layouts/adopt/head') %>
+
+<body>
+    <div class="container">
+        <!-- NAVBAR START -->
+
+        <%- include('layouts/adopt/adopthead', { title: 'Adopt a cat' }) %>
+
+        <!-- NAVBAR END -->
+
+        <!-- CONTENT START -->
+
+        <div class="container-content">
+            <form action="/Add-cat" method="POST" enctype="multipart/form-data">
+                <div>
+                    <label for="name">Name of Cat </label>
+                    <input type="text" id="name" name="name" placeholder="Name" value="" required>
+                </div>
+                <div>
+                    <label for="breed">Breed</label>
+                    <input type="text" id="breed" name="breed" placeholder="Breed" value="" required>
+                </div>
+                <div>
+                    <label for="Age">Age</label> <br>   
+                    <input type="number" id="AgeY" name="AgeY" placeholder="0" max="100" min="0" required>
+                    <label for="AgeY">Years</label>
+                    <input type="number" id="AgeM" name="AgeM" placeholder="00" max="11" min="0" required>
+                    <label for="AgeM">Months</label>
+                    <input type="number" id="AgeD" name="AgeD" placeholder="00" max="29" min="1" required>
+                    <label for="AgeD">Days</label>
+                </div>
+                <div>
+                    <label for="gender">Gender</label>
+                    <input type="text" id="gender" name="gender" placeholder="Gender" value="" required>
+                </div>
+                <div>
+                    <label for="color">Color</label>
+                    <input type="text" id="color" name="color" placeholder="Color" value="" required>
+                </div>
+                <div>
+                    <label for="intake">Intake Date</label> <br>
+                    <input type="number" id="InM" name="InM" placeholder="MM" value="" max="12" min="1" required>
+                    /
+                    <input type="number" id="InD" name="InD" placeholder="DD" value="" max="31" min="1" required>
+                    /
+                    <input type="number" id="inY" name="inY" placeholder="YYYY" value="" max="9999" min="2000" required>
+                </div>
+                <div>
+                    <label for="image">Upload Image</label>
+                    <input type="file" id="image" name="image" required >
+                </div>
+                <div>
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div> <!-- This closing </div> was moved here -->
+
+        <!-- CONTENT END -->
+
+        <!-- FOOTER START -->
+
+        <%- include('layouts/adopt/adoptfooter') %>
+
+        <!-- FOOTER END -->
+
+    </div>
+    <script src="js\main.js"></script>
+</body>
+
+</html>

@@ -16,20 +16,24 @@
             <div class="container-content">
                 <form action="/submit-form" method="POST">
                     <label for="firstName">First Name:</label><br>
-                    <input type="text" class="acc-isi" id="firstName" name="firstName"><br>
+                    <input type="text" class="acc-isi" id="firstName" name="firstName" required><br>
                     <label for="lastName">Last Name:</label><br>
-                    <input type="text" class="acc-isi" id="lastName" name="lastName"><br>
+                    <input type="text" class="acc-isi" id="lastName" name="lastName" required><br>
                     <label for="address">Address:</label><br>                    
-                    <input type="text" class="acc-isi" id="streetAddress" name="streetAddress" placeholder="Street Address"><br>
-                    <input type="text" class="acc-isi" id="city" name="city" placeholder="City"><br>
-                    <input type="text" class="acc-isi" id="region" name="region" placeholder="Region"><br>
-                    <input type="text" class="acc-isi" id="postalCode" name="postalCode" placeholder="Postal/Zip Code"><br>
+                    <input type="text" class="acc-isi" id="streetAddress" name="streetAddress" placeholder="Street Address" required><br>
+                    <input type="text" class="acc-isi" id="city" name="city" placeholder="City" required><br>
+                    <input type="text" class="acc-isi" id="region" name="region" placeholder="Region" required><br>
+                    <input type="number" class="acc-isi" id="postalCode" name="postalCode" placeholder="Postal/Zip Code" required><br>
                     <label for="email">Email:</label><br>
-                    <input type="email" class="acc-isi" id="email" name="email" value="<%= user.email%>" readonly><br>
+                    <input type="email" class="acc-isi" id="email" name="email" value="<%= user.email%>" readonly required><br>
                     <label for="phoneNumber">Phone Number:</label><br>
-                    <input type="number" class="acc-isi" id="phoneNumber" name="phoneNumber" value="0<%= user.phone%>" readonly><br>
+                    <input type="number" class="acc-isi" id="phoneNumber" name="phoneNumber" value="0<%= user.phone%>" readonly required><br>
                     <label for="catName">Name of Cat Applied For:</label><br>
-                    <input type="text" class="acc-isi" id="catName" name="catName" value="<%= catName %>" readonly><br>
+                    <input type="text" class="acc-isi" id="catName" name="catName" value="<%= catName %>" readonly required><br>
+                    <label for="terms">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        I agree to the terms and conditions and swear to take care and love the cat.
+                    </label><br>
                     <input type="submit" value="Submit" class="btn">
                 </form>
 
