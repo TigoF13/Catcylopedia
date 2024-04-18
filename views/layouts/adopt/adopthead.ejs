@@ -7,7 +7,11 @@
         <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
     </div>
     <div class="donate">
-        <a href="#"><button class="btn">Donate</button></a>
+        <% if (!admin) { %>
+            <a href="#"><button class="btn">Donate</button></a>
+        <% } else { %>
+            <a href="/addcat"><button class="btn">Add Cat</button></a>
+        <% } %>
         <% if (!loggedin) { %>
             <a href="/login"><button class="btn">Login</button></a>
         <% } else { %>
