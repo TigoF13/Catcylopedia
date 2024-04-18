@@ -7,53 +7,61 @@
     <div class="container">
         <!-- NAVBAR START -->
 
-        <%- include('layouts/adopt/adopthead', { title: 'Adopt a cat' }) %>
+        <%- include('layouts/adopt/adopthead', { title: 'Add a cat' }) %>
 
         <!-- NAVBAR END -->
 
         <!-- CONTENT START -->
 
-        <div class="container-content">
+        <div class="container-form">
             <form action="/Add-cat" method="POST" enctype="multipart/form-data">
                 <div>
                     <label for="name">Name of Cat </label>
-                    <input type="text" id="name" name="name" placeholder="Name" value="" required>
+                    <input type="text" id="name" name="name" placeholder="Name" value="" required class="form-isi">
                 </div>
                 <div>
                     <label for="breed">Breed</label>
-                    <input type="text" id="breed" name="breed" placeholder="Breed" value="" required>
+                    <input type="text" id="breed" name="breed" placeholder="Breed" value="" required class="form-isi">
                 </div>
                 <div>
-                    <label for="Age">Age</label> <br>   
-                    <input type="number" id="AgeY" name="AgeY" placeholder="0" max="100" min="0" required>
-                    <label for="AgeY">Years</label>
-                    <input type="number" id="AgeM" name="AgeM" placeholder="00" max="11" min="0" required>
-                    <label for="AgeM">Months</label>
-                    <input type="number" id="AgeD" name="AgeD" placeholder="00" max="29" min="1" required>
-                    <label for="AgeD">Days</label>
+                    <label for="Age" style="font-size: 20px;">Age</label><br>   
+                    <div class="row-form">
+                        <div>
+                            <label for="AgeY">Years</label>
+                            <input type="number" id="AgeY" name="AgeY" placeholder="0" max="100" min="0" required class="form-isi">
+                        </div>
+                        <div>
+                            <label for="AgeM">Months</label>
+                            <input type="number" id="AgeM" name="AgeM" placeholder="00" max="11" min="0" required class="form-isi">
+                        </div>
+                        <div>
+                            <label for="AgeD">Days</label>
+                            <input type="number" id="AgeD" name="AgeD" placeholder="00" max="29" min="1" required class="form-isi">
+                        </div>
+                    </div>
                 </div>
                 <div>
                     <label for="gender">Gender</label>
-                    <input type="text" id="gender" name="gender" placeholder="Gender" value="" required>
+                    <input type="text" id="gender" name="gender" placeholder="Gender" value="" required class="form-isi">
                 </div>
                 <div>
                     <label for="color">Color</label>
-                    <input type="text" id="color" name="color" placeholder="Color" value="" required>
+                    <input type="text" id="color" name="color" placeholder="Color" value="" required class="form-isi">
                 </div>
                 <div>
                     <label for="intake">Intake Date</label> <br>
-                    <input type="number" id="InM" name="InM" placeholder="MM" value="" max="12" min="1" required>
-                    /
-                    <input type="number" id="InD" name="InD" placeholder="DD" value="" max="31" min="1" required>
-                    /
-                    <input type="number" id="inY" name="inY" placeholder="YYYY" value="" max="9999" min="2000" required>
+                    <div class="row-form">
+                        <input type="number" id="InM" name="InM" placeholder="MM" value="" max="12" min="1" required class="form-isi">
+                        <input type="number" id="InD" name="InD" placeholder="DD" value="" max="31" min="1" required class="form-isi">
+                        <input type="number" id="inY" name="inY" placeholder="YYYY" value="" max="9999" min="2000" required class="form-isi">
+                    </div>
                 </div>
                 <div>
                     <label for="image">Upload Image</label>
-                    <input type="file" id="image" name="image" required >
+                    <input type="file" id="image" name="image" required class="form-isi">
                 </div>
                 <div>
-                    <button type="submit">Submit</button>
+                    <button type="submit" class="btn">Submit</button>
                 </div>
             </form>
         </div> <!-- This closing </div> was moved here -->
@@ -67,7 +75,7 @@
         <!-- FOOTER END -->
 
     </div>
-    <script src="js\main.js"></script>
+    <script src="/public/js/main.js"></script>
 </body>
 
 </html>

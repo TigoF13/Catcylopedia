@@ -139,6 +139,25 @@
 
                                 <!-- PASSWORD END -->
 
+                                <!-- ADOPTED CATS START -->
+
+                                <li class="account-item">Adopted Cats</li>
+                                <div class="acc-isi-luar">
+                                    <div class="acc-isi" id="adoptedCats">
+                                        <% if (user && user.adoptedCats && user.adoptedCats.length > 0) { %>
+                                            <% user.adoptedCats.forEach(function(cat) { %>
+                                                <p><%= cat.name %></p>
+                                            <% }); %>
+                                        <% } else { %>
+                                            <p>None</p>
+                                        <% } %>
+                                    </div>
+                                </div>
+                                
+                                <!-- ADOPTED CATS END -->
+
+                                <!-- ADOPTED CATS END -->
+
                                 <!-- DELETE BUTTON -->
 
                                 <div class="bottom m-top">
@@ -159,7 +178,7 @@
 
     </body>
 
-    <script src="js\change.js"></script>
+    <script src="/public/js/change.js"></script>
     <script>
         document.getElementById('delete-button').addEventListener('click', function () {
             fetch('/deleteUser', {

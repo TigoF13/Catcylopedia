@@ -7,45 +7,48 @@
     <div class="container">
         <!-- NAVBAR START -->
 
-        <%- include('layouts/adopt/adopthead', { title: 'Adopt a cat' }) %>
+        <%- include('layouts/adopt/adopthead', { title: 'Add a cat' }) %>
 
         <!-- NAVBAR END -->
 
         <!-- CONTENT START -->
 
-            <div class="container-content">
-                <form action="/submit-form" method="POST">
-                    <label for="firstName">First Name:</label><br>
-                    <input type="text" class="acc-isi" id="firstName" name="firstName" required><br>
-                    <label for="lastName">Last Name:</label><br>
-                    <input type="text" class="acc-isi" id="lastName" name="lastName" required><br>
-                    <label for="address">Address:</label><br>                    
-                    <input type="text" class="acc-isi" id="streetAddress" name="streetAddress" placeholder="Street Address" required><br>
-                    <input type="text" class="acc-isi" id="city" name="city" placeholder="City" required><br>
-                    <input type="text" class="acc-isi" id="region" name="region" placeholder="Region" required><br>
-                    <input type="number" class="acc-isi" id="postalCode" name="postalCode" placeholder="Postal/Zip Code" required><br>
-                    <label for="email">Email:</label><br>
-                    <input type="email" class="acc-isi" id="email" name="email" value="<%= user.email%>" readonly required><br>
-                    <label for="phoneNumber">Phone Number:</label><br>
-                    <input type="number" class="acc-isi" id="phoneNumber" name="phoneNumber" value="0<%= user.phone%>" readonly required><br>
-                    <label for="catName">Name of Cat Applied For:</label><br>
-                    <input type="text" class="acc-isi" id="catName" name="catName" value="<%= catName %>" readonly required><br>
-                    <label for="terms">
-                        <input type="checkbox" id="terms" name="terms" required>
-                        I agree to the terms and conditions and swear to take care and love the cat.
-                    </label><br>
-                    <input type="submit" value="Submit" class="btn">
-                </form>
+        <div class="container-form">
+            <form action="/submit-form" method="POST">
+                <label for="firstName" >First Name:</label><br>
+                <input type="text" class="form-isi" id="firstName" name="firstName" required><br>
+                <label for="lastName">Last Name:</label><br>
+                <input type="text" class="form-isi" id="lastName" name="lastName" required><br>
+                <label for="address">Address:</label><br>                    
+                <input type="text" class="form-isi" id="streetAddress" name="streetAddress" placeholder="Street Address" required><br>
+                <input type="text" class="form-isi" id="city" name="city" placeholder="City" required><br>
+                <input type="text" class="form-isi" id="region" name="region" placeholder="Region" required><br>
+                <input type="number" class="form-isi" id="postalCode" name="postalCode" placeholder="Postal/Zip Code" required><br>
+                <label for="email">Email:</label><br>
+                <input type="email" class="form-isi" id="email" name="email" value="<%= user.email%>" readonly required><br>
+                <label for="phoneNumber">Phone Number:</label><br>
+                <input type="number" class="form-isi" id="phoneNumber" name="phoneNumber" value="0<%= user.phone%>" readonly required><br>
+                <label for="catName">Name of Cat Applied For:</label><br>
+                <input type="text" class="form-isi" id="catName" name="catName" value="<%= catName %>" readonly required><br>
+                <label for="terms">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    I agree to the terms and conditions and swear to take care and love the cat.
+                </label><br>
+                <input type="submit" value="Submit" class="btn">
+            </form>
+        </div> <!-- This closing </div> was moved here -->
 
         <!-- CONTENT END -->
 
         <!-- FOOTER START -->
 
-        <!-- <%- include('layouts/adopt/adoptfooter') %> -->
+        <%- include('layouts/adopt/adoptfooter') %>
 
         <!-- FOOTER END -->
 
     </div>
+    <script src="/public/js/main.js"></script>
 </body>
 
 </html>
+

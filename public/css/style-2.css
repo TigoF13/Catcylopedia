@@ -227,6 +227,35 @@ footer {
     padding-top: 10vh;
 }
 
+.container-form {
+    display: flex; 
+    justify-content: center; 
+    align-items: flex-start;
+    text-align: center;
+    height: 120vh;
+    padding-top: 5vh;
+    /* height: 350vh; */
+    margin-top: 26vh;
+}
+
+.form-isi {
+    width: 300px;
+    border: 2px solid #7b2076;
+    background-color: #fae6fa;
+    border-radius: 4px;
+    padding: 7px 7px;
+    margin: 10px auto 10px auto; /* Adjust as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.row-form{
+    display: flex; 
+    justify-content: space-between;
+    gap: 20px;
+}
+
 .content-title {
     color: #79016c;
     font-weight: bolder;
@@ -587,6 +616,6 @@ p {
 
 .scrollable-container {
     overflow-y: auto;
-    height: 250vh ;
+    height: 200vh ;
     border-radius: 10px; /* Adjust this value according to your needs */
 }

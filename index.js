@@ -58,28 +58,6 @@ app.use(passport.session());
 app.use('/public',express.static('public'));
 
 
-
-
-
-// let cats = [
-//     { breed: 'Anggora', name: 'Snowball', age: '1 Year 6 Months 26 Days', gender: 'Male', color: 'White', intakeDate: '2/29/2024', image: 'anggora.jpg',adopted: false },
-//     { breed: 'Himalaya', name: 'Whiskers', age: '1 Year 1 Months 1 Days', gender: 'Female', color: 'Brown/White', intakeDate: '1/19/2024', image: 'himalaya.jpg',adopted: false },
-//     { breed: 'Maine Coon', name: 'Shadow', age: '6 Months 26 Days', gender: 'Female', color: 'Brown', intakeDate: '1/5/2024', image: 'maine coon.png', adopted: false  },
-//     { breed: 'Munchkin', name: 'Smokey', age: '1 Year 26 Days', gender: 'Male', color: 'Gray', intakeDate: '12/29/2023', image: 'munchkin.jpg', adopted: false  },
-//     { breed: 'Persia', name: 'Simba', age: '1 Year 2 Months 16 Days', gender: 'Male', color: 'Gray/White', intakeDate: '1/9/2024', image: 'persia.jpg', adopted: false  },
-//     { breed: 'Ragdoll', name: 'Bella', age: '11 Months 8 Days', gender: 'Female', color: 'White/Brown', intakeDate: '1/18/2024', image: 'ragdoll.jpg', adopted: false  },
-//     { breed: 'Siamm', name: 'Luna', age: '1 Year 11 Months 8 Days', gender: 'Female', color: 'White/Black', intakeDate: '3/19/2024', image: 'siamm.jpg', adopted: false  },
-//     { breed: 'Siberian', name: 'Max', age: '10 Months 26 Days', gender: 'Male', color: 'White', intakeDate: '4/19/2024', image: 'siberian.jpg', adopted: false  },
-//     { breed: 'Anggora', name: 'Snowball', age: '1 Year 6 Months 26 Days', gender: 'Male', color: 'White', intakeDate: '2/29/2024', image: 'anggora.jpg',adopted: false },
-//     { breed: 'Himalaya', name: 'Whiskers', age: '1 Year 1 Months 1 Days', gender: 'Female', color: 'Brown/White', intakeDate: '1/19/2024', image: 'himalaya.jpg',adopted: false },
-//     { breed: 'Maine Coon', name: 'Shadow', age: '6 Months 26 Days', gender: 'Female', color: 'Brown', intakeDate: '1/5/2024', image: 'maine coon.png', adopted: false  },
-//     { breed: 'Munchkin', name: 'Smokey', age: '1 Year 26 Days', gender: 'Male', color: 'Gray', intakeDate: '12/29/2023', image: 'munchkin.jpg', adopted: false  },
-//     { breed: 'Persia', name: 'Simba', age: '1 Year 2 Months 16 Days', gender: 'Male', color: 'Gray/White', intakeDate: '1/9/2024', image: 'persia.jpg', adopted: false  },
-//     { breed: 'Ragdoll', name: 'Bella', age: '11 Months 8 Days', gender: 'Female', color: 'White/Brown', intakeDate: '1/18/2024', image: 'ragdoll.jpg', adopted: false  },
-//     { breed: 'Siamm', name: 'Luna', age: '1 Year 11 Months 8 Days', gender: 'Female', color: 'White/Black', intakeDate: '3/19/2024', image: 'siamm.jpg', adopted: false  },
-//     { breed: 'Siberian', name: 'Max', age: '10 Months 26 Days', gender: 'Male', color: 'White', intakeDate: '4/19/2024', image: 'siberian.jpg', adopted: false  },
-// ];
-
 app.get("/", async (req, res) => {
     let query = Cats.find();
     const cats = await query.exec();
@@ -88,35 +66,56 @@ app.get("/", async (req, res) => {
 
 app.get("/adopt", async (req, res) => {
     try {
+        console.log(req.query);
         let query = Cats.find();
 
-        if (req.query.sort === 'age') {
-            query = query.sort({ ageInDays: 1 });
-        }
-
-        if (req.query.sort === 'gender') {
-            query = query.sort({ gender: 1 });
-        }
-
         if (req.query.gender) {
-            query = query.where('gender').equals(req.query.gender.toLowerCase());
+            query = query.where('gender').regex(new RegExp('^' + req.query.gender, 'i'));
         }
 
         if (req.query.breed) {
-            query = query.where('breed').equals(req.query.breed.toLowerCase());
+            query = query.where('breed').regex(new RegExp('^' + req.query.breed, 'i'));
         }
+
+        if (req.query.sort) {
+            query = query.sort({ [req.query.sort]: 1 });
+        }
+
+        let cats = await query.exec();
 
         if (req.query.ageGroup) {
-            if (req.query.ageGroup === 'adult') {
-                query = query.where('ageInDays').gte(8 * 30);
-            } else if (req.query.ageGroup === 'child') {
-                query = query.where('ageInDays').lte(7 * 30 + 29);
-            }
+            cats = cats.filter(cat => {
+                const ageParts = cat.age.split(' ');
+                let years = 0, months = 0, days = 0;
+                for (let i = 0; i < ageParts.length; i++) {
+                    if (!isNaN(ageParts[i])) {
+                        switch (ageParts[i + 1].toLowerCase()) {
+                            case 'years':
+                            case 'year':
+                                years = parseInt(ageParts[i]);
+                                break;
+                            case 'months':
+                            case 'month':
+                                months = parseInt(ageParts[i]);
+                                break;
+                            case 'days':
+                            case 'day':
+                                days = parseInt(ageParts[i]);
+                                break;
+                        }
+                    }
+                }
+                const totalDays = years * 365 + months * 30 + days;
+        
+                if (req.query.ageGroup === 'adult') {
+                    return totalDays >= 8 * 30;
+                } else if (req.query.ageGroup === 'child') {
+                    return totalDays < 8 * 30;
+                }
+            });
         }
 
-        const updatedCats = await query.exec();
-
-        res.render("adopt.ejs", {title : "Adopt a cat | Find a cat to adopt", loggedin: req.session.loggedin, admin: req.session.admin, cats: updatedCats});
+        res.render("adopt.ejs", {title : "Adopt a cat | Find a cat to adopt", loggedin: req.session.loggedin, admin: req.session.admin, cats: cats});
     } catch (error) {
         console.error(error);
         res.status(500).send('Server error');
@@ -218,7 +217,7 @@ app.post('/Add-cat', (req, res, next) => {
             contentType: req.file.mimetype
         };
 
-        const age = `${AgeY} Years ${AgeM} Months ${AgeD} Days`;
+        const age = `${AgeY > 0 ? AgeY + ' Years ' : ''}${AgeM > 0 ? AgeM + ' Months ' : ''}${AgeD > 0 ? AgeD + ' Days' : ''}`.trim();  
         const intakeDate = `${InD}/${InM}/${inY}`;
 
         const Cat = new Cats({ name, breed, age, gender, color, intakeDate, image, adopted: false });
