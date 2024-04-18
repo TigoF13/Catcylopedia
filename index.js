@@ -131,6 +131,10 @@ app.get("/about", (req, res) => {
     res.render("about.ejs", {title : "About Cat Protection | Who are Cats Protection",loggedin: req.session.loggedin, admin: req.session.admin})
 })
 
+app.get("/donate", (req, res) => {
+    res.render("donate.ejs", {title : "Donate | Help Cats and Kittens in Care",loggedin: req.session.loggedin, admin: req.session.admin})
+})
+
 app.get("/what-we-do", (req, res) => {
     res.render("whatwedo.ejs", {title : "What we do | Helping Cats and Kitten",loggedin: req.session.loggedin, admin: req.session.admin})
 })
