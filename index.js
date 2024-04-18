@@ -77,40 +77,43 @@ app.get("/adopt", async (req, res) => {
             query = query.where('breed').regex(new RegExp('^' + req.query.breed, 'i'));
         }
 
-        if (req.query.sort) {
-            query = query.sort({ [req.query.sort]: 1 });
-        }
-
         let cats = await query.exec();
+
+        cats = cats.map(cat => {
+            const ageParts = cat.age.split(' ');
+            let years = 0, months = 0, days = 0;
+            for (let i = 0; i < ageParts.length; i++) {
+                if (!isNaN(ageParts[i])) {
+                    switch (ageParts[i + 1].toLowerCase()) {
+                        case 'years':
+                        case 'year':
+                            years = parseInt(ageParts[i]);
+                            break;
+                        case 'months':
+                        case 'month':
+                            months = parseInt(ageParts[i]);
+                            break;
+                        case 'days':
+                        case 'day':
+                            days = parseInt(ageParts[i]);
+                            break;
+                    }
+                }
+            }
+            const totalDays = years * 365 + months * 30 + days;
+            return { ...cat._doc, totalDays };
+        });
+
+        if (req.query.sort === 'age') {
+            cats.sort((a, b) => a.totalDays - b.totalDays);
+        }
 
         if (req.query.ageGroup) {
             cats = cats.filter(cat => {
-                const ageParts = cat.age.split(' ');
-                let years = 0, months = 0, days = 0;
-                for (let i = 0; i < ageParts.length; i++) {
-                    if (!isNaN(ageParts[i])) {
-                        switch (ageParts[i + 1].toLowerCase()) {
-                            case 'years':
-                            case 'year':
-                                years = parseInt(ageParts[i]);
-                                break;
-                            case 'months':
-                            case 'month':
-                                months = parseInt(ageParts[i]);
-                                break;
-                            case 'days':
-                            case 'day':
-                                days = parseInt(ageParts[i]);
-                                break;
-                        }
-                    }
-                }
-                const totalDays = years * 365 + months * 30 + days;
-        
                 if (req.query.ageGroup === 'adult') {
-                    return totalDays >= 8 * 30;
+                    return cat.totalDays >= 8 * 30;
                 } else if (req.query.ageGroup === 'child') {
-                    return totalDays < 8 * 30;
+                    return cat.totalDays < 8 * 30;
                 }
             });
         }
@@ -122,9 +125,18 @@ app.get("/adopt", async (req, res) => {
     }
 });
 
-app.get("/", (req, res) => {
-    res.render("adopt.ejs", {title : "Donate | Help Cats and kitten in care", loggedin: req.session.loggedin, cats: cats})
-})
+app.post("/search", async (req, res) => {
+    try {
+        const searchTerm = req.body.search;
+        const cats = await Cats.find();
+        const filteredCats = cats.filter(cat => cat.name.toLowerCase().startsWith(searchTerm.toLowerCase()));
+
+        res.render("adopt.ejs", {title : "Adopt a cat | Find a cat to adopt", loggedin: req.session.loggedin, admin: req.session.admin, cats: filteredCats});
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Server error');
+    }
+});
 
 app.get("/about", (req, res) => {
     res.render("about.ejs", {title : "About Cat Protection | Who are Cats Protection",loggedin: req.session.loggedin, admin: req.session.admin})
