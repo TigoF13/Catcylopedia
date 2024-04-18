@@ -100,7 +100,7 @@
                                 <label for="ageSortCheckbox">&nbsp; Age</label>
                             </div>
                             <div class="dropdown-checkbox">
-                                <input type="radio" id="genderSortCheckbox" name="sortOption">
+                                <input type="radio" id="genderSortCheckbox" name="sortOption">"
                                 <label for="genderSortCheckbox">&nbsp; Gender</label>
                             </div>
                         </div>
@@ -108,16 +108,20 @@
                 </div>
             </div>
             
-            <div class="container-card">
+            <div class="container-card scrollable-container">
                 <% cats.forEach(cat => { %>
                     <div class="kotak-card">
                         <img src="assets/<%= cat.image %>" alt="<%= cat.name %>">
                         <div class="konten-card">
                             <h2><%= cat.name %></h2>
+                            <p>Breed: <%= cat.breed %></p>
                             <p>Age: <%= cat.age %></p>
                             <p>Gender: <%= cat.gender %></p>
                             <p>Color: <%= cat.color %></p>
                             <p>Intake date: <%= cat.intakeDate %></p>
+                            <a href="/form?catName=<%= cat.name %>">
+                                <button class="adoptbtn"'>Adopt</button>
+                            </a>
                             <br>
                         </div>
                     </div>
@@ -135,84 +139,7 @@
 
     </div>
     <script src="js\main.js"></script>
-    <script>
-        window.onload = function() {
-            var ageSort = document.getElementById('ageSortCheckbox');
-            var genderSort = document.getElementById('genderSortCheckbox');
-            var maleFilter = document.getElementById('maleCheckbox');
-            var femaleFilter = document.getElementById('femaleCheckbox');
-            var anggoraCheckbox = document.getElementById('anggoraCheckbox');
-            var himalayaCheckbox = document.getElementById('himalayaCheckbox');
-            var kampungCheckbox = document.getElementById('kampungCheckbox');
-            var mainecoonCheckbox = document.getElementById('mainecoonCheckbox');
-            var munchkinCheckbox = document.getElementById('munchkinCheckbox');
-            var persiaCheckbox = document.getElementById('persiaCheckbox');
-            var ragdollCheckbox = document.getElementById('ragdollCheckbox');
-            var siammCheckbox = document.getElementById('siammCheckbox');
-            var childCheckbox = document.getElementById('childCheckbox');
-            var adultCheckbox = document.getElementById('adultCheckbox');
-
-            // Array of all breed checkboxes
-            var breedCheckboxes = [anggoraCheckbox, himalayaCheckbox, kampungCheckbox, mainecoonCheckbox, munchkinCheckbox, persiaCheckbox, ragdollCheckbox, siammCheckbox];
-            var ageCheckboxes = [childCheckbox, adultCheckbox];
-
-            // Add event listener to each breed checkbox
-            breedCheckboxes.forEach(function(checkbox) {
-                if (checkbox) {
-                    checkbox.addEventListener('change', function(event) {
-                        if (event.target.checked) {
-                            window.location.href = '/adopt?breed=' + event.target.value;
-                        }
-                    });
-                }
-            });
-
-            if (ageSort) {
-                ageSort.addEventListener('change', function(event) {
-                    if (event.target.checked) {
-                        window.location.assign('/adopt?sort=age');
-                    }
-                });
-            }
-
-            if (genderSort) {
-                genderSort.addEventListener('change', function(event) {
-                    if (event.target.checked) {
-                        window.location.href = '/adopt?sort=gender';
-                    }
-                });
-            }
-
-            if (maleFilter) {
-                maleCheckbox.addEventListener('change', function(event) {
-                    if (event.target.checked) {
-                        window.location.href = '/adopt?gender=male';
-                    }
-                });
-            }
-
-            if (femaleFilter) {
-                femaleCheckbox.addEventListener('change', function(event) {
-                    if (event.target.checked) {
-                        window.location.href = '/adopt?gender=female';
-                    }
-                });
-            }
-
-            ageCheckboxes.forEach(function(checkbox) {
-            if (checkbox) {
-                checkbox.addEventListener('change', function(event) {
-                    if (event.target.checked) {
-                        window.location.href = '/adopt?ageGroup=' + event.target.value;
-                    }
-                });
-            }
-        });
-
-
-        };
-
-    </script>
+    <script src="js\sorting.js"></script>
 </body>
 
 </html>
