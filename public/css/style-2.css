@@ -686,3 +686,14 @@ p {
     color: #c928b2;
     transition: .05s ease-in-out;
 }
+
+.red{
+    color: #cc1414;
+}
+
+.container-addr{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+}
