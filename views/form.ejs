@@ -15,24 +15,28 @@
 
         <div class="container-form">
             <form action="/submit-form" method="POST">
-                <label for="firstName" >First Name:</label><br>
+                <label for="firstName" ><b>First Name </b><b class="red">*</b></label><br>
                 <input type="text" class="form-isi" id="firstName" name="firstName" required><br>
-                <label for="lastName">Last Name:</label><br>
+                <label for="lastName"><b>Last Name </b><b class="red">*</b></label><br>
                 <input type="text" class="form-isi" id="lastName" name="lastName" required><br>
-                <label for="address">Address:</label><br>                    
-                <input type="text" class="form-isi" id="streetAddress" name="streetAddress" placeholder="Street Address" required><br>
-                <input type="text" class="form-isi" id="city" name="city" placeholder="City" required><br>
-                <input type="text" class="form-isi" id="region" name="region" placeholder="Region" required><br>
-                <input type="number" class="form-isi" id="postalCode" name="postalCode" placeholder="Postal/Zip Code" required><br>
-                <label for="email">Email:</label><br>
+                <label for="address"><b>Address </b><b class="red">*</b></label><br>                    
+                <div class="container-addr"> 
+                    <input type="text" class="form-isi" id="streetAddress" name="streetAddress" placeholder="Street Address" required><br>
+                    <input type="text" class="form-isi" id="city" name="city" placeholder="City" required><br>
+                </div>
+                <div class="container-addr">
+                    <input type="text" class="form-isi" id="region" name="region" placeholder="Region" required><br>
+                    <input type="number" class="form-isi" id="postalCode" name="postalCode" placeholder="Postal/Zip Code" required><br>
+                </div>
+                <label for="email"><b>Email</b></label><br>
                 <input type="email" class="form-isi" id="email" name="email" value="<%= user.email%>" readonly required><br>
-                <label for="phoneNumber">Phone Number:</label><br>
+                <label for="phoneNumber"><b>Phone Number</b></label><br>
                 <input type="number" class="form-isi" id="phoneNumber" name="phoneNumber" value="0<%= user.phone%>" readonly required><br>
-                <label for="catName">Name of Cat Applied For:</label><br>
+                <label for="catName"><b>Name of Cat Applied For</b></label><br>
                 <input type="text" class="form-isi" id="catName" name="catName" value="<%= catName %>" readonly required><br>
                 <label for="terms">
                     <input type="checkbox" id="terms" name="terms" required>
-                    I agree to the terms and conditions and swear to take care and love the cat.
+                    I agree to the terms and conditions and swear to take care and love the cat.<b class="red">*</b>
                 </label><br>
                 <input type="submit" value="Submit" class="btn">
             </form>

@@ -10,7 +10,6 @@ body {
 
 h1 {
     margin-bottom: 10px;
-    /* Adjust the margin-bottom value as needed */
     text-align: center;
 }
 
@@ -32,7 +31,6 @@ h1 {
     height: 15vh;
     display: flex;
     flex-direction: row;
-    /* border: 2px solid black; */
 }
 
 .container-sidebar a {
@@ -41,7 +39,6 @@ h1 {
 
 .container-navbar {
     height: 17.5vh;
-    /* border: 2px solid red; */
 }
 
 .pilihan {
@@ -154,7 +151,6 @@ h1 {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    /* border: 2px solid green; */
 }
 
 .ul-navbar {
@@ -163,7 +159,6 @@ h1 {
     list-style-type: none;
     font-size: 20px;
     font-weight: bolder;
-    /* border: 2px solid red; */
     padding: 20px 20px;
 }
 
@@ -227,7 +222,6 @@ footer {
     align-items: center;
     justify-content: center;
     font-size: 18px;
-    /* height: 100vh; */
 }
 
 .m-top {
@@ -247,7 +241,6 @@ footer {
     text-align: center;
     height: 120vh;
     padding-top: 5vh;
-    /* height: 350vh; */
     margin-top: 26vh;
 }
 
@@ -286,7 +279,6 @@ p {
     gap: 25px;
     margin-top: 50px;
     height: 150vh;
-    /* border: 2px solid red; */
 }
 
 .kotak-card {
@@ -500,21 +492,17 @@ p {
 }
 
 .container-feature {
-    /* border: 2px solid black; */
     display: flex;
     flex-direction: row;
-    padding: 0px 100px 0px 110px;
 }
 
 .container-filter {
-    /* border: 2px solid red; */
     flex: 7;
     display: flex;
     align-items: center;
 }
 
 .container-sort {
-    /* border: 2px solid blue; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -530,7 +518,6 @@ p {
 }
 
 .dropdown-content {
-    /* border: 2px solid red; */
     background-color: #fae6fa;
     margin: -20px 0px 0px 5px;
     padding: 10px 2.5px;
@@ -546,7 +533,6 @@ p {
 }
 
 .dropdown-checkbox {
-    /* border: 2px solid blue; */
     display: flex;
     padding: 0px 0px 5px 10px;
     font-weight: bold;
@@ -697,4 +683,27 @@ p {
     background-color: #fae6fa;
     color: #c928b2;
     transition: .05s ease-in-out;
+}
+
+.red{
+    color: #cc1414;
+}
+
+.container-addr{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.container-search{
+    width: 350px;
+}
+
+.form-search {
+    width: 200px;
+    border: 2px solid #7b2076;
+    background-color: #fae6fa;
+    border-radius: 4px;
+    padding: 5px 5px;
 }
