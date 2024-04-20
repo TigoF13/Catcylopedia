@@ -108,6 +108,10 @@ app.get("/adopt", async (req, res) => {
             cats.sort((a, b) => a.totalDays - b.totalDays);
         }
 
+        if (req.query.sort === 'gender') {
+            cats.sort((a, b) => a.gender.localeCompare(b.gender));
+        }
+
         if (req.query.ageGroup) {
             cats = cats.filter(cat => {
                 if (req.query.ageGroup === 'adult') {
@@ -191,6 +195,8 @@ app.get('/myacc', async function(req, res) {
         try {
             const user = await UserData.findOne({ username: req.user.username });
             if (user) {
+    
+    
                 res.render('myacc.ejs', {
                     title : "My Account",
                     loggedin: req.session.loggedin,
@@ -199,7 +205,8 @@ app.get('/myacc', async function(req, res) {
                     username: user.username,
                     phone: user.phone,
                     email: user.email,
-                    password: user.password
+                    password: user.password,
+                    adoptedcats: user.adoptedcats
                 });
             } else {
                 res.send('No user found with that username');

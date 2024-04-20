@@ -143,10 +143,10 @@
 
                                 <li class="account-item">Adopted Cats</li>
                                 <div class="acc-isi-luar">
-                                    <div class="acc-isi" id="adoptedCats">
-                                        <% if (user && user.adoptedCats && user.adoptedCats.length > 0) { %>
-                                            <% user.adoptedCats.forEach(function(cat) { %>
-                                                <p><%= cat.name %></p>
+                                    <div class="cat-isi" id="adoptedCats">
+                                        <% if (user.adoptedcats && user.adoptedcats.length > 0) { %>
+                                            <% user.adoptedcats.forEach(function(cat) { %>
+                                                <p><%= cat %></p>
                                             <% }); %>
                                         <% } else { %>
                                             <p>None</p>
