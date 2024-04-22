@@ -356,6 +356,18 @@ p {
     align-items: center;
     justify-content: center;
 }
+.cat-isi {
+    width: 300px;
+    border: 2px solid #7b2076;
+    background-color: #fae6fa;
+    border-radius: 4px;
+    padding: 7px 7px;
+    margin-left: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
 .acc-isi-luar {
     display: flex;
