@@ -14,6 +14,9 @@
         <!-- CONTENT START -->
 
         <div class="container-content">
+            
+            <!-- CONTENT DESCRIPTION START -->
+
             <div class="content-title">
                 <h1>Thinking about adopting a cat or kitten? Find out more about adopting a <br>cat with Cats Protection in our guide.</h1>
             </div>
@@ -28,7 +31,15 @@
                 <br>
             </div>
             <hr><br>
+
+            <!-- CONTENT DESCRIPTION END -->
+
+            <!-- ADOPT FEATURE START -->
+
             <div class="container-feature">
+
+                <!-- FILTER FEATURES START -->
+
                 <div class="container-filter">
                     <h2>Filter : &nbsp;</h2>
                     <div class="dropdown">
@@ -77,6 +88,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="dropdown">
                         <a><button class="btn sort dropbtn" id="contactDropdown-3">Age 🠧</button></a>
                         <div class="dropdown-content" id="contactDropdownContent-3">
@@ -92,12 +104,20 @@
                     </div>
                 </div>
 
+                <!-- FILTER FEATURES END -->
+
+                <!-- SEARCH FEATURE START -->
+
                 <div class="container-search">
                     <form action="/search" method="POST">
                         <input type="text" id="search" name="search" placeholder="Search by name" class="form-search">
                         <button type="submit" class="btn searchbtn">Search</button>
                     </form>
                 </div>
+
+                <!-- SEARCH FEATURE END -->
+
+                <!-- SORT FEATURE START -->
 
                 <div class="container-sort">
                     <div class="dropdown">
@@ -114,7 +134,16 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- SORT FEATURE END -->
+
             </div>
+
+            <!-- ADOPT FEATURE END -->
+
+
+            <!-- CAT ADOPT SECTION START-->
+            
             <div class="scrollable-container">
                 <div class="container-card ">
                     <% cats.forEach(cat => { %>
@@ -141,6 +170,9 @@
                     </div>
                 </div>
             </div>
+
+            <!-- CAT ADOPTION SECTION END -->
+
         </div>
             
         <!-- CONTENT END -->
