@@ -98,6 +98,24 @@ h1 {
     font-weight: bolder;
 }
 
+.btn-secondary{
+    background-color: #79016c;
+    color: #fae6fa;
+    margin: 25px 5px;
+    padding: 5px 30px;
+    border-radius: 7px;
+    border: none;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.btn-secondary:hover{
+    cursor: pointer;
+    background-color: #ffffff;
+    color: #79016c;
+    transition: .12s ease-in-out;
+}
+
 .btn2 {
     background-color: #fae6fa;
     color: #79016c;
@@ -552,6 +570,24 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.container-strip-2{
+    height: 65vh;
+    background-color: #fae6fa;
+    margin: 0px -150px;
+    padding: 0px 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.strip-3{
+    height: 85vh;
+}
+
+.no-bg{
+    background-color: #fff;
 }
 
 .strip{
