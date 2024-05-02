@@ -47,10 +47,15 @@
                 <li class="li-navbar"><a href="/what-we-do">What we do</a></li>
                 <li class="li-navbar"><a href="/help-and-advice">Help and Advice</a></li>
                 <li class="li-navbar"><a href="/find-us">Find Us</a></li>
-                <li class="li-navbar"><a href="<%= loggedin ? '/myacc' : '/login' %>">My Account</a></li>
+                <% if (!admin) { %>
+                    <li class="li-navbar"><a href="<%= loggedin ? '/myacc' : '/login' %>">My Account</a></li>
+                <% } else { %>
+                    <li class="li-navbar"><a href="/adm-dashboard">Dashboard</a></li>
+                <% } %>
             </ul>
         </div>
     </div>
+    
 
     <!-- NAVBAR END -->
     

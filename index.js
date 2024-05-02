@@ -165,6 +165,11 @@ app.get("/find-us", (req, res) => {
 app.get("/addcat", (req, res) => {
     res.render("addcat.ejs", {title : "Add Cat",loggedin: req.session.loggedin, admin: req.session.admin})
 })
+
+app.get("/adm-dashboard", (req, res) => {
+    res.render("dashboard.ejs", {title : "Admin Dashboard",loggedin: req.session.loggedin, admin: req.session.admin})
+})
+
 app.get('/form', async function(req, res) {
     if (req.user) {
         try {
@@ -259,8 +264,6 @@ app.post('/Add-cat', (req, res, next) => {
         }
     });
 });
-
-
 
 app.post('/submit-form', async (req, res) => {
     const { firstName, lastName, streetAddress, city, region, postalCode, phone, email, catName } = req.body;

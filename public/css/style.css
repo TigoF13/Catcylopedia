@@ -743,3 +743,7 @@ p {
     border-radius: 4px;
     padding: 5px 5px;
 }
+
+.gender-option label{
+    margin: 0px 10px;
+}
