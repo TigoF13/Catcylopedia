@@ -1,5 +1,13 @@
+<!-- LOGIN SECTION  -->
+<!-- USING -->
+<!-- TAILWIND CDN -->
+<!-- GOOGLE FONT -->
+<!-- FONT AWESOME -->
+
 <!DOCTYPE html>
 <html>
+
+<!-- HEAD SECTION START -->
 
 <head>
     <title>
@@ -14,8 +22,9 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body>
+<!-- HEAD SECTION END -->
 
+<body>
 
     <div class="container">
 
@@ -27,10 +36,10 @@
                 <hr class="mt-3">
                 <form action="/login" method="POST" class=" logform">
                     <div class="mt-3">
-                        <% if (message && message.length> 0) { %>
-                            <div class="alert alert-danger" id="failflash"
+                        <% if (message && message.length> 0) { %>   <!-- FAILED MESSAGE CONDITION -->
+                            <div class="alert alert-danger" id="failflash" 
                                 style="color: red; font-size: 16px; border: 1px solid red; border-radius: 5px; text-align: center; margin-bottom: 10px;">
-                                <%= message %>
+                                <%= message %> 
                             </div>
                             <% } %>
                                 <label for="username" class="block text-base mb-2">Username</label>
@@ -44,21 +53,24 @@
                             class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600"
                             placeholder="Enter Password..." required />
                     </div>
+                    
                     <div class="mt-3 flex justify-between items-center">
                         <div>
-                            <a href="/register">Don't have an account?</a>
-                        </div>
+                            <a href="/register">Don't have an account?</a> <!-- REDIRECT TO REGISTER PAGE -->
+                        </div> 
                         <div>
-                            <a href="#" class="text-indigo-800 font-semibold">Forgot Password?</a>
+                            <a href="#" class="text-indigo-800 font-semibold">Forgot Password?</a> <!-- REDIRECT TO FORGOT PASSWORD PAGE -->
                         </div>
                     </div>
 
                     <div class="mt-5">
                         <button type="submit"
                             class="border-2 border-indigo-700 bg-indigo-700 text-white py-1 w-full rounded-md hover:bg-transparent hover:text-indigo-700 font-semibold"><i
-                                class="fa-solid fa-right-to-bracket"></i>&nbsp;&nbsp;Login</button>
+                            class="fa-solid fa-right-to-bracket"></i>&nbsp;&nbsp;Login</button>
                     </div>
                 </form>
+
+                <!-- LOGIN MESSAGE FAILED SCRIPT START -->
 
                 <script>
                     setTimeout(function () {
@@ -66,8 +78,10 @@
                         if (flashMessage) {
                             flashMessage.style.display = 'none';
                         }
-                    }, 3000);   
+                    }, 3000);   // DISPLAY FAILED MESSAGE FOR 3 SECONDS
                 </script>
+
+                <!-- LOGIN MESSAGE FAILED SCRIPT END -->
 
             </div>
         </div>

@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<%- include('layouts/adopt/head') %>
+<%- include('layouts/head') %>
 
 <body>
     <div class="container">
         <!-- NAVBAR START -->
 
-        <%- include('layouts/adopt/adopthead', { title: 'Make a donation' }) %>
+        <%- include('layouts/adopthead', { title: 'Make a donation' }) %>
 
         <!-- NAVBAR END -->
 
         <!-- CONTENT START -->
 
         <div class="container-content">
+
+            <!-- CONTENT DESCRIPTION START -->
+
             <div class="content-title">
                 <h1>Silent Companions: Changing Stray Cats' Lives with Love and Donations</h1>
             </div>
@@ -25,6 +28,12 @@
             <div class="content-desc">
                 <p>Making a monthly gift is a powerful way to provide Cats Protection with a predictable income stream, allowing us to plan for the future and ensure we can continue our vital work for cats in need.  This stability is essential for us to effectively rescue, rehabilitate, and rehome cats, as well as advocate for their welfare on a larger scale.</p><br><br><hr><br><br>
             </div>
+
+            <!-- CONTENT DESCRIPTION END -->
+
+
+            <!-- MONTHLY DONATION SECTION START -->
+
             <div class="content-title"><h1>Monthly Gift or Regular Donation</h1></div><br>
             <div class="container-strip">
                 <div class="strip">
@@ -54,6 +63,11 @@
                     </div>
                 </div>
             </div>
+
+            <!-- MONTHLY DONATION SECTION END -->
+
+
+            <!-- SINGLE DONATION SECTION START -->
 
             <br><br>
 
@@ -92,6 +106,8 @@
                 </div>
             </div>
 
+            <!-- SINGLE DONATION SECTION END -->
+
             <div class="content-title"><br><br><br><br><br><br>
                 <marquee behavior="" direction="">
                     <h1>"Your generosity paves the path for brighter tomorrows for stray cats, reminding us that compassion has the power to change lives, one meow at a time."</h1>
@@ -104,7 +120,7 @@
 
         <!-- FOOTER START -->
 
-        <%- include('layouts/adopt/adoptfooter') %>
+        <%- include('layouts/adoptfooter') %>
 
         <!-- FOOTER END -->
 
