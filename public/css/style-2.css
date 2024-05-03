@@ -262,6 +262,15 @@ footer {
     gap: 20px;
 }
 
+.radio-form{
+    display: flex;
+    justify-content: center;
+}
+
+.radio-isi{
+    margin-right: 75px;
+}
+
 .content-title {
     color: #79016c;
     font-weight: bolder;

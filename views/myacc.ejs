@@ -26,25 +26,6 @@
                                     <div class="acc-isi" id="username">
                                         <%= user.username %>
                                     </div>
-                                    <div class="form-popup" id="userForm" style="display: none;">
-                                        <form action="/change-username" method="POST">
-                                            <input type="text" placeholder="Enter new username" name="username" class="acc-isi new">
-                                            <br>
-                                            <div class="bottom">
-                                                <button type="submit" class="change-button center border"
-                                                    id="btn-submit">Save Changes &nbsp;<i
-                                                        class="fa-solid fa-check icon"></i></button>
-                                                <button type="button" class="change-button center border"
-                                                    id="btn-close" onclick="closeUserForm()">Close &nbsp;<i
-                                                        class="fa-solid fa-times icon"></i></button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="btn-change">
-                                        <button class="change-button" id="btn-change" onclick="openUserForm()">
-                                            <i class="fa-solid fa-pen"></i>
-                                        </button>
-                                    </div>
                                 </div>
 
                                 <!-- USERNAME END -->
@@ -86,25 +67,6 @@
                                     <div class="acc-isi" id="email">
                                         <%= user.email %>
                                     </div>
-                                    <div class="form-popup" id="emailForm" style="display: none;">
-                                        <form action="/change-email" method="POST">
-                                        <input type="email" placeholder="Enter new email" name="email" class="acc-isi new">
-                                        <br>
-                                        <div class="bottom">
-                                            <button type="submit" class="change-button center border"
-                                                id="btn-submit">Save Changes &nbsp;<i
-                                                    class="fa-solid fa-check icon"></i></button>
-                                            <button type="button" class="change-button center border"
-                                                id="btn-close" onclick="closeEmailForm()">Close &nbsp;<i
-                                                    class="fa-solid fa-times icon"></i></button>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="btn-change">
-                                    <button class="change-button" id="btn-change-email" onclick="openEmailForm()">
-                                        <i class="fa-solid fa-pen"></i>
-                                    </button>
-                                </div>
                             </div>
                                 <!-- EMAIL END -->
 

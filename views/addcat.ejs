@@ -21,7 +21,17 @@
                 </div>
                 <div>
                     <label for="breed">Breed</label>
-                    <input type="text" id="breed" name="breed" placeholder="Breed" value="" required class="form-isi">
+                    <select id="breed" name="breed" required class="form-isi">
+                        <option value="">Select a breed</option>
+                        <option value="Anggora">Anggora</option>
+                        <option value="Himalaya">Himalaya</option>
+                        <option value="Kampung">Kampung</option>
+                        <option value="Maine Coon">Maine Coon</option>
+                        <option value="Munchkin">Munchkin</option>
+                        <option value="Persia">Persia</option>
+                        <option value="Ragdoll">Ragdoll</option>
+                        <option value="Siamese">Siamese</option>
+                    </select>
                 </div>
                 <div>
                     <label for="Age" style="font-size: 20px;">Age</label><br>   
@@ -40,13 +50,28 @@
                         </div>
                     </div>
                 </div>
-                <div>
-                    <label for="gender">Gender</label>
-                    <input type="text" id="gender" name="gender" placeholder="Gender" value="" required class="form-isi">
+                <label>Gender</label>
+                <div class="row-form radio-form form-isi">
+                    <div >
+                        <input type="radio" id="male" name="gender" value="Male" required >
+                        <label for="male" class="radio-isi">Male</label>
+                        <input type="radio" id="female" name="gender" value="Female" required >
+                        <label for="female">Female</label>
+                    </div>
                 </div>
                 <div>
                     <label for="color">Color</label>
-                    <input type="text" id="color" name="color" placeholder="Color" value="" required class="form-isi">
+                    <select id="color" name="color" required class="form-isi">
+                        <option value="">Select a color</option>
+                        <option value="Black">Black</option>
+                        <option value="White">White</option>
+                        <option value="Brown">Brown</option>
+                        <option value="Gray">Gray</option>
+                        <option value="Tuxedo">Tuxedo</option>
+                        <option value="Calico">Calico</option>
+                        <option value="Tabby">Tabby</option>
+                        <option value="Orange">Orange</option>
+                    </select>
                 </div>
                 <div>
                     <label for="intake">Intake Date</label> <br>
