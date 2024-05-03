@@ -1,11 +1,18 @@
 <div class="container-sidebar">
+
+    <!-- SIDEBAR LEFT TOP START -->
+    
     <div class="sosmed">
         <a href="https://www.tiktok.com/@catmiata" target="_blank"><i class="fab fa-tiktok" ></i></a>
         <a href="https://www.facebook.com/hashtagIAmCat" target="_blank"><i class="fab fa-facebook"></i></a>
         <a href="https://www.instagram.com/cats_of_instagram/" target="_blank"><i class="fab fa-instagram"></i></a>
         <a href="https://www.youtube.com/@kittycat_10" target="_blank"><i class="fab fa-youtube"></i></a>
-        <!-- <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a> -->
     </div>
+
+    <!-- SIDEBAR LEFT TOP END -->
+    
+    <!-- SIDEBAR RIGHT TOP START -->
+
     <div class="donate">
         <% if (!admin) { %>
             <a href="/donate"><button class="btn">Donate</button></a>
@@ -18,13 +25,20 @@
             <a href="/logout"><button class="btn">Logout</button></a>
         <% } %>
     </div>
+
+    <!-- SIDEBAR RIGHT TOP END -->
+
 </div>
+
 <div class="container-navbar">
     <div class="logo">
         <a href="/">
             <h1>Catcylopedi<i class="fa-solid fa-cat"></i></h1>
         </a>
     </div>
+    
+    <!-- NAVBAR START -->
+    
     <div class="navbar">
         <div class="menu">
             <ul class="ul-navbar">
@@ -47,6 +61,10 @@
             </ul>
         </div>
     </div>
+    
+
+    <!-- NAVBAR END -->
+    
     <div class="judul">
         <h1><%= title %></h1>
     </div>

@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<%- include('layouts/adopt/head') %>
+<%- include('layouts/head') %>
 
 <body>
     <div class="container">
         <!-- NAVBAR START -->
 
-        <%- include('layouts/adopt/adopthead', { title: 'Add a cat' }) %>
+        <%- include('layouts/adopthead', { title: 'Add a cat' }) %>
 
         <!-- NAVBAR END -->
 
         <!-- CONTENT START -->
 
         <div class="container-form">
+
+            <!-- FORM SECTION START -->
+
             <form action="/submit-form" method="POST">
                 <label for="firstName" ><b>First Name </b><b class="red">*</b></label><br>
                 <input type="text" class="form-isi" id="firstName" name="firstName" required><br>
@@ -40,13 +43,16 @@
                 </label><br>
                 <input type="submit" value="Submit" class="btn">
             </form>
-        </div> <!-- This closing </div> was moved here -->
+
+            <!-- FORM SECTION END -->
+
+        </div>
 
         <!-- CONTENT END -->
 
         <!-- FOOTER START -->
 
-        <%- include('layouts/adopt/adoptfooter') %>
+        <%- include('layouts/adoptfooter') %>
 
         <!-- FOOTER END -->
 

@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<%- include('layouts/adopt/head') %>
+<%- include('layouts/head') %>
 
 <body>
     <div class="container">
         <!-- NAVBAR START -->
 
-        <%- include('layouts/adopt/adopthead', { title: 'About Cats Protection' }) %>
+        <%- include('layouts/adopthead', { title: 'About Cats Protection' }) %>
 
         <!-- NAVBAR END -->
 
         <!-- CONTENT START -->
 
         <div class="container-content">
+
+            <!-- CONTENT DESCRIPTION START -->
+
             <div class="content-title">
                 <h1>Addressing the Issue of Stray Cats in Indonesia: <br>Challenges and Solutions</h1>
             </div>
@@ -26,6 +29,12 @@
             <div class="content-title">
                 <h1>Take care of your lovely cat, make them feel loved and at home</h1><br>
             </div>
+
+            <!-- CONTENT DESCRIPTION END -->
+
+
+            <!-- CARD CONTENT SECTION START-->
+
             <div class="container-strip">
                 <div class="strip">
                     <div class="strip-card">
@@ -81,7 +90,12 @@
                         </div>
                     </div>
                 </div>
-            </div><br><br>
+            </div><br><br><br><br><br>
+
+            <!-- CARD CONTENT SECTION END -->
+
+            
+            <!-- DONATE CONTENT SECTION START -->
 
             <div class="container-about">
                 <div class="container-left">
@@ -95,13 +109,15 @@
                 </div>
             </div>
 
+            <!-- DONATE CONTENT SECTION END -->
+
         </div>
 
         <!-- CONTENT END -->
 
         <!-- FOOTER START -->
 
-        <%- include('layouts/adopt/adoptfooter') %>
+        <%- include('layouts/adoptfooter') %>
 
         <!-- FOOTER END -->
 

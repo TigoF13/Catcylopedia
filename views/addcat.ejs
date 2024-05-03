@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<%- include('layouts/adopt/head') %>
+<%- include('layouts/head') %>
 
 <body>
     <div class="container">
         <!-- NAVBAR START -->
 
-        <%- include('layouts/adopt/adopthead', { title: 'Add a cat' }) %>
+        <%- include('layouts/adopthead', { title: 'Add a cat' }) %>
 
         <!-- NAVBAR END -->
 
         <!-- CONTENT START -->
 
         <div class="container-form">
+
+            <!-- ADD CAT FORM START -->
+
             <form action="/Add-cat" method="POST" enctype="multipart/form-data">
                 <div>
                     <label for="name">Name of Cat </label>
@@ -22,19 +25,19 @@
                 <div>
                     <label for="breed">Breed</label>
                     <select id="breed" name="breed" required class="form-isi">
-                        <option value="">Select a breed</option>
-                        <option value="Anggora">Anggora</option>
-                        <option value="Himalaya">Himalaya</option>
-                        <option value="Kampung">Kampung</option>
-                        <option value="Maine Coon">Maine Coon</option>
-                        <option value="Munchkin">Munchkin</option>
-                        <option value="Persia">Persia</option>
-                        <option value="Ragdoll">Ragdoll</option>
-                        <option value="Siamese">Siamese</option>
+                        <option value="" disabled selected>Select Breed</option>
+                        <option value="Anggora"><b>Anggora</b></option>
+                        <option value="Himalaya"><b>Himalaya</b></option>
+                        <option value="Kampung"><b>Kampung</b></option>
+                        <option value="Maine Coon"><b>Maine Coon</b></option>
+                        <option value="Munchkin"><b>Munchkin</b></option>
+                        <option value="Persia"><b>Persia</b></option>
+                        <option value="Ragdoll"><b>Ragdoll</b></option>
+                        <option value="Siam"><b>Siam</b></option>
                     </select>
                 </div>
                 <div>
-                    <label for="Age" style="font-size: 20px;">Age</label><br>   
+                    <label for="Age" style="font-size: 20px;">Age</label>   
                     <div class="row-form">
                         <div>
                             <label for="AgeY">Years</label>
@@ -50,27 +53,27 @@
                         </div>
                     </div>
                 </div>
-                <label>Gender</label>
-                <div class="row-form radio-form form-isi">
-                    <div >
-                        <input type="radio" id="male" name="gender" value="Male" required >
-                        <label for="male" class="radio-isi">Male</label>
-                        <input type="radio" id="female" name="gender" value="Female" required >
-                        <label for="female">Female</label>
-                    </div>
+                <div>
+                    <label for="gender">Gender</label>
+                    <div><br>
+                        <div class="gender-option">
+                            <label for="genderMale"><input type="radio" id="genderM" name="gender" value="Male" required> Male</label>
+                            <label for="genderFemale"><input type="radio" id="genderF" name="gender" value="Female" required> Female</label>
+                        </div>
+                    </div><br>
                 </div>
                 <div>
                     <label for="color">Color</label>
                     <select id="color" name="color" required class="form-isi">
-                        <option value="">Select a color</option>
-                        <option value="Black">Black</option>
-                        <option value="White">White</option>
-                        <option value="Brown">Brown</option>
-                        <option value="Gray">Gray</option>
-                        <option value="Tuxedo">Tuxedo</option>
-                        <option value="Calico">Calico</option>
-                        <option value="Tabby">Tabby</option>
-                        <option value="Orange">Orange</option>
+                        <option value="" disabled selected>Select Color</option>
+                        <option value="Black"><b>Black</b></option>
+                        <option value="White"><b>White</b></option>
+                        <option value="Orange"><b>Orange</b></option>
+                        <option value="Cream"><b>Cream</b></option>
+                        <option value="Gray"><b>Gray</b></option>
+                        <option value="Brown"><b>Brown</b></option>
+                        <option value="Bicolor"><b>Bicolor</b></option>
+                        <option value="Calico"><b>Calico</b></option>
                     </select>
                 </div>
                 <div>
@@ -89,13 +92,16 @@
                     <button type="submit" class="btn">Submit</button>
                 </div>
             </form>
-        </div> <!-- This closing </div> was moved here -->
+
+            <!-- ADD CAT FORM END -->
+
+        </div> 
 
         <!-- CONTENT END -->
 
         <!-- FOOTER START -->
 
-        <%- include('layouts/adopt/adoptfooter') %>
+        <%- include('layouts/adoptfooter') %>
 
         <!-- FOOTER END -->
 

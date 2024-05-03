@@ -1,3 +1,8 @@
+// THIS SCRIPT IS USED TO STORE CAT DATA THAT HAS BEEN ADDED BY THE ADMIN.
+// USING 
+// MONGODB ATLAS (MONGOOSE)
+// CONTAINS NAME, BREED, AGE, GENDER, COLOR, INTAKE DATE AND ADOPTED STATUS.
+
 const mongoose = require('mongoose');
 
 mongoose.connect('mongodb+srv://Jason:12345@catcyclopedia.bjdmtgw.mongodb.net/');

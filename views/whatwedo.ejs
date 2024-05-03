@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<%- include('layouts/adopt/head') %>
+<%- include('layouts/head') %>
 
     <body>
         <div class="container">
             <!-- NAVBAR START -->
 
-            <%- include('layouts/adopt/adopthead', { title: 'What we do' }) %>
+            <%- include('layouts/adopthead', { title: 'What we do' }) %>
 
                 <!-- NAVBAR END -->
 
@@ -15,24 +15,108 @@
 
                 <div class="container-content">
                     <div class="content-title">
-                        <h1>Cats Protection is the UK's largest feline welfare charity.</h1>
+                        <h1>From humble beginnings in 1997, Catcyclopedia has grown to become the Indonesia leading cat charity.</h1>
                     </div>
                     <br>
                     <div class="content-desc">
-                        <p>At Cats Protection we believe in matching the right cat to the right home. That's why we look
-                            at everything from your potential pet's personality to where you live – creating the perfect
-                            match for both cat and owner.</p><br>
-                        <p>While there can be a lot to think about when adopting a cat, Cats Protection aims to take
-                            away some of your worries, providing plenty of advice along the way.</p><br>
+                        <p>We help an estimated 157,000 cats and kittens a year through our national network which includes around 210 volunteer-run branches and 34 centres.</p><br>
+                        <p>Our work doesn’t stop there, however: we also provide an array of cat care information via our <a href="https://www.periplus.com/c/1_1_1_1_1411_20_222_1249/cats"><u>publications</u></a>, <a href="/help-and-advice"><u>help and advice </u></a> section and National Information Line; promote the benefits of neutering to prevent unwanted litters from being born and becoming the abandoned cats of tomorrow and seek to educate people of all ages about cats and their care.</p>
                     </div>
-                </div>
+                    <div class="container-strip no-bg">
+                        <div class="strip">
+                            <div class="strip-card">
+                                <img src="/public/assets/cat-campaigning.jpg" alt="Campaigning">
+                                <div class="strip-content">
+                                    <h2>Campaigning</h2>
+                                    <p>Our Advocacy team speaks up for cats and campaigns for change across Indonesia.</p>
+                                    <br><br><br>
+                                </div>
+                            </div>
+                            <div class="strip-card">
+                                <img src="/public/assets/cat-edu.jpg" alt="anggora">
+                                <div class="strip-content">
+                                    <h2>Education</h2>
+                                    <p>We're preparing cat owners of the future with our free talks, lesson plans, interactive activities and engaging videos.</p>
+                                    <br><br>
+                                </div>
+                            </div>
+                            <div class="strip-card">
+                                <img src="/public/assets/cat-neutering.jpeg" alt="anggora">
+                                <div class="strip-content">
+                                    <h2>Neutering</h2>
+                                    <p>We champion neutering as the only effective way to reduce the number of unwanted cats in Indonesia, as well as having a number of health benefits.</p>
+                                    <br><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="container-strip-2">
+                        <div class="container-about">
+                            <div class="container-left">
+                                <h1 style="font-weight: bolder;">Rehoming</h1><br>
+                                <p>We rehome thousands of cats each year through our network of branches and centres, giving many cats another chance in life.</p><br>
+                                <p><b>Looking to adopt a cat? Read our guide.</b></p>
+                                <a href="/adopt"><button class="btn-secondary">Adopt a cat</button></a>
+                            </div>
+                            <div class="container-right">
+                                <img src="/public/assets/cat-rehoming.jpg" alt="Cat" height="400px" width="550px">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container-strip no-bg">
+                        <div class="strip">
+                            <div class="strip-card">
+                                <img src="/public/assets/cat-grief.jpg" alt="Campaigning">
+                                <div class="strip-content">
+                                    <h2>Grief and loss</h2>
+                                    <p>Whether you're facing the heartbreak of losing your cat or need someone to talk to, we're here to offer advice and a friendly ear.</p>
+                                    <br><br><br>
+                                </div>
+                            </div>
+                            <div class="strip-card">
+                                <img src="/public/assets/cat-life.jpg" alt="anggora">
+                                <div class="strip-content">
+                                    <h2>Lifeline</h2>
+                                    <p>Our Lifeline service provides a retreat for pets of those going into a refuge from domestic abuse situations.</p>
+                                    <br><br><br>
+                                </div>
+                            </div>
+                            <div class="strip-card">
+                                <img src="/public/assets/cat-guardian.jpg" alt="anggora">
+                                <div class="strip-content">
+                                    <h2>Cat Guardians</h2>
+                                    <p>Cat Guardians is our service aimed at giving peace of mind to cat owners concerned about what might happen if they were to pass away before their cat.</p>
+                                    <br><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="container-strip-2 strip-3">
+                        <div class="container-about">
+                            <div class="container-left">
+                                <h1 style="font-weight: bolder;">Thinking about giving up a cat?</h1><br>
+                                <p>Giving up your cat is not easy - whether you've experienced a bereavement, relationship break-up or changes in your environment.</p><br>
+                                <p>While we're keen to provide advice to keep your feline friend at home with you, we can also help in guiding you through the process of rehoming your cat.</p><br>
+                                <p>Speaking to your local Cats Protection means your pet will be in a safe place and will be placed in the right home for their needs.</p><br>
+                                <p><b>Love your cat anytime, anywhere and anyplace</b></p>
+                            </div>
+                            <div class="container-right" >
+                                <img src="/public/assets/cat-group.jpg" alt="Cat" height="400px" width="575px">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                
                 <!-- CONTENT END -->
 
 
                 <!-- FOOTER START -->
 
-                <%- include('layouts/adopt/adoptfooter') %>
+                <%- include('layouts/adoptfooter') %>
 
                 <!-- FOOTER END -->
 
