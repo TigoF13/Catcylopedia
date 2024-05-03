@@ -157,6 +157,9 @@ app.get("/what-we-do", (req, res) => {
 app.get("/help-and-advice", (req, res) => {
     res.render("help.ejs", {title : "Help and Advice | Expert Cat Care Guide",loggedin: req.session.loggedin, admin: req.session.admin})
 })
+app.get("/forgot", (req, res) => {
+    res.render("forgot.ejs", {title : "Forgot Password",loggedin: req.session.loggedin, admin: req.session.admin, message: req.flash('error') })
+})
 
 app.get("/find-us", (req, res) => {
     res.render("find.ejs", {title : "Find Us",loggedin: req.session.loggedin, admin: req.session.admin})
