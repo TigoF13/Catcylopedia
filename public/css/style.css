@@ -99,8 +99,8 @@ h1 {
 }
 
 .btn-secondary{
-    background-color: #79016c;
-    color: #fae6fa;
+    background-color: #c928b2;
+    width: 200px;
     margin: 25px 5px;
     padding: 5px 30px;
     border-radius: 7px;
@@ -111,9 +111,9 @@ h1 {
 
 .btn-secondary:hover{
     cursor: pointer;
-    background-color: #ffffff;
+    background-color: #7b2076;
     color: #79016c;
-    transition: .12s ease-in-out;
+    transition: .2s ease-in-out;
 }
 
 .btn2 {
@@ -250,6 +250,10 @@ footer {
     height: 350vh;
     margin: 26vh 150px 0px 150px;
     padding-top: 10vh;
+}
+
+.height-100vh{
+    height: 80vh;
 }
 
 .container-form {
@@ -804,4 +808,9 @@ p {
 }
 .table th:nth-child(7), .table td:nth-child(7) {
     width: 10%; /* Lebar kolom No */
+}
+
+#map{ 
+    height: 400px; 
+    width: 550px;
 }
