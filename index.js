@@ -13,6 +13,9 @@ const dotenv = require("dotenv").config();
 const ObjectId = require('mongodb').ObjectId;
 const fs = require('fs');
 var path = require('path');
+const jwt = require("jsonwebtoken");
+var nodemailer = require("nodemailer");
+const crypto = require('crypto');
 const dirname = path.resolve(__dirname, '../Catcyclopedia');
 
 require("./config/passport.js");
@@ -31,6 +34,37 @@ const upload = multer({
     storage: storage,
     limits: { fileSize: 10 * 1024 * 1024 } // Set maximum file size (e.g., 10MB)
 });
+
+
+const sendEmail = (email, link) => {
+    const transporter = nodemailer.createTransport({
+    service: "gmail",
+    port: 587,
+    secure: true,
+    logger: true,
+    debug: true,
+    secureConnection: "false",
+    auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+    },
+    });
+
+    const mailOptions = {
+    from: process.env.EMAIL_USER,
+    to: email,
+    subject: "Password Reset",
+    text: link,
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+        console.log(error);
+    } else {
+        console.log("Email sent: " + info.response);
+    }
+    });
+};
 
 app.set("view engine", "ejs");
 
@@ -380,6 +414,61 @@ app.post('/change-password', async (req, res) => {
     }
 });
 
+app.post('/forgot', async (req, res) => {
+    const {email} = req.body;
+    try {
+        const user = await UserData.findOne({email});
+        if (!user) {
+        return res.json({ status: "User Not Exists!!" });
+        }
+        const secret = process.env.JWT_SECRET + user.password;
+        const token = jwt.sign({ email: user.email, id: user._id }, secret, {
+        expiresIn: "10m",
+        });
+        const link = `http://localhost:${port}/reset-password/${user._id}/${token}`;
+        sendEmail(email, link);
+        res.redirect('/login');
+    } catch (error) {
+    res.json({ status: error.message });
+    }
+});
+
+app.get("/reset-password/:id/:token", async (req, res) => {
+    const { id, token } = req.params;
+    try {
+        console.log("Before getUser");  // New log statement
+        const user = await UserData.findOne({_id : id});
+        console.log("After getUser");  // New log statement
+        console.log("hello" + user);  // Log the user object
+        const secret = process.env.JWT_SECRET + user.password;
+        jwt.verify(token, secret);
+        res.render("reset.ejs",{title: 'Adopt a Cat', email: user.email, status: "Verified",message: req.flash('error'), id : id , token : token});
+    } catch (error) {
+        console.log("Caught error", error);  // New log statement
+        res.json({ status: "Not Verified" });
+    }
+});
+
+app.post("/reset-password/:id/:token", async (req, res) => {
+    const { id, token } = req.params;
+    const password = req.body.newpassword;
+    try {
+        const user = await UserData.findOne({_id : id});
+        const secret = process.env.JWT_SECRET + user.password;
+        jwt.verify(token, secret);
+        const encryptedPassword = await hashSync(password,10);
+        await UserData.updateOne(
+            { _id: id },
+            { $set: { password: encryptedPassword } }
+        );
+        req.flash('success', 'Successfully reset password');  // Set flash message
+        res.redirect('/login');
+    } catch (error) {
+        console.error(error);
+        res.json({ status: "Something Went Wrong" });
+    }
+});
+
 app.get("/register", (req, res) => {
     res.render("register.ejs", {title : "Register", loggedin: req.session.loggedin})
 })
@@ -394,14 +483,15 @@ app.post("/register", async (req, res) => {
         });
 
         await newUser.save();
-        res.render("login.ejs", {title : "Login", loggedin: req.session.loggedin,message: "Account created successfully, please login"});
+        req.flash('success', 'Account created successfully, please login');
+        res.redirect('/login');
     } catch (err) {
         console.log(err);
     }
 });
 
 app.get("/login", (req, res) => {
-    res.render("login.ejs", {title : "Login", loggedin: req.session.loggedin, admin: req.session.admin, message: req.flash('error') })
+    res.render("login.ejs", {title : "Login", loggedin: req.session.loggedin, admin: req.session.admin, message: req.flash('error'),successMessage: req.flash('success') })
 })
 
 app.post('/login', passport.authenticate('local', { failureRedirect: '/login',failureFlash: 'Wrong username/password, please try again'}), function(req, res) {
