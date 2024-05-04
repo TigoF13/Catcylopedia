@@ -17,7 +17,7 @@
 
             <!-- FORM SECTION START -->
 
-            <form action="/submit-form" method="POST">
+            <form action="/submit-form" method="POST" onsubmit="return ThanksPopup();"">
                 <label for="firstName" ><b>First Name </b><b class="red">*</b></label><br>
                 <input type="text" class="form-isi" id="firstName" name="firstName" required><br>
                 <label for="lastName"><b>Last Name </b><b class="red">*</b></label><br>
@@ -58,6 +58,11 @@
 
     </div>
     <script src="/public/js/main.js"></script>
+    <script>
+        function ThanksPopup() {
+            alert("Thank you for your submission!");
+        }
+    </script>
 </body>
 
 </html>

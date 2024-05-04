@@ -20,7 +20,7 @@
                     <button id="showCatTable" class="btn">Show Cat Adopt History</button>
                     <button id="showUserTable" class="btn">Show User List</button>
 
-                    <div id="catTable" class="scrollable-container-2" style="display: none;">
+                    <div id="catTable" class="scrollable-container-2" style="display: block;">
                         <h1>Cat Adopt History</h1><br><br>
                         <!-- Tabel Riwayat Adopsi -->
                         <div class="scrollable-container-2">
@@ -55,6 +55,7 @@
                     
                     <div id="userTable" class="scrollable-container-2" style="display: none;">
                         <h1>User List</h1><br><br>
+                        <div class="scrollable-container-2">
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -75,20 +76,26 @@
                                         <td class="table-cell">0<%= user.phone %></td>
                                         <td class="table-cell"><%= user.isEnabled ? 'Yes' : 'No' %></td>
                                         <td class="table-cell">
-                                            <form action="/enableUser/<%= user._id %>" method="POST">
-                                                <button type="submit" class="btn">Enable User</button>
+                                            <form action="/enableUser/<%= user._id %>" method="POST" onsubmit="return EnabledPopup();">
+                                                <button type="submit" class="btn" <%= user.isEnabled ? 'disabled' : '' %>>
+                                                    <%= user.isEnabled ? 'User is Enabled' : 'Enable User' %>
+                                                </button>
                                             </form>
                                         </td>
                                     </tr>
-                                <% }); %>
-                            </tbody>
-                        </table>
+                                    <% }); %>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         <!-- CONTENT END -->
 
         <script>
+            function EnabledPopup() {
+                alert("User has been enabled!");
+            }
             document.getElementById('showUserTable').addEventListener('click', function() {
                 document.getElementById('userTable').style.display = 'block';
                 document.getElementById('catTable').style.display = 'none';

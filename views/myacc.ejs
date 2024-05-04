@@ -121,7 +121,7 @@
                                 <!-- DELETE BUTTON START -->
 
                                 <div class="bottom m-top">
-                                    <form action="/disableUser" method="POST">
+                                    <form action="/disableUser" method="POST" onsubmit="return confirmDelete();">
                                         <button type="submit" class="change-button center border-2" id="delete-button">Delete Account</button>
                                     </form>
                                 </div>
@@ -141,7 +141,10 @@
 
     <script src="/public/js/change.js"></script>
     <script>
-
+        function confirmDelete() {
+        return confirm('Are you sure you want to delete your account? This action cannot be undone.');
+    }
+    
         function validatePhone() {
         var phoneInput = document.getElementById('phoneInput');
         var phone = phoneInput.value;

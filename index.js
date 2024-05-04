@@ -481,16 +481,39 @@ app.post("/reset-password/:id/:token", async (req, res) => {
 });
 
 app.get("/register", (req, res) => {
-    res.render("register.ejs", {title : "Register", loggedin: req.session.loggedin})
+    res.render("register.ejs", {title : "Register", loggedin: req.session.loggedin, message: req.flash('error')})
 })
 
 app.post("/register", async (req, res) => {
     try {
+        const { username, phone, email, password } = req.body;
+
+        // Check if username already exists
+        const existingUserByUsername = await UserData.findOne({ username });
+        if (existingUserByUsername) {
+            req.flash('error', 'The username is already taken, please try another');
+            return res.redirect('/register');
+        }
+
+        // Check if phone number already exists
+        const existingUserByPhone = await UserData.findOne({ phone });
+        if (existingUserByPhone) {
+            req.flash('error', 'The phone number is already taken, please try another');
+            return res.redirect('/register');
+        }
+
+        // Check if email already exists
+        const existingUserByEmail = await UserData.findOne({ email });
+        if (existingUserByEmail) {
+            req.flash('error', 'The email is already taken, please try another');
+            return res.redirect('/register');
+        }
+
         const newUser = new UserData({
-            username: req.body.username,
-            phone: req.body.phone,
-            email: req.body.email,
-            password: hashSync(req.body.password,15)
+            username,
+            phone,
+            email,
+            password: hashSync(password, 15)
         });
 
         await newUser.save();
@@ -515,7 +538,6 @@ app.post('/login', passport.authenticate('local', { failureRedirect: '/login',fa
     req.session.loggedin = true;
     req.session.admin = false;
     req.session.userId = req.user._id;
-    console.log(req.session.userId);
 
     if (req.session.userId.toHexString() === '661ff26eae3d330a7d101cd9'){
         req.session.admin = true;
