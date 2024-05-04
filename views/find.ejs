@@ -2,7 +2,11 @@
 <html lang="en">
 
 <%- include('layouts/head') %>
-    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
     <body>
         <div class="container">
             <!-- NAVBAR START -->
@@ -13,13 +17,19 @@
 
                 <!-- CONTENT START -->
 
-                <div class="container-content height-100vh ">
+                <div class="container-content height-100vh" id="find">
                     <div class="container-strip-2" style="background-color: #fff;">
-                        <div class="container-about" >
-                            <div class="container-left" >
-                                <h1 style="font-weight: bolder;">Looking for a place to rehome cats and want to donate directly?</h1><br>
-                                <p>Our head office is run by volunteers who give up their free time to help cats. If you are not connected immediately, please leave a voice message. A member of our team will respond as soon as possible.</p><br>
-                                <p>A member of our team will respond as soon as possible, ensuring that your inquiry or request for assistance is addressed promptly and efficiently. Your patience and understanding are greatly appreciated as we strive to provide the best care and support for cats in need.</p><br>
+                        <div class="container-about">
+                            <div class="container-left">
+                                <h1 style="font-weight: bolder;">Looking for a place to rehome cats and want to donate
+                                    directly?</h1><br>
+                                <p>Our head office is run by volunteers who give up their free time to help cats. If you
+                                    are not connected immediately, please leave a voice message. A member of our team
+                                    will respond as soon as possible.</p><br>
+                                <p>A member of our team will respond as soon as possible, ensuring that your inquiry or
+                                    request for assistance is addressed promptly and efficiently. Your patience and
+                                    understanding are greatly appreciated as we strive to provide the best care and
+                                    support for cats in need.</p><br>
                                 <p><b>Love your cat anytime, anywhere and anyplace</b></p>
                             </div>
                             <div class="container-right">

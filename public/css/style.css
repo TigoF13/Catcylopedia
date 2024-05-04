@@ -256,6 +256,10 @@ footer {
     height: 80vh;
 }
 
+.height-250vh{
+    height: 250vh;
+}
+
 .container-form {
     display: flex; 
     justify-content: center; 
@@ -813,4 +817,61 @@ p {
 #map{ 
     height: 400px; 
     width: 550px;
+}
+
+.content-help{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 10px 20px;
+}
+
+.content-card-2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+.card-2{
+    height: 300px;
+    width: 575px;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.card-3{
+    height: 250px;
+    width: 375px;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.card-overlay:hover{
+    opacity: 0.4;
+    cursor: pointer;
+    transition: .125s ease-in-out;
+}
+
+.card-overlay {
+    position: relative;
+    display: inline-block;
+}
+
+.overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.content-card-3{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    /* border: 2px solid black; */
 }
