@@ -2,38 +2,57 @@
 <html lang="en">
 
 <%- include('layouts/head') %>
+    
+    <body>
+        <div class="container">
+            <!-- NAVBAR START -->
 
-<body>
-    <div class="container">
-        <!-- NAVBAR START -->
+            <%- include('layouts/adopthead', { title: 'Find Us' }) %>
 
-        <%- include('layouts/adopthead', { title: 'Find Us' }) %>
+                <!-- NAVBAR END -->
 
-        <!-- NAVBAR END -->
+                <!-- CONTENT START -->
 
-        <!-- CONTENT START -->
+                <div class="container-content height-100vh ">
+                    <div class="container-strip-2" style="background-color: #fff;">
+                        <div class="container-about" >
+                            <div class="container-left" >
+                                <h1 style="font-weight: bolder;">Looking for a place to rehome cats and want to donate directly?</h1><br>
+                                <p>Our head office is run by volunteers who give up their free time to help cats. If you are not connected immediately, please leave a voice message. A member of our team will respond as soon as possible.</p><br>
+                                <p>A member of our team will respond as soon as possible, ensuring that your inquiry or request for assistance is addressed promptly and efficiently. Your patience and understanding are greatly appreciated as we strive to provide the best care and support for cats in need.</p><br>
+                                <p><b>Love your cat anytime, anywhere and anyplace</b></p>
+                            </div>
+                            <div class="container-right">
+                                <!-- <img src="/public/assets/cat-rehoming.jpg" alt="Cat" height="400px" width="550px"> -->
+                                <div id="map"></div>
+                            </div>
+                        </div>
+                    </div>
 
-        <div class="container-content">
-            <div class="content-title">
-                <h1>Cats Protection is the UK's largest feline welfare charity.</h1>
-            </div>
-            <br>
-            <div class="content-desc">
-                <p>At Cats Protection we believe in matching the right cat to the right home. That's why we look at everything from your potential pet's personality to where you live – creating the perfect match for both cat and owner.</p><br>
-                <p>While there can be a lot to think about when adopting a cat, Cats Protection aims to take away some of your worries, providing plenty of advice along the way.</p><br>
-            </div>
+                </div>
+
+                <!-- CONTENT END -->
+
+                <!-- FOOTER START -->
+
+                <%- include('layouts/adoptfooter') %>
+
+                <!-- FOOTER END -->
+
         </div>
 
-        <!-- CONTENT END -->
+        <!-- SCRIPT TO ADD MAP ON FIND US PAGE -->
 
-        <!-- FOOTER START -->
+        <script>
+            var map = L.map('map').setView([-6.169394, 106.788787], 13);
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+            }).addTo(map);
+            var marker = L.marker([-6.169394, 106.788787]).addTo(map);
+            marker.bindPopup("<div style='text-align: center;'><b>Catcyclopedia</b><br>Universitas Tarumanagara</div>").openPopup();
+        </script>
 
-        <%- include('layouts/adoptfooter') %>
 
-        <!-- FOOTER END -->
-
-    </div>
-
-</body>
+    </body>
 
 </html>
