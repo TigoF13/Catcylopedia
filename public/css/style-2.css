@@ -716,4 +716,13 @@ p {
     border-radius: 4px;
     padding: 5px 5px;
 }
-
+.table {
+    table-layout: fixed;
+    width: 100%; /* Optional, makes the table take up the full width of its container */
+}
+.table-cell {
+    max-width: 200px; /* Adjust as needed */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

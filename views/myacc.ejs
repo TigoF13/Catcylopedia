@@ -121,8 +121,9 @@
                                 <!-- DELETE BUTTON START -->
 
                                 <div class="bottom m-top">
-                                    <button class="change-button center border-2" id="delete-button">Delete
-                                        Account&nbsp;</button>
+                                    <form action="/disableUser" method="POST">
+                                        <button type="submit" class="change-button center border-2" id="delete-button">Delete Account</button>
+                                    </form>
                                 </div>
 
                                 <!-- DELETE BUTTON END -->
@@ -140,25 +141,6 @@
 
     <script src="/public/js/change.js"></script>
     <script>
-        document.getElementById('delete-button').addEventListener('click', function () {
-            fetch('/deleteUser', {
-                method: 'DELETE',
-            })
-            .then(response => {
-                if (response.redirected) {
-                    alert('Your account has been successfully deleted');
-                    window.location.href = response.url;
-                } else {
-                    return response.json();
-                }
-            })
-            .then(data => {
-                // Handle the response data
-            })
-            .catch(error => {
-                console.error('There has been a problem with your fetch operation:', error);
-            });
-        });
 
         function validatePhone() {
         var phoneInput = document.getElementById('phoneInput');

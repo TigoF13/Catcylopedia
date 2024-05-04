@@ -18,7 +18,8 @@ const adoptedSchema = new mongoose.Schema({
     phone: String,
     email: String,
     catName: String,
-    userId: mongoose.Schema.Types.ObjectId
+    userId: mongoose.Schema.Types.ObjectId,
+    adoptDate: Date
 });
 
 const Adopted = mongoose.model('Adopted', adoptedSchema);

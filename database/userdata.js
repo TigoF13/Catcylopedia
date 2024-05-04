@@ -27,6 +27,11 @@ const userSchema = new mongoose.Schema({
     adoptedcats: {
         type: Array,
         required: false
+    },
+    isEnabled: { 
+        type: Boolean,
+        required: true,
+        default: true
     }
 });
 
