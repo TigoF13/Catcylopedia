@@ -17,7 +17,7 @@
 
             <!-- FORM SECTION START -->
 
-            <form action="/submit-form" method="POST">
+            <form action="/submit-form" method="POST" onsubmit="return ThanksPopup();"">
                 <label for="firstName" ><b>First Name </b><b class="red">*</b></label><br>
                 <input type="text" class="form-isi" id="firstName" name="firstName" required><br>
                 <label for="lastName"><b>Last Name </b><b class="red">*</b></label><br>
@@ -33,8 +33,8 @@
                 </div>
                 <label for="email"><b>Email</b></label><br>
                 <input type="email" class="form-isi" id="email" name="email" value="<%= user.email%>" readonly required><br>
-                <label for="phoneNumber"><b>Phone Number</b></label><br>
-                <input type="number" class="form-isi" id="phoneNumber" name="phoneNumber" value="0<%= user.phone%>" readonly required><br>
+                <label for="phone"><b>Phone Number</b></label><br>
+                <input type="number" class="form-isi" id="phone" name="phone" value="0<%= user.phone%>" readonly required><br>
                 <label for="catName"><b>Name of Cat Applied For</b></label><br>
                 <input type="text" class="form-isi" id="catName" name="catName" value="<%= catName %>" readonly required><br>
                 <label for="terms">
@@ -58,6 +58,11 @@
 
     </div>
     <script src="/public/js/main.js"></script>
+    <script>
+        function ThanksPopup() {
+            alert("Thank you for your submission!");
+        }
+    </script>
 </body>
 
 </html>

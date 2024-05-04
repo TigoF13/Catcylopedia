@@ -12,160 +12,100 @@
                 <!-- NAVBAR END -->
 
                 <!-- CONTENT START -->
+                <% function formatDate(date) { 
+                    return new Date(date).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }); 
+                } %>
 
                 <div class="container-dashboard">
-                    <h1>Cat Adopt History</h1><br><br>
-                    <!-- Tabel Riwayat Adopsi -->
-                    <div class="scrollable-container-2">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Cat Name</th>
-                                    <th>Adopt Date</th>
-                                    <th>Recipient's Name</th>
-                                    <th>Address</th>
-                                    <th>Email</th>
-                                    <th>Contact</th>
-                                </tr>
-                            </thead>
+                    <button id="showCatTable" class="btn">Show Cat Adopt History</button>
+                    <button id="showUserTable" class="btn">Show User List</button>
+
+                    <div id="catTable" class="scrollable-container-2" style="display: block;">
+                        <h1>Cat Adopt History</h1><br><br>
+                        <!-- Tabel Riwayat Adopsi -->
+                        <div class="scrollable-container-2">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Cat Name</th>
+                                        <th>Adopt Date</th>
+                                        <th>Recipient's Name</th>
+                                        <th>Address</th>
+                                        <th>Email</th>
+                                        <th>Contact</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% adopted.forEach((cat, index) => { %>
+                                        <tr>
+                                            <td class="table-cell"><%= index + 1 %></td>
+                                            <td class="table-cell"><%= cat.catName %></td>
+                                            <td class="table-cell"><%= formatDate(cat.adoptDate) %></td>
+                                            <td class="table-cell"><%= cat.firstName %> <%= cat.lastName %></td>
+                                            <td class="table-cell"><%= cat.streetAddress %>, <%= cat.city %>, <%= cat.region %></td>
+                                            <td class="table-cell"><%= cat.email %></td>
+                                            <td class="table-cell"><%= cat.phone %></td>
+                                        </tr>
+                                    <% }); %>
+                                </tbody>
+                            </table>
+                        </div> <!-- This closing tag was missing -->
+                    </div>
+                    
+                    <div id="userTable" class="scrollable-container-2" style="display: none;">
+                        <h1>User List</h1><br><br>
+                        <div class="scrollable-container-2">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Username</th>
+                                        <th>Is Enabled </th>
+                                        <th>Phone</th>
+                                        <th>Is Enabled</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
                             <tbody>
-
-                                <tr>
-                                    <td>1</td>
-                                    <td>Smokey</td>
-                                    <td>2024-04-23</td>
-                                    <td>Tigo Ilhami Fasyah</td>
-                                    <td>Jln. Andong III, Kabupaten Tangerang, Banten</td>
-                                    <td>thigo.fasyah@gmail.com</td>
-                                    <td>85216441952</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Nigger</td>
-                                    <td>2024-03-21</td>
-                                    <td>Farhan Kebab</td>
-                                    <td>Jln. Andong III, Kabupaten Tangerang, Banten</td>
-                                    <td>farhan@gmail.com</td>
-                                    <td>85216441952</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Nigger</td>
-                                    <td>2024-03-21</td>
-                                    <td>Farhan Kebab</td>
-                                    <td>Jln. Andong III, Kabupaten Tangerang, Banten</td>
-                                    <td>farhan@gmail.com</td>
-                                    <td>85216441952</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Nigger</td>
-                                    <td>2024-03-21</td>
-                                    <td>Farhan Kebab</td>
-                                    <td>Jln. Andong III, Kabupaten Tangerang, Banten</td>
-                                    <td>farhan@gmail.com</td>
-                                    <td>85216441952</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Nigger</td>
-                                    <td>2024-03-21</td>
-                                    <td>Farhan Kebab</td>
-                                    <td>Jln. Andong III, Kabupaten Tangerang, Banten</td>
-                                    <td>farhan@gmail.com</td>
-                                    <td>85216441952</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Nigger</td>
-                                    <td>2024-03-21</td>
-                                    <td>Farhan Kebab</td>
-                                    <td>Jln. Andong III, Kabupaten Tangerang, Banten</td>
-                                    <td>farhan@gmail.com</td>
-                                    <td>85216441952</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Nigger</td>
-                                    <td>2024-03-21</td>
-                                    <td>Farhan Kebab</td>
-                                    <td>Jln. Andong III, Kabupaten Tangerang, Banten</td>
-                                    <td>farhan@gmail.com</td>
-                                    <td>85216441952</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Nigger</td>
-                                    <td>2024-03-21</td>
-                                    <td>Farhan Kebab</td>
-                                    <td>Jln. Andong III, Kabupaten Tangerang, Banten</td>
-                                    <td>farhan@gmail.com</td>
-                                    <td>85216441952</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Nigger</td>
-                                    <td>2024-03-21</td>
-                                    <td>Farhan Kebab</td>
-                                    <td>Jln. Andong III, Kabupaten Tangerang, Banten</td>
-                                    <td>farhan@gmail.com</td>
-                                    <td>85216441952</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Nigger</td>
-                                    <td>2024-03-21</td>
-                                    <td>Farhan Kebab</td>
-                                    <td>Jln. Andong III, Kabupaten Tangerang, Banten</td>
-                                    <td>farhan@gmail.com</td>
-                                    <td>85216441952</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Nigger</td>
-                                    <td>2024-03-21</td>
-                                    <td>Farhan Kebab</td>
-                                    <td>Jln. Andong III, Kabupaten Tangerang, Banten</td>
-                                    <td>farhan@gmail.com</td>
-                                    <td>85216441952</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Nigger</td>
-                                    <td>2024-03-21</td>
-                                    <td>Farhan Kebab</td>
-                                    <td>Jln. Andong III, Kabupaten Tangerang, Banten</td>
-                                    <td>farhan@gmail.com</td>
-                                    <td>85216441952</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Nigger</td>
-                                    <td>2024-03-21</td>
-                                    <td>Farhan Kebab</td>
-                                    <td>Jln. Andong III, Kabupaten Tangerang, Banten</td>
-                                    <td>farhan@gmail.com</td>
-                                    <td>85216441952</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Nigger</td>
-                                    <td>2024-03-21</td>
-                                    <td>Farhan Kebab</td>
-                                    <td>Jln. Andong III, Kabupaten Tangerang, Banten</td>
-                                    <td>farhan@gmail.com</td>
-                                    <td>85216441952</td>
-                                </tr>
-
-                            </tbody>
-                        </table>
+                                <% users.forEach((user, index) => { %>
+                                    <tr>
+                                        <td class="table-cell"><%= index + 1 %></td>
+                                        <td class="table-cell"><%= user.username %></td>
+                                        <td class="table-cell"><%= user.email %></td>
+                                        <td class="table-cell">0<%= user.phone %></td>
+                                        <td class="table-cell"><%= user.isEnabled ? 'Yes' : 'No' %></td>
+                                        <td class="table-cell">
+                                            <form action="/enableUser/<%= user._id %>" method="POST" onsubmit="return EnabledPopup();">
+                                                <button type="submit" class="btn" <%= user.isEnabled ? 'disabled' : '' %>>
+                                                    <%= user.isEnabled ? 'User is Enabled' : 'Enable User' %>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <% }); %>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
+            </div>
+        <!-- CONTENT END -->
 
-                <!-- CONTENT END -->
-
-        </div>
+        <script>
+            function EnabledPopup() {
+                alert("User has been enabled!");
+            }
+            document.getElementById('showUserTable').addEventListener('click', function() {
+                document.getElementById('userTable').style.display = 'block';
+                document.getElementById('catTable').style.display = 'none';
+            });
+    
+            document.getElementById('showCatTable').addEventListener('click', function() {
+                document.getElementById('userTable').style.display = 'none';
+                document.getElementById('catTable').style.display = 'block';
+            });
+        </script>
 
     </body>
 

@@ -54,7 +54,7 @@ const sendEmail = (email, link) => {
     from: process.env.EMAIL_USER,
     to: email,
     subject: "Password Reset",
-    text: link,
+    text: "Please click the following link to reset your password: " + link,
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
@@ -203,8 +203,13 @@ app.get("/addcat", (req, res) => {
     res.render("addcat.ejs", {title : "Add Cat",loggedin: req.session.loggedin, admin: req.session.admin})
 })
 
-app.get("/adm-dashboard", (req, res) => {
-    res.render("dashboard.ejs", {title : "Admin Dashboard",loggedin: req.session.loggedin, admin: req.session.admin})
+app.get("/adm-dashboard", async(req, res) => {
+    const adoptedCats = await Adopted.find({}); 
+    adoptedCats.forEach(cat => {
+        cat.adoptDate = cat.adoptDate.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    });
+    const users = await UserData.find({}); 
+    res.render("dashboard.ejs", {title : "Admin Dashboard", loggedin: req.session.loggedin, admin: req.session.admin, adopted: adoptedCats, users: users})
 })
 
 app.get('/form', async function(req, res) {
@@ -318,7 +323,7 @@ app.post('/submit-form', async (req, res) => {
             await cat.save();
         }
     
-        const adopted = new Adopted({ firstName, lastName, streetAddress, city, region, postalCode, phone, email, catName, userId: _id });
+        const adopted = new Adopted({ firstName, lastName, streetAddress, city, region, postalCode, phone, email, catName, userId: _id, adoptDate: Date.now() });
         user.adoptedcats.push(catName);
         await adopted.save();
         await user.save();
@@ -427,6 +432,7 @@ app.post('/forgot', async (req, res) => {
         });
         const link = `http://localhost:${port}/reset-password/${user._id}/${token}`;
         sendEmail(email, link);
+        req.flash('success', 'Email Sent, Please check your email to reset password');
         res.redirect('/login');
     } catch (error) {
     res.json({ status: error.message });
@@ -436,10 +442,7 @@ app.post('/forgot', async (req, res) => {
 app.get("/reset-password/:id/:token", async (req, res) => {
     const { id, token } = req.params;
     try {
-        console.log("Before getUser");  // New log statement
         const user = await UserData.findOne({_id : id});
-        console.log("After getUser");  // New log statement
-        console.log("hello" + user);  // Log the user object
         const secret = process.env.JWT_SECRET + user.password;
         jwt.verify(token, secret);
         res.render("reset.ejs",{title: 'Adopt a Cat', email: user.email, status: "Verified",message: req.flash('error'), id : id , token : token});
@@ -451,7 +454,15 @@ app.get("/reset-password/:id/:token", async (req, res) => {
 
 app.post("/reset-password/:id/:token", async (req, res) => {
     const { id, token } = req.params;
-    const password = req.body.newpassword;
+    const password = req.body.newpassword; 
+    const confirmPassword = req.body.cnewpassword// Get the confirmed password
+
+    // Check if the new password and the confirmed password match
+    if (password !== confirmPassword) {
+        req.flash('error', 'New password and confirmed password do not match');
+        return res.redirect(`/reset-password/${id}/${token}`);
+    }
+
     try {
         const user = await UserData.findOne({_id : id});
         const secret = process.env.JWT_SECRET + user.password;
@@ -470,16 +481,39 @@ app.post("/reset-password/:id/:token", async (req, res) => {
 });
 
 app.get("/register", (req, res) => {
-    res.render("register.ejs", {title : "Register", loggedin: req.session.loggedin})
+    res.render("register.ejs", {title : "Register", loggedin: req.session.loggedin, message: req.flash('error')})
 })
 
 app.post("/register", async (req, res) => {
     try {
+        const { username, phone, email, password } = req.body;
+
+        // Check if username already exists
+        const existingUserByUsername = await UserData.findOne({ username });
+        if (existingUserByUsername) {
+            req.flash('error', 'The username is already taken, please try another');
+            return res.redirect('/register');
+        }
+
+        // Check if phone number already exists
+        const existingUserByPhone = await UserData.findOne({ phone });
+        if (existingUserByPhone) {
+            req.flash('error', 'The phone number is already taken, please try another');
+            return res.redirect('/register');
+        }
+
+        // Check if email already exists
+        const existingUserByEmail = await UserData.findOne({ email });
+        if (existingUserByEmail) {
+            req.flash('error', 'The email is already taken, please try another');
+            return res.redirect('/register');
+        }
+
         const newUser = new UserData({
-            username: req.body.username,
-            phone: req.body.phone,
-            email: req.body.email,
-            password: hashSync(req.body.password,15)
+            username,
+            phone,
+            email,
+            password: hashSync(password, 15)
         });
 
         await newUser.save();
@@ -495,10 +529,15 @@ app.get("/login", (req, res) => {
 })
 
 app.post('/login', passport.authenticate('local', { failureRedirect: '/login',failureFlash: 'Wrong username/password, please try again'}), function(req, res) {
+    // Check if the user's account is enabled
+    if (!req.user.isEnabled) {
+        req.flash('error', 'Account is disabled');
+        return res.redirect('/login');
+    }
+
     req.session.loggedin = true;
     req.session.admin = false;
     req.session.userId = req.user._id;
-    console.log(req.session.userId);
 
     if (req.session.userId.toHexString() === '661ff26eae3d330a7d101cd9'){
         req.session.admin = true;
@@ -518,9 +557,9 @@ app.get('/logout', function(req, res) {
     });
 });
 
-app.delete('/deleteUser', async (req, res) => {
+app.post('/disableUser', async (req, res) => {
     try {
-        const user = await UserData.findByIdAndDelete(req.session.userId);
+        const user = await UserData.findByIdAndUpdate(req.session.userId, { isEnabled: false }, { new: true });
 
         if (!user) {
             return res.status(404).json({ success: false, message: "User not found" });
@@ -539,6 +578,23 @@ app.delete('/deleteUser', async (req, res) => {
         }
     } catch (err) {
         return res.status(500).json({ error: 'An error occurred' });
+    }
+});
+
+app.post('/enableUser/:id', async (req, res) => {
+    try {
+        const user = await UserData.findById(req.params.id);
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        user.isEnabled = true;
+        await user.save();
+
+        res.redirect('/adm-dashboard'); // Redirect back to the dashboard
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Server error' });
     }
 });
 
