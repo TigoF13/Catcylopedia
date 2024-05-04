@@ -774,13 +774,6 @@ p {
     border-collapse: collapse;
 }
 
-/* .table thead{
-    position: sticky; 
-    top: 0; 
-    background-color: #fff; 
-    z-index: 1; 
-} */
-
 .table th, .table td{
     padding: 5px;
     text-align: center;
@@ -874,4 +867,40 @@ p {
     justify-content: center;
     flex: 1;
     /* border: 2px solid black; */
+}
+
+.table-user{
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.table-user th, .table-user td{
+    padding: 5px;
+    text-align: center;
+    border: 2px solid black;
+}
+
+.table-user th:nth-child(1), .table-user td:nth-child(1) {
+    width: 3%; /* Lebar kolom No */
+}
+
+.table-user th:nth-child(2), .table-user td:nth-child(2) {
+    width: 7%; /* Lebar kolom No */
+}
+
+.table-user th:nth-child(3), .table-user td:nth-child(3) {
+    width: 20%; /* Lebar kolom No */
+}
+
+.table-user th:nth-child(4), .table-user td:nth-child(4) {
+    width: 10%; /* Lebar kolom No */
+}
+
+.table-user th:nth-child(5), .table-user td:nth-child(5) {
+    width: 5%; /* Lebar kolom No */
+}
+
+.table-user th:nth-child(6), .table-user td:nth-child(6) {
+    width: 12%; /* Lebar kolom No */
 }
