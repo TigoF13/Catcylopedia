@@ -42,15 +42,21 @@
     <div class="navbar">
         <div class="menu">
             <ul class="ul-navbar">
-                <li class="li-navbar"><a href="/adopt">Adopt a cat</a></li>
-                <li class="li-navbar"><a href="/about">About Cats Protection</a></li>
-                <li class="li-navbar"><a href="/what-we-do">What we do</a></li>
-                <li class="li-navbar"><a href="/help-and-advice">Help and Advice</a></li>
-                <li class="li-navbar"><a href="/find-us">Find Us</a></li>
+                <li class="li-navbar"><a href="/adopt">
+                    <%= loggedin && admin ? 'Adoption Page' : 'Adopt a cat' %>
+                </a></li>
                 <% if (!admin) { %>
-                    <li class="li-navbar"><a href="<%= loggedin ? '/myacc' : '/login' %>">My Account</a></li>
-                <% } else { %>
-                    <li class="li-navbar"><a href="/adm-dashboard">Dashboard</a></li>
+                    <li class="li-navbar"><a href="/about">About Cats Protection</a></li>
+                    <li class="li-navbar"><a href="/what-we-do">What we do</a></li>
+                    <li class="li-navbar"><a href="/help-and-advice">Help and Advice</a></li>
+                    <li class="li-navbar"><a href="/find-us">Find Us</a></li>
+                <% } %>
+                <% if (loggedin) { %>
+                    <li class="li-navbar">
+                        <a href="<%= admin ? '/dashboard' : '/myacc' %>">
+                            <%= admin ? 'Dashboard' : 'My Account' %>
+                        </a>
+                    </li>
                 <% } %>
             </ul>
         </div>

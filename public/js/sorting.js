@@ -10,12 +10,12 @@ window.onload = function() {
     var munchkinCheckbox = document.getElementById('munchkinCheckbox');
     var persiaCheckbox = document.getElementById('persiaCheckbox');
     var ragdollCheckbox = document.getElementById('ragdollCheckbox');
-    var siammCheckbox = document.getElementById('siammCheckbox');
+    var siameseCheckbox = document.getElementById('siameseCheckbox');
     var childCheckbox = document.getElementById('childCheckbox');
     var adultCheckbox = document.getElementById('adultCheckbox');
 
     // Array of all breed checkboxes
-    var breedCheckboxes = [anggoraCheckbox, himalayaCheckbox, kampungCheckbox, mainecoonCheckbox, munchkinCheckbox, persiaCheckbox, ragdollCheckbox, siammCheckbox];
+    var breedCheckboxes = [anggoraCheckbox, himalayaCheckbox, kampungCheckbox, mainecoonCheckbox, munchkinCheckbox, persiaCheckbox, ragdollCheckbox, siameseCheckbox];
     var ageCheckboxes = [childCheckbox, adultCheckbox];
 
     // Add event listener to each breed checkbox
