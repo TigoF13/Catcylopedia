@@ -20,13 +20,25 @@ It is a website that displays information about cat care and focuses on cat adop
 
 ### Installing
 
-<a href="https://nodejs.org/en/download">Node JS</a>
-<a href="https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-windows/">MongoDB</a>
-<a href="https://code.visualstudio.com/download">Visual studio code </a> or any other IDE
+* <a href="https://nodejs.org/en/download">Node JS</a>
+* <a href="https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-windows/">MongoDB</a>
+* <a href="https://code.visualstudio.com/download">Visual studio code </a> or any other IDE
 
 ### Executing program
 
-* Clone this 
+* Clone this repository :
+```
+https://github.com/TigoF13/Catcylopedia.git
+```
+* Navigate to the project directory : 
+```
+cd Catcyclopedia
+```
+* Install dependencies : 
+``` npm install ``` or ``` npm i ```
+* Start the server : 
+``` npm run start ```
+* Open your web browser and navigate to ```http://localhost:3001``` to access Catcyclopedia.
 
 ## Watch
 Watch our <a href="https://www.youtube.com/watch?v=iTqxpdKclPU">Youtube</a> video
