@@ -26,14 +26,8 @@ It is a website that displays information about cat care and focuses on cat adop
 
 ### Executing program
 
-* Clone this repository :
-```
-https://github.com/TigoF13/Catcylopedia.git
-```
-* Navigate to the project directory : 
-```
-cd Catcyclopedia
-```
+* Clone this repository : ``` https://github.com/TigoF13/Catcylopedia.git ```
+* Navigate to the project directory : ``` cd Catcyclopedia ```
 * Install dependencies : 
 ``` npm install ``` or ``` npm i ```
 * Start the server : 
