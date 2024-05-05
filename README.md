@@ -35,7 +35,7 @@ It is a website that displays information about cat care and focuses on cat adop
 * Open your web browser and navigate to ```http://localhost:3001``` to access catcylopedia.
 
 ## Watch
-Watch our <a href="https://www.youtube.com/watch?v=iTqxpdKclPU">Youtube</a> video
+* Watch our <a href="https://www.youtube.com/watch?v=iTqxpdKclPU">Youtube</a> video, <a href="https://untarid-my.sharepoint.com/:p:/g/personal/tigo_535220235_stu_untar_ac_id/Eb-scAvi5S1PvqXjcfiGi_MBURdb36dS04rze5JZ-7XpbQ?e=oYfaYB">Power Point</a> and our <a href="https://drive.google.com/file/d/1qth37taLIYBgzJamLemGkcg4ux7uVExb/view?usp=sharing">Report</a>
 
 # Repobeats
 
