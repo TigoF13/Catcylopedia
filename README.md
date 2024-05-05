@@ -1,4 +1,4 @@
-# Catcyclopedia
+# Catcylopedia
 
 A functional website built with JavaScript and integrated with MongoDB Atlas to deliver a dynamic and scalable database.
 
@@ -27,12 +27,12 @@ It is a website that displays information about cat care and focuses on cat adop
 ### Executing program
 
 * Clone this repository : ``` https://github.com/TigoF13/Catcylopedia.git ```
-* Navigate to the project directory : ``` cd Catcyclopedia ```
+* Navigate to the project directory : ``` cd catcylopedia ```
 * Install dependencies : 
 ``` npm install ``` or ``` npm i ```
 * Start the server : 
 ``` npm run start ```
-* Open your web browser and navigate to ```http://localhost:3001``` to access Catcyclopedia.
+* Open your web browser and navigate to ```http://localhost:3001``` to access catcylopedia.
 
 ## Watch
 Watch our <a href="https://www.youtube.com/watch?v=iTqxpdKclPU">Youtube</a> video
