@@ -1,3 +1,6 @@
+// DOM function to change the display of website elements
+// Used to switch to pages in the forgot password feature
+
 function openPassForm() {
     document.getElementById("passForm").style.display = "flex";
     document.getElementById("password").style.display = "none";
