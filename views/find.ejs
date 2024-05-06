@@ -1,3 +1,6 @@
+<!-- USING LEAFLET JS -->
+<!-- Display maps based on coordinate points -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,7 +54,7 @@
 
         </div>
 
-        <!-- SCRIPT TO ADD MAP ON FIND US PAGE -->
+        <!-- SCRIPT TO ADD MAP ON FIND US PAGE USING LEAFLET JS TEMPLATE -->
 
         <script>
             var map = L.map('map').setView([-6.169394, 106.788787], 13);
@@ -61,7 +64,6 @@
             var marker = L.marker([-6.169394, 106.788787]).addTo(map);
             marker.bindPopup("<div style='text-align: center;'><b>Catcyclopedia</b><br>Universitas Tarumanagara</div>").openPopup();
         </script>
-
 
     </body>
 

@@ -1,3 +1,5 @@
+//  Function to run the sort and filter features on the adopt page
+
 window.onload = function() {
     var ageSort = document.getElementById('ageSortCheckbox');
     var genderSort = document.getElementById('genderSortCheckbox');
