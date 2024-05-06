@@ -184,16 +184,23 @@
         <!-- FOOTER END -->
 
     </div>
+
+    <!-- SCRIPT THAT CALL main.js and sorting.js -->
+
     <script src="/public/js/main.js"></script>
     <script src="/public/js/sorting.js"></script>
+    
+    <!-- Script that displays an success alert when successfully adopting -->
+    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             setTimeout(function() {
                 var alert = document.getElementById('success-alert');
                 if (alert) alert.style.display = 'none';
             }, 2000); // 2 seconds
-});
+    });
     </script>
+    
 </body>
 
 </html>
