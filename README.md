@@ -38,6 +38,11 @@ It is a website that displays information about cat care and focuses on cat adop
 ## Watch
 * Watch our <a href="https://www.youtube.com/watch?v=iTqxpdKclPU" target="_blank">Youtube</a> video, <a href="https://untarid-my.sharepoint.com/:p:/g/personal/tigo_535220235_stu_untar_ac_id/Eb-scAvi5S1PvqXjcfiGi_MBURdb36dS04rze5JZ-7XpbQ?e=oYfaYB" target="_blank">Power Point</a> and our <a href="https://drive.google.com/file/d/1qth37taLIYBgzJamLemGkcg4ux7uVExb/view?usp=sharing" target="_blank">Report</a>
 
+## Our Developer
+- Jason Chainara Putra (535220045)
+- Tigo Ilhami Fasyah (535220235)
+- Devin Saputra Wijaya
+
 # Repobeats
 
 ![Alt](https://repobeats.axiom.co/api/embed/11db0952879786ab2d05300770cd5952d38fcda9.svg "Repobeats analytics image")
