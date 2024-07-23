@@ -39,9 +39,9 @@ It is a website that displays information about cat care and focuses on cat adop
 * Watch our <a href="https://www.youtube.com/watch?v=iTqxpdKclPU" target="_blank">Youtube</a> video, <a href="https://untarid-my.sharepoint.com/:p:/g/personal/tigo_535220235_stu_untar_ac_id/Eb-scAvi5S1PvqXjcfiGi_MBURdb36dS04rze5JZ-7XpbQ?e=oYfaYB" target="_blank">Power Point</a> and our <a href="https://drive.google.com/file/d/1qth37taLIYBgzJamLemGkcg4ux7uVExb/view?usp=sharing" target="_blank">Report</a>
 
 ## Our Developer
-- Jason Chainara Putra (535220045)
-- Tigo Ilhami Fasyah (535220235)
-- Devin Saputra Wijaya
+- <b> Jason Chainara Putra </b> (535220045)
+- <b> Tigo Ilhami Fasyah </b> (535220235)
+- <b> Devin Saputra Wijaya </b>
 
 # Repobeats
 
